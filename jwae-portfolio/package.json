@@ -4,11 +4,12 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "react": "19.0.0-rc-d025ddd3-20240722",
     "react-dom": "19.0.0-rc-d025ddd3-20240722",
+    "react-router-dom": "^6.25.1",
     "react-scripts": "5.0.1",
+    "sass": "^1.77.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -36,9 +37,10 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/react": "^16.0.0",
     "@types/jest": "^29.5.12",
     "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "typescript": "^5.5.4"
+    "@types/react-dom": "^18.3.0"
   }
 }
