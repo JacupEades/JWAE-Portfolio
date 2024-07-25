@@ -4,15 +4,18 @@
 
 - [x] Initialize the project repository
 - [x] Install necessary dependencies
-- [ ] Set up TypeScript configuration
+- [x] Set up TypeScript configuration
 
 ## Components
 
-- [x] Create `PageNav` component
+- [ ] Update and style `PageNav` component
 - [ ] Create `Home` component
 - [ ] Create `CompLib` component
 - [ ] Create `Games` component
 - [ ] Create `ReactDemos` component
+- [ ] Make all components into TS files
+- [ ] Make all components into scss files
+- [ ] Export components to pages using `Index`
 
 ## Routing
 
