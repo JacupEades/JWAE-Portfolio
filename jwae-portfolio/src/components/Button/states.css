@@ -1,0 +1,116 @@
+/* Enabled */
+/* Kinds */
+.Button-filled--isEnabled {
+  background: var(--color-background-critical-bold, #cc1c10);
+  color: var(--color-foreground-neutral-inverse, #ffffff);
+}
+.Button-filled--isEnabled svg path {
+  fill: var(--color-foreground-neutral-inverse, #ffffff);
+}
+/* Outlined: hover, active */
+.Button-outlined--isEnabled {
+  background: var(--color-background-neutral-subtlest, #ffffff);
+  color: var(--color-foreground-critical-medium, #cc1c10);
+  border: 1px solid var(--color-border-critical-subtle, #ef5955);
+}
+.Button-outlined--isEnabled svg path {
+  fill: var(--color-foreground-critical-medium, #cc1c10);
+}
+.Button-outlined--isEnabled:hover {
+  border: 1px solid var(--color-foreground-critical-medium, #cc1c10);
+}
+.Button-overlay-outlined--isEnabled:hover,
+.Button:hover .Button-overlay-outlined--isEnabled,
+.Button-content-container:hover + .Button-overlay-outlined--isEnabled {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(204, 28, 16, 0.08);
+}
+.Button-overlay-outlined--isEnabled:active,
+.Button-content-container:active + .Button-overlay-outlined--isEnabled {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(204, 28, 16, 0.12);
+}
+/* Subtle: hover, active */
+.Button-subtle--isEnabled {
+  background: var(--color-background-critical-subtle, #fdeeed);
+  color: var(--color-foreground-critical-medium, #cc1c10);
+}
+.Button-subtle--isEnabled svg path {
+  fill: var(--color-foreground-critical-medium, #cc1c10);
+}
+.Button-overlay-subtle--isEnabled:hover,
+.Button:hover .Button-overlay-subtle--isEnabled,
+.Button-content-container:hover + .Button-overlay-subtle--isEnabled {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(204, 28, 16, 0.08);
+}
+.Button-overlay-subtle--isEnabled:active,
+.Button-content-container:active + .Button-overlay-subtle--isEnabled {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(204, 28, 16, 0.12);
+}
+/* Ghost: hover, active */
+.Button-ghost--isEnabled {
+  background: transparent;
+  color: var(--color-foreground-critical-medium, #cc1c10);
+}
+.Button-ghost--isEnabled svg path {
+  fill: var(--color-foreground-critical-medium, #cc1c10);
+}
+.Button-overlay-ghost--isEnabled:hover,
+.Button:hover .Button-overlay-ghost--isEnabled,
+.Button-content-container:hover + .Button-overlay-ghost--isEnabled {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(204, 28, 16, 0.08);
+}
+.Button-overlay-ghost--isEnabled:active,
+.Button-content-container:active + .Button-overlay-ghost--isEnabled {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(204, 28, 16, 0.12);
+}
+/* Success */
+.Button-filled--isSuccess {
+  background: var(--color-background-success-bold, #028329);
+  pointer-events: none;
+}
+.Button-outlined--isSuccess,
+.Button-subtle--isSuccess,
+.Button-ghost--isSuccess {
+  color: var(--color-foreground-success-medium, #028329);
+  pointer-events: none;
+}
+.Button-outlined--isSuccess svg path,
+.Button-subtle--isSuccess svg path,
+.Button-ghost--isSuccess svg path {
+  fill: var(--color-foreground-success-medium, #028329);
+}
+.Button-outlined--isSuccess {
+  border: 1px solid var(--color-border-success-subtle, #43a34d);
+}
+.Button-subtle--isSuccess {
+  background: var(--color-background-success-subtle, #e5f7e0);
+}
+/* Disabled */
+.Button--isDisabled,
+.Button--isDisabled:hover {
+  color: var(--color-foreground-neutral-subtle, #717385);
+  background: var(--color-background-neutral-disabled-subtle, #ebecf2);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.Button--isDisabled svg path {
+  fill: var(--color-foreground-neutral-subtle, #717385);
+}
+.Button--isDisabled .Button-overlay {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.Button--isDisabled:hover .Button-content-container + .Button-overlay {
+  background: transparent;
+}

@@ -1,0 +1,245 @@
+.AccordionStepper-inlineBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.AccordionStepper-inlineBox .InlineMessage--critical {
+  padding: 0;
+}
+
+.AccordionStepper-article {
+  position: relative;
+  width: 100%;
+  min-height: 4.875rem;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid transparent;
+}
+
+.AccordionStepper-article--hasSecondaryText {
+  min-height: 6.5rem;
+}
+
+.AccordionStepper-article--isCritical {
+  border: 1px solid var(--color-foreground-critical-medium, #cc1c10);
+}
+
+.AccordionStepper-button {
+  all: unset;
+  box-sizing: border-box;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1.5rem calc(100% - 5rem) 2.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  height: 100%;
+  max-height: 4.875rem;
+  background: var(--color-background-neutral-subtlest, #fff);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  z-index: var(--z-index-accordion-button);
+}
+
+.AccordionStepper-button:hover {
+  box-shadow: var(--box-shadow-pretoken-container-interaction);
+}
+
+.AccordionStepper-button.AccordionStepper-button--hasSecondaryText {
+  max-height: 6.5rem;
+  height: 6.5rem;
+}
+
+.AccordionStepper-button[tabindex]:focus-visible {
+  outline: 3px solid var(--color-border-focus, #6e7fff);
+  outline-offset: 0.125rem;
+}
+
+/* Expanded */
+.AccordionStepper-button--isExpanded {
+  grid-template-columns: 2rem calc(100% - 10.5rem) 7.5rem;
+  border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+  border-bottom: 1px solid var(--color-border-neutral-decorative, #ebecf2);
+}
+
+.AccordionStepper-button--hasSecondaryText.AccordionStepper-button--isExpanded {
+  max-height: 4.875rem;
+}
+
+/* Prefix Icon */
+.AccordionStepper-prefixIcon {
+  display: flex;
+  justify-content: center;
+  align-self: flex-start;
+  width: 1.5rem;
+  transition:
+    height var(--transition-quickstep-in-out),
+    width var(--transition-quickstep-in-out),
+    transform var(--transition-quickstep-in-out);
+}
+
+.AccordionStepper-prefixIcon .Icon {
+  transition:
+    height var(--transition-quickstep-in-out),
+    width var(--transition-quickstep-in-out);
+}
+
+.AccordionStepper-prefixIcon .Icon svg path {
+  fill: var(--color-foreground-neutral-bold, #212328);
+}
+
+.AccordionStepper-prefixIcon--isExpanded {
+  width: 2rem;
+  transform: translateY(15%);
+}
+
+.AccordionStepper-prefixIcon--isExpanded .Icon {
+  height: 2rem;
+  width: 2rem;
+  max-width: unset;
+  max-height: unset;
+}
+
+/* Body */
+.AccordionStepper-bodyContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  width: 100%;
+  transition:
+    gap var(--transition-quickstep-in-out),
+    height var(--transition-quickstep-in-out);
+}
+
+.AccordionStepper-bodyContent--isExpanded {
+  gap: 0;
+}
+
+/* Header */
+.AccordionStepper-header {
+  margin: 0;
+  font: var(--typography-body-2);
+  color: var(--color-foreground-neutral-bold, #212328);
+  transition:
+    font var(--transition-quickstep-in-out),
+    height var(--transition-quickstep-in-out);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.AccordionStepper-header--isExpanded {
+  font: var(--typography-heading-2);
+}
+
+/* Supporting text container */
+.AccordionStepper-supportingContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  overflow: hidden;
+  transition:
+    gap var(--transition-quickstep-in-out),
+    height var(--transition-quickstep-in-out);
+}
+.AccordionStepper-supportingContent-accordionValue {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--color-foreground-secondary-bold, #00245b);
+}
+
+.AccordionStepper-supportingContent--isShowingSupportingTextOnExpanded {
+  height: 1.5rem;
+}
+
+.AccordionStepper-supportingContent--hasSecondaryText {
+  height: 3rem;
+}
+
+.AccordionStepper-supportingContent--isShowingSupportingTextOnExpanded.AccordionStepper-supportingContent--isExpanded {
+  height: 0;
+  gap: 0.125rem;
+}
+
+.AccordionStepper-supportingText,
+.AccordionStepper-accordionValue {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.AccordionStepper-supportingText {
+  margin: 0;
+  color: var(--color-foreground-neutral-subtle, #717385);
+}
+
+.AccordionStepper-accordionValue {
+  font: var(--typography-body-bold-1);
+}
+
+/* Suffix Icon */
+.AccordionStepper-suffixIcon {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+}
+
+.AccordionStepper-suffixIcon .Icon svg path {
+  fill: var(--color-foreground-secondary-bold, #00245b);
+}
+
+/* Content Panel, and panel content */
+.AccordionStepper-contentPanelWrapper {
+  padding-top: 4.875rem;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  border-radius: var(--border-radius-sm);
+  background: var(--color-background-neutral-subtlest, #fff);
+}
+
+.AccordionStepper-contentPanelWrapper:after {
+  content: '';
+  height: 3.125rem;
+  transition:
+    height var(--transition-quickstep-in-out),
+    max-height var(--transition-quickstep-in-out);
+  max-height: 0;
+}
+
+.AccordionStepper-contentPanel {
+  transition:
+    height var(--transition-quickstep-in-out),
+    margin-bottom var(--transition-quickstep-in-out),
+    padding var(--transition-quickstep-in-out);
+  margin-bottom: 0;
+  padding: 1.5rem 3rem;
+  width: 100%;
+}
+
+.AccordionStepper-contentPanelWrapper.AccordionStepper-contentPanelWrapper--isNotExpanded
+  > .AccordionStepper-contentPanel {
+  /* May need to be increased, if the content does not expand past the button, was -125rem */
+  margin-bottom: -15rem;
+  transition:
+    height var(--transition-quickstep-in-out),
+    margin-bottom var(--transition-quickstep-in-out),
+    max-height 0.25s;
+  max-height: 0;
+}
+
+.AccordionStepper-contentPanelWrapper.AccordionStepper-contentPanelWrapper--isNotExpanded:after {
+  height: 0;
+  transition: height var(--transition-quickstep-in-out);
+  max-height: 3.125rem;
+}
+
+.AccordionStepper-button--noSuffixLink {
+  grid-template-columns: 2rem calc(100% - 2rem);
+}

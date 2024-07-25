@@ -1,0 +1,222 @@
+.ModalIsland--isOpen--bodyScrollLock {
+  padding-right: var(--scrollbar-width-saviynt-ds);
+  overflow: hidden;
+}
+
+.ModalIsland-background {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: var(--light-brand-secondary-overlay, rgba(0, 8, 64, 0.5));
+  overflow: hidden;
+  transition: opacity var(--transition-quick-in-out);
+  opacity: 0;
+  pointer-events: none;
+  z-index: var(--z-index-modal-island);
+}
+.ModalIsland-background--isOpen {
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity var(--transition-quick-in-out);
+}
+
+.ModalIsland {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 6rem);
+  height: auto; /* *PAM-12675: safari has trouble w/ max-content */
+  max-width: 42.5rem;
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-quick-in-out);
+  z-index: var(--z-index-modal-island);
+}
+.ModalIsland--isOpen {
+  left: calc(50% - var(--scrollbar-width-saviynt-ds) / 2);
+  opacity: 1;
+  pointer-events: all;
+  transition: opacity var(--transition-quick-in-out);
+}
+
+.ModalIsland-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+  width: 100%;
+  height: 3.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--background-neutral-subtlest, #ffffff);
+  border-bottom: 1px solid var(--color-border-neutral-decorative, #ebecf2);
+}
+.ModalIsland-header--hasSubtitle {
+  height: 4.5rem;
+}
+
+.ModalIsland-titleAndHeaderIcon {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.75rem;
+  overflow: hidden;
+}
+.ModalIsland-titleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+}
+.ModalIsland-title,
+.ModalIsland-subtitle {
+  width: 100%;
+  margin: 0;
+}
+.ModalIsland-title {
+  color: var(--color-foreground-neutral-bold, #212328);
+}
+.ModalIsland-subtitle {
+  color: var(--color-foreground-neutral-subtle, #717385);
+}
+/* Increased specificity due to style collision in dev, with sass file selector #ModalIsland:not(.showSelectLogoModal) .ModalIsland-body */
+#ModalIsland.ModalIsland .ModalIsland-section .ModalIsland-body {
+  max-height: calc(100vh - 12rem);
+  padding: 1.5rem;
+  overflow-x: hidden;
+  margin: 0;
+  background: var(--color-page-subtle, #f2f4f8);
+  color: var(--color-foreground-neutral-bold, #212328);
+}
+
+/* Alert varients */
+.ModalIsland-alert {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  max-width: 30rem;
+  border-radius: var(--border-radius-sm);
+  background: var(--background-neutral-subtlest, #ffffff);
+  overflow: hidden;
+}
+
+.ModalIsland-alertContent-icon {
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.ModalIsland-alertContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 3rem 3rem 2rem 3rem;
+  min-height: max-content;
+  max-height: calc(100vh - 2rem);
+  overflow-x: hidden;
+  z-index: 2;
+}
+.ModalIsland-alertContent-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ModalIsland-alertTitle,
+.ModalIsland-alertSubtitle {
+  width: 100%;
+  color: var(--color-foreground-neutral-bold, #212328);
+  margin: 0;
+  text-align: center;
+}
+.ModalIsland-alertSubtitle {
+  color: var(--color-foreground-neutral-medium, #4a4c59);
+}
+.ModalIsland-alertTitle-critical {
+  color: var(--color-foreground-critical-bold, #700600);
+}
+
+.ModalIsland-alertContent-controlsContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  white-space: nowrap;
+}
+.ModalIsland-alertContent-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: min-content;
+  white-space: nowrap;
+}
+
+.ModalIsland-alertCloseButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+}
+
+.ModalIsland-alertBg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 30rem;
+  height: 6.75rem;
+}
+.ModalIsland-alertBg-question svg,
+.ModalIsland-alertBg-question svg path {
+  fill: var(--color-background-info-subtle, #f1ecfd);
+}
+.ModalIsland-alertBg-success svg,
+.ModalIsland-alertBg-success svg path {
+  fill: var(--color-background-success-subtle, #e5f7e0);
+}
+.ModalIsland-alertBg-warning svg,
+.ModalIsland-alertBg-warning svg path {
+  fill: var(--color-background-warning-subtle, #fff1d9);
+}
+.ModalIsland-alertBg-critical svg,
+.ModalIsland-alertBg-critical svg path {
+  fill: var(--color-background-critical-subtle, #fdeeed);
+}
+.ModalIsland-alertBg-saviynt svg,
+.ModalIsland-alertBg-saviynt svg path {
+  fill: var(--color-background-secondary-subtle, #f2f4f8);
+}
+
+/* Prop to allow popups in ModalIsland */
+#ModalIsland.ModalIsland.ModalIsland--isOverflowVisible
+  .ModalIsland-section
+  .ModalIsland-body,
+.ModalIsland.ModalIsland--isOverflowVisible {
+  overflow-x: visible;
+  overflow-y: visible;
+}
+
+.ModalIsland-section--isLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 9.75rem;
+  width: 9.75rem;
+}

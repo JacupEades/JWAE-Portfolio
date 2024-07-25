@@ -1,0 +1,17 @@
+@import './TypographyDesktop.css';
+@import './TypographyMobile.css';
+
+/* TODO: Update this from the host app override */
+/* margin-bottom is here to fix collision from host app */
+label.Label {
+  margin-bottom: 0;
+}
+
+.Typography {
+  margin: 0;
+  transition: font var(--transition-quick-in-out);
+}
+
+.Typography--isNoWrap {
+  white-space: nowrap;
+}

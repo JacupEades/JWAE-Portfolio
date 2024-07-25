@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import PageNav from "./components/Nav/PageNav/PageNav";
+import { PageNav } from "./components";
 import Home from "./pages/Home/Home";
 import CompLib from "./pages/CompLib/CompLib";
 import ReactDemos from "./pages/ReactDemos/ReactDemos";

@@ -1,0 +1,100 @@
+/* DESKTOP */
+/* Heading 1 */
+.Typography-h1-d {
+  font: var(--typography-heading-1);
+}
+.Typography-h1-m {
+  font: var(--typography-heading-1-mobile);
+}
+/* Heading 2 */
+.Typography-h2-d {
+  font: var(--typography-heading-2);
+}
+.Typography-h2-m {
+  font: var(--typography-heading-2-mobile);
+}
+/* Heading 3 */
+.Typography-h3-d {
+  font: var(--typography-heading-3);
+}
+.Typography-h3-m {
+  font: var(--typography-heading-3-mobile);
+}
+/* Heading 4 */
+.Typography-h4-d {
+  font: var(--typography-heading-4);
+}
+.Typography-h4-m {
+  font: var(--typography-heading-4-mobile);
+}
+/* Heading 5 */
+.Typography-h5-d {
+  font: var(--typography-heading-5);
+}
+.Typography-h5-m {
+  font: var(--typography-heading-5-mobile);
+}
+
+/* Body 1 */
+.Typography-body1-d {
+  font: var(--typography-body-1);
+}
+.Typography-body1-m {
+  font: var(--typography-body-1-mobile);
+}
+/* Body 1 Bold */
+.Typography-body1-bold-d {
+  font: var(--typography-body-bold-1);
+}
+.Typography-body1-bold-m {
+  font: var(--typography-body-bold-1-mobile);
+}
+/* Body 2 */
+.Typography-body2-d {
+  font: var(--typography-body-2);
+}
+.Typography-body2-m {
+  font: var(--typography-body-2-mobile);
+}
+/* Body 2 Bold */
+.Typography-body2-bold-d {
+  font: var(--typography-body-bold-2);
+}
+.Typography-body2-bold-m {
+  font: var(--typography-body-bold-2-mobile);
+}
+/* Body 3 */
+.Typography-body3-d {
+  font: var(--typography-body-3);
+}
+.Typography-body3-m {
+  font: var(--typography-body-3-mobile);
+}
+/* Body 3 Bold */
+.Typography-body3-bold-d {
+  font: var(--typography-body-bold-3);
+}
+.Typography-body3-bold-m {
+  font: var(--typography-body-bold-3-mobile);
+}
+
+/* Display */
+.Typography-header-d {
+  font: var(--typography-display);
+}
+.Typography-header-m {
+  font: var(--typography-display-mobile);
+}
+.Typography-display-d {
+  font: var(--typography-display);
+}
+.Typography-display-m {
+  font: var(--typography-display-mobile);
+}
+/* Label */
+.Typography-label-d {
+  font: var(--typography-heading-3);
+}
+.Typography-label-m {
+  font: var(--typography-heading-3-mobile);
+}

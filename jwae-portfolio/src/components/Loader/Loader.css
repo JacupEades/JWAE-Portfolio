@@ -1,0 +1,42 @@
+.Loader {
+  height: 5rem;
+  width: 5rem;
+}
+
+.Loader--inline {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+/* Custom Sizes for Inline*/
+.Loader--inlineSmall {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.Loader--inlineMedium {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.Loader--inlineLarge {
+  height: 2rem;
+  width: 2rem;
+}
+
+.Loader--circle {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.Loader--text {
+  height: 1rem;
+  min-width: 5rem;
+  width: 100%;
+  max-width: 10rem;
+}
+
+.Loader--square {
+  height: 7.5rem;
+  width: 7.5rem;
+}

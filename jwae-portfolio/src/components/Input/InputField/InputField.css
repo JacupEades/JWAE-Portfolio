@@ -1,0 +1,412 @@
+.InputField-Container {
+  display: flex;
+  width: 100%;
+}
+
+.InputField {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.25rem;
+}
+
+.InputField-inputContainer {
+  position: relative;
+}
+
+.InputField .Label {
+  color: var(--color-foreground-neutral-bold, #212328);
+  font: var(--typography-heading-4);
+}
+
+.InputField-search {
+  gap: 0;
+}
+
+.InputField-input {
+  border: 1px solid var(--color-border-secondary-subtlest, #cfd9e9);
+  border-radius: var(--border-radius-sm);
+  color: var(--color-foreground-secondary-bold, #00245b);
+  width: 100%;
+  text-overflow: ellipsis;
+  transition: border var(--transition-fast-in-out);
+}
+
+.InputField--neutral {
+  background: var(--background-neutral-subtlest, #ffffff);
+}
+
+.InputField--secondary {
+  background: var(--color-background-secondary-subtlest, #f7f9fc);
+}
+
+.InputField-input-suffixButton {
+  width: calc(100% - 2.4375rem);
+  border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
+}
+
+/* Sizes */
+.InputField--small {
+  padding: 0.5rem 2.25rem 0.5rem 0.25rem;
+  font: var(--typography-body-3);
+  height: 2rem;
+}
+.InputField--medium {
+  padding: 0.625rem 2.25rem 0.625rem 0.25rem;
+  font: var(--typography-body-3);
+  height: 2.5rem;
+}
+.InputField--large {
+  padding: 0.875rem 2.25rem 0.875rem 0.5rem;
+  font: var(--typography-body-2);
+  height: 3rem;
+}
+
+.InputField--multiline {
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 3rem;
+  min-width: 7.5rem;
+  padding: 0.75rem;
+  font: var(--typography-body-2);
+  transition: border-color var(--transition-fast-in-out);
+  vertical-align: top; /* remove intrinsic spacing at bottom */
+}
+
+.InputField--multiline::-webkit-scrollbar {
+  width: 1rem;
+}
+
+.InputField--multiline::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.InputField--multiline::-webkit-scrollbar-thumb {
+  background-color: var(--color-foreground-neutral-disabled);
+  border-radius: 12.5rem;
+}
+
+.InputField--neutral::-webkit-scrollbar-thumb {
+  border: 0.25rem solid var(--background-neutral-subtlest, #ffffff);
+}
+
+.InputField--secondary::-webkit-scrollbar-thumb {
+  border: 0.25rem solid var(--color-background-secondary-subtlest);
+}
+
+.InputField--multiline:disabled::-webkit-scrollbar-thumb {
+  border: 0.25rem solid var(--color-background-neutral-disabled-subtle, #ebecf2);
+}
+
+.InputField--multiline:hover::-webkit-scrollbar-thumb {
+  background-color: var(--color-foreground-neutral-subtle, #717385);
+}
+
+/* For Firefox */
+.InputField--multiline {
+  scrollbar-width: thin;
+}
+
+.InputField-input.InputField-noOutline:focus,
+.InputField-input.InputField-noOutline:hover:focus {
+  outline: none;
+}
+
+.InputField-input:focus,
+.InputField-input:hover:focus {
+  outline: 2px solid var(--color-border-focus, #6e7fff);
+}
+
+.InputField-suffixButton[tabindex]:focus-visible {
+  outline: 2px solid var(--color-border-focus, #6e7fff);
+}
+
+.InputField-input:active {
+  border: 1px solid var(--color-border-primary-medium, #3751ff);
+}
+
+.InputField-input:hover {
+  border: 1px solid var(--color-border-secondary-subtle, #6888b5);
+}
+
+.InputField-input:disabled {
+  border: 1px solid transparent;
+  cursor: not-allowed;
+  background: var(--color-background-neutral-disabled-subtle, #ebecf2);
+  color: var(--color-foreground-neutral-subtle, #717385);
+}
+
+.InputField-input::-webkit-input-placeholder,
+.InputField-input:-ms-input-placeholder {
+  /* Edge */
+  font: var(--typography-body-2);
+  color: var(--color-foreground-neutral-subtle, #717385);
+}
+
+.InputField-input::placeholder {
+  font: var(--typography-body-2);
+  color: var(--color-foreground-neutral-subtle, #717385);
+}
+
+/* isDisabled */
+.InputField-input--isDisabled {
+  padding-right: 0.5rem;
+}
+
+/* isReadOnly */
+.InputField-input--isReadOnly {
+  pointer-events: none;
+  background: transparent;
+  padding-right: 0.5rem;
+}
+
+/* InputField Prefix Icon */
+.InputField-prefixIcon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+
+/* Prefix Icon Sizes */
+.InputField-input-prefixIcon--small {
+  padding-left: 2rem;
+}
+.InputField-input-prefixIcon--medium {
+  padding-left: 2rem;
+}
+.InputField-input-prefixIcon--large {
+  padding-left: 2.25rem;
+}
+
+.InputField-prefixIcon--small,
+.InputField-prefixIcon--small span,
+.InputField-prefixIcon--small svg {
+  min-height: unset;
+  min-width: unset;
+  height: 1rem;
+  width: 1rem;
+}
+
+.InputField-prefixIcon--medium,
+.InputField-prefixIcon--medium svg {
+  min-height: unset;
+  min-width: unset;
+  height: 1rem;
+  width: 1rem;
+}
+
+.InputField-prefixIcon--large,
+.InputField-prefixIcon--large svg {
+  min-height: unset;
+  min-width: unset;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+/* InputField Close Button */
+.InputField-closeButtonContainer {
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: all var(--transition-fast-in-out);
+}
+
+.InputField-closeButtonContainer--small {
+  align-items: center;
+  padding: 0.25rem 0.5rem 0.25rem 0;
+  height: 2rem;
+}
+
+.InputField-closeButtonContainer--medium {
+  align-items: center;
+  padding: 0.25rem 0.5rem 0.25rem 0;
+  height: 2.5rem;
+}
+
+.InputField-closeButtonContainer--large {
+  align-items: center;
+  padding: 0.6875rem 0.5rem 0.6875rem 0;
+  height: 3rem;
+}
+
+.InputField-closeButtonContainer--suffixButton {
+  right: 2.3125rem;
+}
+
+.InputField-closeButtonContainer--isReadOnly {
+  display: none;
+}
+/* Render close button only on container hover or tab selected */
+.InputField-inputContainer:hover .InputField-closeButtonContainer,
+.InputField-inputContainer:focus-within .InputField-closeButtonContainer {
+  opacity: 1;
+}
+.InputField-closeButtonContainer:hover + .InputField-input {
+  border: 1px solid var(--color-border-secondary-subtle, #6888b5);
+}
+
+/* Suffix Button */
+.InputField-suffixButton {
+  all: unset;
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  right: 0;
+  padding: 0.875rem 0.5rem;
+  border: 1px solid var(--color-border-neutral-subtlest, #cecfd9);
+  border-left: 1px solid transparent;
+  cursor: pointer;
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  background: transparent;
+  height: 3rem;
+  width: 2.5rem;
+  transition: all var(--transition-fast-in-out);
+  isolation: isolate;
+}
+
+.InputField-suffixButton-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.InputField-suffixButton-icon svg path,
+.InputField-suffixButton-icon svg g {
+  fill: var(--color-foreground-secondary-medium, #254b86);
+}
+
+.InputField-suffixButton--isReadOnly {
+  background: var(--background-neutral-subtlest, #ffffff);
+  border: 1px solid var(--color-border-neutral-subtlest, #cecfd9);
+}
+
+.InputField-suffixButton:hover {
+  border: 1px solid var(--color-border-secondary-subtle, #cecfd9);
+  background: var(--background-neutral-subtlest, #ffffff);
+}
+
+.InputField-suffixButton-overlay {
+  position: absolute;
+  z-index: var(--z-index-container-overlay);
+  right: -1px;
+  top: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  border: 1px solid transparent;
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+  background: transparent;
+  opacity: 0;
+  transition: all var(--transition-fast-in-out);
+}
+
+.InputField-suffixButton-icon {
+  transition: all var(--transition-fast-in-out);
+}
+
+.InputField-suffixButton-overlay:hover,
+.InputField-suffixButton:hover .InputField-suffixButton-overlay,
+.InputField-suffixButton-icon:hover + .InputField-suffixButton-overlay {
+  opacity: 1;
+  background: rgba(55, 81, 255, 0.08);
+}
+
+.InputField-suffixButton-overlay:active,
+.InputField-suffixButton:active .InputField-suffixButton-overlay,
+.InputField-suffixButton-icon:active + .InputField-suffixButton-overlay {
+  opacity: 1;
+  background: rgba(55, 81, 255, 0.1);
+}
+
+/* Required Critical */
+.InputField-input--isCritical,
+.InputField-input--isCritical:focus,
+.InputField-input--isCritical:focus:hover,
+.InputField-input--isCritical:hover {
+  border: 1px solid var(--color-border-critical-medium, #cc1c10);
+}
+
+.InputField--isRequired {
+  position: relative;
+  top: 0.3125rem;
+  right: 0.3125rem;
+}
+
+.InputField--isRequired--isCritical,
+.InputField--isRequired--isWarning {
+  position: absolute;
+  top: -0.25rem;
+  left: -0.25rem;
+  font: var(--typography-heading-3);
+}
+
+.InputField--isRequired--isWarning,
+.InputField-suffixButton--isWarning {
+  color: var(--color-foreground-warning-medium);
+}
+
+.InputField--isRequired--isCritical {
+  color: var(--color-foreground-critical-medium);
+}
+
+/* InputField Suffix Button isRequired */
+.InputField-suffixButton--isCritical {
+  border: 1px solid var(--color-foreground-critical-medium);
+}
+
+.InputField-suffixButton--isCritical:hover {
+  border: 1px solid var(--color-foreground-critical-medium);
+}
+
+.InputField-suffixButton--isCritical .InputField-suffixButton-icon svg path,
+.InputField-suffixButton--isCritical .InputField-suffixButton-icon svg g {
+  fill: var(--color-foreground-neutral-subtle, #717385);
+}
+
+/* InputField Suffix Button isDisabled */
+.InputField-suffixButton:disabled,
+.InputField-suffixButton-overlay--isDisabled {
+  border: 1px solid transparent;
+  background: var(--color-background-neutral-disabled-subtle, #ebecf2);
+  cursor: not-allowed;
+}
+
+.InputField-suffixButton-neutral--isDisabled {
+  border: 1px solid var(--color-foreground-neutral-subtle);
+  border-left: 1px solid transparent;
+}
+
+.InputField-suffixButton-secondary--isDisabled {
+  border: 1px solid var(--color-foreground-neutral-subtle);
+  border-left: 1px solid transparent;
+}
+
+.InputField-suffixButton-overlay:hover,
+.InputField-suffixButton:disabled:hover
+  .InputField-suffixButton-overlay--isDisabled,
+.InputField-suffixButton-icon:hover
+  + .InputField-suffixButton-overlay--isDisabled {
+  opacity: 0;
+}
+
+.InputField-suffixButton--isDisabled .InputField-suffixButton-icon svg path,
+.InputField-suffixButton--isDisabled .InputField-suffixButton-icon svg g {
+  fill: var(--color-foreground-neutral-subtle, #717385);
+}
+
+/* InputField Multiline Required */
+.InputField-multiline--isRequired--isCritical,
+.InputField-multiline--isRequired--isWarning {
+  position: absolute;
+  top: -1.25rem;
+  left: -1.25rem;
+  font: var(--typography-heading-3);
+}
+
+.InputField.InputField-multiline .InlineMessage {
+  margin-top: -0.125rem;
+}

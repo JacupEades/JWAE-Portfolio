@@ -1,0 +1,158 @@
+.ButtonSelect-content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.ButtonSelect--rectangle {
+  all: unset;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.125rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--color-border-secondary-subtlest, #cfd9e9);
+  background: var(--color-background-neutral-subtlest, #fff);
+  transition: all var(--transition-fast-in-out);
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.ButtonSelect--rectangle .ButtonSelect-label {
+  cursor: pointer;
+}
+
+/* size variations */
+.ButtonSelect--rectangle.ButtonSelect--small {
+  height: 2rem;
+}
+.ButtonSelect--rectangle.ButtonSelect--medium {
+  height: 2.5rem;
+}
+.ButtonSelect--rectangle.ButtonSelect--large {
+  height: 3rem;
+}
+
+.ButtonSelect--rectangle .ButtonSelect-label {
+  color: var(--color-foreground-neutral-bold, #212328);
+  padding: 0.1875rem 0.125rem 0.1875rem 0.25rem;
+  font: var(--typography-body-2);
+}
+
+.ButtonSelect--rectangle.ButtonSelect--hasBadge {
+  border: 1px solid var(--color-border-secondary-subtle, #6888b5);
+}
+.ButtonSelect--rectangle.ButtonSelect--hasBadge .ButtonSelect-label {
+  color: var(--color-foreground-secondary-medium, #254b86);
+  font: var(--typography-body-bold-2);
+}
+
+.ButtonSelect--rectangle:hover,
+.ButtonSelect--rectangle:active {
+  border: 1px solid var(--color-border-secondary-subtle, #6888b5);
+  box-shadow: var(--box-shadow-pretoken-button-interaction);
+}
+
+/* isOpen variations */
+.ButtonSelect--rectangle--isOpen,
+.ButtonSelect--rectangle--isOpen:hover,
+.ButtonSelect--rectangle--isOpen:active {
+  background: var(--color-background-secondary-subtle, #f2f4f8);
+  border: 1px solid var(--color-border-secondary-medium, #254b86);
+  box-shadow: var(--box-shadow-pretoken-button-interaction);
+}
+.ButtonSelect--rectangle--isOpen .ButtonSelect-label {
+  color: var(--color-foreground-secondary-medium, #254b86);
+}
+
+/* isDisabled
+(out of scope for cpam - also change the colors inside the button) */
+.ButtonSelect--rectangle.ButtonSelect--isDisabled {
+  background: var(--color-background-neutral-disabled-subtle, #ebecf2);
+  border: 0;
+  pointer-events: none;
+}
+
+.ButtonSelect--rectangle .Badge {
+  position: absolute;
+}
+
+/* badge placement variations */
+.ButtonSelect--rectangle .Badge--small {
+  right: 0.0625rem;
+  top: -0.25rem;
+}
+/* TODO: add the rest of the badge sizes */
+
+/* Icon container heights */
+.ButtonSelect--large .ButtonSelect--rectangle-prefixIcon,
+.ButtonSelect--large .ButtonSelect--rectangle-prefixIcon .Icon,
+.ButtonSelect--large .ButtonSelect--rectangle-chevron,
+.ButtonSelect--medium .ButtonSelect--rectangle-prefixIcon,
+.ButtonSelect--medium .ButtonSelect--rectangle-prefixIcon .Icon,
+.ButtonSelect--medium .ButtonSelect--rectangle-chevron {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+.ButtonSelect--small .ButtonSelect--rectangle-prefixIcon,
+.ButtonSelect--small .ButtonSelect--rectangle-prefixIcon .Icon,
+.ButtonSelect--small .ButtonSelect--rectangle-chevron {
+  height: 1rem;
+  width: 1rem;
+}
+
+/* Icon colors */
+.ButtonSelect--rectangle-prefixIcon.ButtonSelect--isIconSvgFilled svg path,
+.ButtonSelect--rectangle-chevron.ButtonSelect--isIconSvgFilled svg path {
+  fill: var(--color-foreground-neutral-bold, #212328);
+}
+
+.ButtonSelect--rectangle--isOpen {
+  .ButtonSelect--rectangle-prefixIcon.ButtonSelect--isIconSvgFilled svg path,
+  .ButtonSelect--rectangle-chevron.ButtonSelect--isIconSvgFilled svg path {
+    fill: var(--color-border-secondary-medium, #254b86);
+  }
+}
+
+.ButtonSelect--hasBadge {
+  .ButtonSelect--rectangle-prefixIcon.ButtonSelect--isIconSvgFilled svg path,
+  .ButtonSelect--rectangle-chevron.ButtonSelect--isIconSvgFilled svg path {
+    fill: var(--color-border-secondary-medium, #254b86);
+  }
+}
+
+/* Overlay Base */
+.ButtonSelect-overlay {
+  position: absolute;
+  z-index: var(--z-index-container-overlay);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  /* Needed to cover the border pixels */
+  border-radius: 0.1875rem;
+  background: transparent;
+  opacity: 0;
+  transition: all var(--transition-fast-in-out);
+}
+/* Overlay Hover */
+.ButtonSelect-overlay--rectangle:hover,
+.ButtonSelect:hover .ButtonSelect-overlay--rectangle,
+.ButtonSelect-content-container:hover + .ButtonSelect-overlay--rectangle {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(37, 75, 134, 0.08);
+}
+
+/* Overlay Pressed */
+.ButtonSelect-overlay--rectangle:active,
+.ButtonSelect:active .ButtonSelect-overlay,
+.ButtonSelect-content-container:active + .ButtonSelect-overlay--rectangle {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(37, 75, 134, 0.12);
+}

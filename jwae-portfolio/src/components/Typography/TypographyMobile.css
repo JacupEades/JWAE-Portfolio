@@ -1,0 +1,102 @@
+/* MOBILE */
+@media only screen and (max-width: 600px) {
+  /* Heading 1 */
+  .Typography-mobile-h1-d {
+    font: var(--typography-heading-1);
+  }
+  .Typography-mobile-h1-m {
+    font: var(--typography-heading-1-mobile);
+  }
+  /* Heading 2 */
+  .Typography-mobile-h2-d {
+    font: var(--typography-heading-2);
+  }
+  .Typography-mobile-h2-m {
+    font: var(--typography-heading-2-mobile);
+  }
+  /* Heading 3 */
+  .Typography-mobile-h3-d {
+    font: var(--typography-heading-3);
+  }
+  .Typography-mobile-h3-m {
+    font: var(--typography-heading-3-mobile);
+  }
+  /* Heading 4 */
+  .Typography-mobile-h4-d {
+    font: var(--typography-heading-4);
+  }
+  .Typography-mobile-h4-m {
+    font: var(--typography-heading-4-mobile);
+  }
+  /* Heading 5 */
+  .Typography-mobile-h5-d {
+    font: var(--typography-heading-5);
+  }
+  .Typography-mobile-h5-m {
+    font: var(--typography-heading-5-mobile);
+  }
+
+  /* Body 1 */
+  .Typography-mobile-body1-d {
+    font: var(--typography-body-1);
+  }
+  .Typography-mobile-body1-m {
+    font: var(--typography-body-1-mobile);
+  }
+  /* Body 1 Bold */
+  .Typography-mobile-body1-bold-d {
+    font: var(--typography-body-bold-1);
+  }
+  .Typography-mobile-body1-bold-m {
+    font: var(--typography-body-bold-1-mobile);
+  }
+  /* Body 2 */
+  .Typography-mobile-body2-d {
+    font: var(--typography-body-2);
+  }
+  .Typography-mobile-body2-m {
+    font: var(--typography-body-2-mobile);
+  }
+  /* Body 2 Bold */
+  .Typography-mobile-body2-bold-d {
+    font: var(--typography-body-bold-2);
+  }
+  .Typography-mobile-body2-bold-m {
+    font: var(--typography-body-bold-2-mobile);
+  }
+  /* Body 3 */
+  .Typography-mobile-body3-d {
+    font: var(--typography-body-3);
+  }
+  .Typography-mobile-body3-m {
+    font: var(--typography-body-3-mobile);
+  }
+  /* Body 3 Bold */
+  .Typography-mobile-body3-bold-d {
+    font: var(--typography-body-bold-3);
+  }
+  .Typography-mobile-body3-bold-m {
+    font: var(--typography-body-bold-3-mobile);
+  }
+
+  /* Display */
+  .Typography-mobile-header-d {
+    font: var(--typography-display);
+  }
+  .Typography-mobile-header-m {
+    font: var(--typography-display-mobile);
+  }
+  .Typography-mobile-display-d {
+    font: var(--typography-display);
+  }
+  .Typography-mobile-display-m {
+    font: var(--typography-display-mobile);
+  }
+  /* Label */
+  .Typography-mobile-label-d {
+    font: var(--typography-heading-3);
+  }
+  .Typography-mobile-label-m {
+    font: var(--typography-heading-3-mobile);
+  }
+}

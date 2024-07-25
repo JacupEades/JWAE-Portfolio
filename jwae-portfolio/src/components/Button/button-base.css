@@ -1,0 +1,36 @@
+.Button {
+  all: unset;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  border-radius: var(--border-radius-sm, 4px);
+  font: var(--typography-body-bold-1);
+  transition: all var(--transition-fast-in-out);
+  caret-color: transparent;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.Button-content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Button:hover {
+  box-shadow: var(--box-shadow-pretoken-button-interaction);
+}
+
+.Button:not(.Button--isDisabled)[tabindex]:focus-visible {
+  outline: 3px solid var(--color-border-focus, #6e7fff);
+  outline-offset: 0.125rem;
+}
+
+.Button-children {
+  padding: 0 0.25rem;
+  white-space: nowrap;
+}
+
+.Button--isLoading {
+  pointer-events: none;
+}

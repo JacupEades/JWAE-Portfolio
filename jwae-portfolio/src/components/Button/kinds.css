@@ -1,0 +1,33 @@
+/* Kinds */
+.Button-filled {
+  background: var(--color-background-primary-bold, #3751ff);
+  color: var(--color-foreground-neutral-inverse, #ffffff);
+}
+.Button-filled svg path {
+  fill: var(--color-foreground-neutral-inverse, #ffffff);
+}
+.Button-outlined {
+  background: var(--color-background-neutral-subtlest, #ffffff);
+  color: var(--color-foreground-primary-medium, #3751ff);
+  border: 1px solid var(--color-border-primary-subtle, #6e7fff);
+}
+.Button-outlined svg path {
+  fill: var(--color-foreground-primary-medium, #3751ff);
+}
+.Button-subtle {
+  background: var(--color-background-primary-subtle, #ebedff);
+  color: var(--color-foreground-primary-medium, #3751ff);
+}
+.Button-subtle svg path {
+  fill: var(--color-foreground-primary-medium, #3751ff);
+}
+.Button-ghost {
+  background: transparent;
+  color: var(--color-foreground-primary-medium, #3751ff);
+}
+.Button-ghost svg path {
+  fill: var(--color-foreground-primary-medium, #3751ff);
+}
+.button-outlined--isenabled:hover .Button-overlay-outlined--isEnabled {
+  background: red;
+}

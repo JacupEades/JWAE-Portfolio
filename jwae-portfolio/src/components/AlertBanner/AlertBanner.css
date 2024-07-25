@@ -1,0 +1,167 @@
+.AlertBanner-container {
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 1rem 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  min-height: 2.75rem;
+
+  animation: AlertBannerFadeOut var(--transition-quick)
+    cubic-bezier(0.64, 0, 0.32, 1) forwards;
+}
+.AlertBanner-container.AlertBanner--isFloating {
+  z-index: var(--z-index-floating-banner);
+}
+.AlertBanner-container.AlertBanner-container--isVisible {
+  animation: AlertBannerFadeIn var(--transition-quick)
+    cubic-bezier(0.64, 0, 0.32, 1) forwards;
+}
+
+.AlertBanner-main {
+  width: 100%;
+}
+
+.AlertBanner-section {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.25rem;
+}
+
+.AlertBanner-heading {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.AlertBanner-icon {
+  display: flex;
+  align-items: center;
+}
+
+.AlertBanner-success--low {
+  background: var(--color-background-success-subtlest, #f3f8f2);
+  border: 1px solid var(--color-border-success-medium, #028329);
+  color: var(--color-foreground-neutral-bold, #212328);
+}
+
+.AlertBanner-success--high {
+  background: var(--color-border-success-medium, #028329);
+  color: var(--color-foreground-neutral-inverse, #ffffff);
+}
+
+.AlertBanner-critical {
+  background: var(--color-background-critical-bold, #cc1c10);
+  color: var(--color-foreground-neutral-inverse, #ffffff);
+}
+
+.AlertBanner-warning--low {
+  background: var(--color-background-warning-subtle, #fff1d9);
+  border: 1px solid var(--color-border-warning-subtle, #f6a91c);
+  color: var(--color-foreground-neutral-bold, #212328);
+}
+
+.AlertBanner-warning--high {
+  background: var(--color-background-warning-bold, #f6a91c);
+  color: var(--color-foreground-neutral-bold, #212328);
+}
+
+.AlertBanner-information--low {
+  background: var(--color-background-info-subtle, #f1ecfd);
+  border: 1px solid var(--color-foreground-info-medium, #573bdc);
+  color: var(--color-foreground-neutral-bold, #212328);
+}
+
+.AlertBanner-information--high {
+  background: var(--color-background-info-bold, #573bdc);
+  color: var(--color-foreground-neutral-inverse, #ffffff);
+}
+
+.AlertBanner-title {
+  font: var(--typography-heading-4);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.AlertBanner-title .AlertBanner-title-description {
+  font: var(--typography-body-2);
+}
+
+.AlertBanner-close {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.AlertBanner-body {
+  height: 0;
+  overflow: hidden;
+  transition: height var(--transition-quick-ease);
+}
+
+.AlertBanner-expand-btn {
+  display: flex;
+  align-items: center;
+}
+
+.AlertBanner-show-section {
+  display: flex;
+  padding-left: 0.25rem;
+  cursor: pointer;
+  align-items: center;
+}
+
+.AlertBanner-show-text {
+  color: var(--color-foreground-primary-medium, #3751ff);
+  font: var(--typography-body-bold-2);
+}
+
+.AlertBanner-body .AlertBanner-content {
+  padding: 1.25rem 2.5rem;
+  font: var(--typography-body-2);
+  color: var(--color-foreground-neutral-bold, #212328);
+}
+
+.AlertBanner-link {
+  display: flex;
+  align-items: center;
+  padding-left: 0.25rem;
+}
+
+.AlertBanner-critical .Link .Link-wrapper,
+.AlertBanner-information--high .Link .Link-wrapper,
+.AlertBanner-success--high .Link .Link-wrapper {
+  color: var(--color-foreground-neutral-inverse, #ffffff);
+}
+
+.AlertBanner-warning--high .Link .Link-wrapper {
+  color: var(--color-foreground-neutral-bold, #212328);
+}
+
+.AlertBanner-success--low .Link .Link-wrapper,
+.AlertBanner-information--low .Link .Link-wrapper,
+.AlertBanner-warning--low .Link .Link-wrapper {
+  color: var(--color-foreground-primary-medium, #3751ff);
+}
+
+.AlertBanner-icon .Color-neutral-000 svg path {
+  fill: #fff;
+}
+
+@keyframes AlertBannerFadeIn {
+  /* use keyframes to avoid using timeouts in the component */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes AlertBannerFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

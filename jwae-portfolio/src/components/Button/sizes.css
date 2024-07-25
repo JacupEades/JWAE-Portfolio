@@ -1,0 +1,52 @@
+/* Square button, based on the left icon only */
+.Button-square--small,
+.Button-square--medium,
+.Button-square--large {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Button-square--small {
+  width: 2rem;
+}
+.Button-square--medium {
+  width: 2.5rem;
+}
+.Button-square--large {
+  width: 3rem;
+}
+.Button-children-null {
+  display: none;
+}
+/* Setting Icons height based on button size */
+.Button-icons--small,
+.Button-icons--small svg {
+  height: 1rem;
+  width: 1rem;
+}
+.Button-icons--medium,
+.Button-icons--medium svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+.Button-icons--large,
+.Button-icons--large svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+/* Basic Size of Button */
+.Button--small {
+  padding: 0.625rem 0.75rem;
+  font: var(--typography-body-bold-3);
+  height: 2rem;
+}
+.Button--medium {
+  padding: 0.625rem 0.875rem;
+  font: var(--typography-body-bold-2);
+  height: 2.5rem;
+}
+.Button--large {
+  padding: 0.75rem 1rem;
+  font: var(--typography-body-bold-1);
+  height: 3rem;
+}

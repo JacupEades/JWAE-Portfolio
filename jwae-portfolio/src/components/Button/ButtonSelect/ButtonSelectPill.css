@@ -1,0 +1,143 @@
+.ButtonSelect--pill {
+  all: unset;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  height: 2rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 7.5rem;
+  border: 1px solid var(--color-border-secondary-subtlest, #cfd9e9);
+  background: var(--color-background-neutral-subtlest, #fff);
+  transition: all var(--transition-fast-in-out);
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.ButtonSelect--pill .ButtonSelect-label {
+  flex: 1 1 auto;
+  color: var(--color-foreground-neutral-bold, #212328);
+  font: var(--typography-body-2);
+  padding: 0.1875rem 0.375rem;
+  cursor: pointer;
+  max-width: 22rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: initial; /* override Label component */
+}
+.ButtonSelect--pill--isOpen .ButtonSelect-label {
+  color: var(--color-foreground-secondary-medium, #254b86);
+}
+
+.ButtonSelect--pill.ButtonSelect--hasBadge {
+  border: 1px solid var(--color-border-secondary-subtle, #6888b5);
+}
+.ButtonSelect--pill.ButtonSelect--hasBadge .ButtonSelect-label {
+  color: var(--color-foreground-secondary-medium, #254b86);
+  font: var(--typography-body-bold-2);
+}
+
+.ButtonSelect--pill:hover,
+.ButtonSelect--pill:active {
+  border: 1px solid var(--color-border-secondary-subtle, #6888b5);
+  box-shadow: var(--box-shadow-pretoken-button-interaction);
+}
+
+/* isOpen variations */
+.ButtonSelect--pill--isOpen,
+.ButtonSelect--pill--isOpen:hover,
+.ButtonSelect--pill--isOpen:active {
+  background: var(--color-background-secondary-subtle, #f2f4f8);
+  border: 1px solid var(--color-border-secondary-medium, #254b86);
+  box-shadow: var(--box-shadow-pretoken-button-interaction);
+}
+
+/* isDisabled
+(out of scope for cpam - also change the colors inside the button) */
+.ButtonSelect--pill.ButtonSelect--isDisabled {
+  background: var(--color-background-neutral-disabled-subtle, #ebecf2);
+  border: 0;
+  pointer-events: none;
+}
+
+.u-button--isLabelAppended {
+  /* used w/ MenuMulti and ButtonSelect (pill) */
+  color: var(--color-foreground-secondary-medium, #254b86);
+  font: var(--typography-body-bold-2);
+}
+.u-button--isLabelAppendedTags {
+  color: var(--color-foreground-secondary-medium, #254b86);
+  font: var(--typography-body-2);
+}
+
+.ButtonSelect--pill .Badge {
+  position: absolute;
+}
+
+/* badge placement variations */
+.ButtonSelect--pill .Badge--small {
+  right: 0.0625rem;
+  top: -0.25rem;
+}
+/* TODO: add the rest of the badge sizes */
+
+/* Icon container heights */
+.ButtonSelect--pill-prefixIcon,
+.ButtonSelect--pill-prefixIcon .Icon,
+.ButtonSelect--pill-chevron {
+  height: 1rem;
+  width: 1rem;
+}
+
+/* Icon colors */
+.ButtonSelect--pill-prefixIcon.ButtonSelect--isIconSvgFilled svg path,
+.ButtonSelect--pill-chevron.ButtonSelect--isIconSvgFilled svg path {
+  fill: var(--color-foreground-neutral-bold, #212328);
+}
+
+.ButtonSelect--pill--isOpen {
+  .ButtonSelect--pill-prefixIcon.ButtonSelect--isIconSvgFilled svg path,
+  .ButtonSelect--pill-chevron.ButtonSelect--isIconSvgFilled svg path {
+    fill: var(--color-border-secondary-medium, #254b86);
+  }
+}
+
+.ButtonSelect--hasBadge {
+  .ButtonSelect--pill-prefixIcon.ButtonSelect--isIconSvgFilled svg path,
+  .ButtonSelect--pill-chevron.ButtonSelect--isIconSvgFilled svg path {
+    fill: var(--color-border-secondary-medium, #254b86);
+  }
+}
+
+/* Overlay Base */
+.ButtonSelect-overlay.ButtonSelect-overlay--pill {
+  position: absolute;
+  z-index: var(--z-index-container-overlay);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 7.5rem;
+  background: transparent;
+  opacity: 0;
+  transition: all 0.1s ease-in-out;
+}
+/* Overlay Hover */
+.ButtonSelect-overlay--pill:hover,
+.ButtonSelect:hover .ButtonSelect-overlay--pill,
+.ButtonSelect-content-container:hover + .ButtonSelect-overlay--pill {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(37, 75, 134, 0.08);
+}
+
+/* Overlay Pressed */
+.ButtonSelect-overlay--pill:active,
+.ButtonSelect:active .ButtonSelect-overlay,
+.ButtonSelect-content-container:active + .ButtonSelect-overlay--pill {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(37, 75, 134, 0.12);
+}

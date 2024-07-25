@@ -1,0 +1,314 @@
+.ButtonIcon {
+  all: unset;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius-circle, 50%);
+  caret-color: transparent;
+  cursor: pointer;
+  isolation: isolate;
+  transition:
+    background var(--transition-fast-in-out),
+    color var(--transition-fast-in-out);
+}
+.ButtonIcon:hover {
+  box-shadow: var(--box-shadow-pretoken-button-interaction);
+}
+.ButtonIcon[tabindex]:focus-visible {
+  outline: 2px solid var(--color-border-focus, #6e7fff);
+  outline-offset: 0.125rem;
+}
+/* Size */
+.ButtonIcon--small span,
+.ButtonIcon--medium span,
+.ButtonIcon--large span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ButtonIcon--small {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.ButtonIcon--small .Icon,
+.ButtonIcon--small span svg,
+.ButtonIcon--small span svg path {
+  height: 1rem;
+  width: 1rem;
+}
+
+.ButtonIcon--medium {
+  height: 2rem;
+  width: 2rem;
+}
+.ButtonIcon--medium .Icon,
+.ButtonIcon--medium span svg,
+.ButtonIcon--medium span svg path {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.ButtonIcon--large {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+.ButtonIcon--large .Icon,
+.ButtonIcon--large span svg,
+.ButtonIcon--large span svg path {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.ButtonIcon--large:focus {
+  outline-width: 3px;
+}
+
+/* Kinds */
+.ButtonIcon-bold {
+  background: var(--color-background-primary-bold, #3751ff);
+}
+.ButtonIcon-bold svg path {
+  fill: var(--color-foreground-neutral-inverse, #ffffff);
+}
+
+.ButtonIcon-outlinedSecondary {
+  border: 1px solid var(--color-border-secondary-subtle, #6888b5);
+  background: var(--color-background-neutral-subtlest, #ffffff);
+}
+.ButtonIcon-outlinedSecondary svg path {
+  fill: var(--color-foreground-secondary-bold, #00245b);
+}
+
+.ButtonIcon-outlinedNeutral {
+  border: 1px solid var(--color-border-secondary-subtlest, #cfd9e9);
+  background: var(--color-background-neutral-subtlest, #ffffff);
+}
+.ButtonIcon-outlinedNeutral svg path {
+  fill: var(--color-foreground-neutral-bold, #212328);
+}
+
+.ButtonIcon-ghost {
+  background: transparent;
+}
+.ButtonIcon-ghost svg path {
+  fill: var(--color-foreground-neutral-bold, #212328);
+}
+
+.ButtonIcon-outlinedCritical {
+  border: 1px solid var(--color-border-critical-subtle, #ef5955);
+  background: var(--color-background-neutral-subtlest, #ffffff);
+}
+.ButtonIcon-outlinedCritical svg path {
+  fill: var(--color-foreground-critical-medium, #cc1c10);
+}
+
+.ButtonIcon-ghost.ButtonIcon--dark {
+  border: 1px solid transparent;
+}
+
+/* Overlay Base */
+.ButtonIcon-overlay {
+  position: absolute;
+  z-index: var(--z-index-container-overlay);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius-circle, 50%);
+  background: transparent;
+  opacity: 0;
+  transition: all var(--transition-fast-in-out);
+}
+
+/* Hover */
+.ButtonIcon-overlay-bold:hover,
+.ButtonIcon.ButtonIcon-bold:hover .ButtonIcon-overlay-bold,
+.Icon:hover + .ButtonIcon-overlay-bold {
+  opacity: 1;
+  border: none;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.ButtonIcon-outlinedSecondary:hover {
+  border: 1px solid var(--color-border-secondary-medium, #254b86);
+  transition: all var(--transition-fast-in-out);
+}
+.ButtonIcon-overlay-outlinedSecondary:hover,
+.ButtonIcon.ButtonIcon-outlinedSecondary:hover
+  .ButtonIcon-overlay-outlinedSecondary,
+.Icon:hover + .ButtonIcon-overlay-outlinedSecondary {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(37, 75, 134, 0.08);
+}
+
+.ButtonIcon-outlinedNeutral:hover {
+  border: 1px solid #3751ff;
+}
+.ButtonIcon-outlinedNeutral:hover svg path {
+  fill: var(--color-foreground-primary-medium, #3751ff);
+}
+.ButtonIcon-overlay-outlinedNeutral:hover,
+.ButtonIcon.ButtonIcon-outlinedNeutral:hover
+  .ButtonIcon-overlay-outlinedNeutral,
+.Icon:hover + .ButtonIcon-overlay-outlinedNeutral {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(55, 81, 255, 0.08);
+}
+.ButtonIcon-overlay-ghost:hover,
+.ButtonIcon.ButtonIcon-ghost:hover .ButtonIcon-overlay-ghost,
+.Icon:hover + .ButtonIcon-overlay-ghost {
+  opacity: 1;
+  border: none;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(92, 94, 110, 0.08);
+}
+
+.ButtonIcon-outlinedCritical:hover {
+  border: 1px solid var(--color-border-critical-medium, #cc1c10);
+}
+.ButtonIcon-overlay-outlinedCritical:hover,
+.ButtonIcon.ButtonIcon-outlinedCritical:hover
+  .ButtonIcon-overlay-outlinedCritical,
+.Icon:hover + .ButtonIcon-overlay-outlinedCritical {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(204, 28, 16, 0.08);
+}
+
+.ButtonIcon-overlay-ghost.ButtonIcon--dark:hover,
+.ButtonIcon.ButtonIcon-ghost.ButtonIcon--dark:hover .ButtonIcon-overlay-ghost,
+.Icon:hover + .ButtonIcon-overlay-ghost.ButtonIcon--dark {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(158, 161, 177, 0.08);
+}
+
+/* Pressed */
+.ButtonIcon-overlay-bold:active,
+.ButtonIcon.ButtonIcon-bold:active .ButtonIcon-overlay-bold,
+.Icon:active + .ButtonIcon-overlay-bold {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(33, 35, 40, 0.32);
+}
+.ButtonIcon-overlay-outlinedSecondary:active,
+.ButtonIcon.ButtonIcon-outlinedSecondary:active
+  .ButtonIcon-overlay-outlinedSecondary,
+.Icon:active + .ButtonIcon-overlay-outlinedSecondary {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(37, 75, 134, 0.12);
+}
+.ButtonIcon-overlay-outlinedNeutral:active,
+.ButtonIcon.ButtonIcon-outlinedNeutral:active
+  .ButtonIcon-overlay-outlinedNeutral,
+.Icon:active + .ButtonIcon-overlay-outlinedNeutral {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(55, 81, 255, 0.12);
+}
+.ButtonIcon-overlay-ghost:active,
+.ButtonIcon.ButtonIcon-ghost:active .ButtonIcon-overlay-ghost,
+.Icon:active + .ButtonIcon-overlay-ghost {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(92, 94, 110, 0.12);
+}
+.ButtonIcon-overlay-outlinedCritical:active,
+.ButtonIcon.ButtonIcon-outlinedCritical:active
+  .ButtonIcon-overlay-outlinedCritical,
+.Icon:active + .ButtonIcon-overlay-outlinedCritical {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(204, 28, 16, 0.12);
+}
+.ButtonIcon-overlay-ghost.ButtonIcon--dark:active,
+.ButtonIcon.ButtonIcon-ghost.ButtonIcon--dark:active .ButtonIcon-overlay-ghost,
+.Icon:active + .ButtonIcon-overlay-ghost.ButtonIcon--dark {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(158, 161, 177, 0.12);
+}
+/* isDisabled */
+.ButtonIcon-bold--isDisabled,
+.ButtonIcon-outlinedSecondary--isDisabled,
+.ButtonIcon-outlinedNeutral--isDisabled,
+.ButtonIcon-outlinedCritical--isDisabled {
+  background: var(--color-background-neutral-disabled-subtle, #ebecf2);
+  border: transparent;
+  pointer-events: none;
+}
+.ButtonIcon-bold--isDisabled svg path,
+.ButtonIcon-outlinedSecondary--isDisabled svg path,
+.ButtonIcon-outlinedNeutral--isDisabled svg path,
+.ButtonIcon-outlinedCritical--isDisabled svg path,
+.ButtonIcon-ghost--isDisabled svg path {
+  fill: var(--color-foreground-neutral-disabled, #9ea1b1);
+}
+.ButtonIcon-ghost--isDisabled {
+  background: transparent;
+  border: transparent;
+  pointer-events: none;
+}
+/* isSelected */
+.ButtonIcon-bold--isSelected {
+  background: var(--color-background-secondary-bold, #254b86);
+}
+
+.ButtonIcon-overlay-outlinedSecondary--isSelected:hover,
+.ButtonIcon.ButtonIcon-outlinedSecondary--isSelected:hover
+  .ButtonIcon-overlay-outlinedSecondary--isSelected,
+.Icon:hover + .ButtonIcon-overlay-outlinedSecondary--isSelected {
+  opacity: 1;
+  top: -1px;
+  left: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  /* //TODO: this overlay color var is not working */
+  background: rgba(255, 255, 255, 0.24);
+}
+.ButtonIcon-overlay-outlinedSecondary--isSelected:active,
+.ButtonIcon.ButtonIcon-outlinedSecondary--isSelected:active
+  .ButtonIcon-overlay-outlinedSecondary--isSelected,
+.Icon:active + .ButtonIcon-overlay-outlinedSecondary--isSelected {
+  opacity: 1;
+  /* //TODO: this overlay color var is not working */
+  background: rgba(33, 35, 40, 0.32);
+}
+.ButtonIcon-outlinedSecondary--isSelected {
+  border: 1px solid transparent;
+  background: var(--color-background-secondary-bold, #254b86);
+}
+.ButtonIcon-bold--isSelected svg path,
+.ButtonIcon-outlinedSecondary--isSelected svg path {
+  fill: #fff;
+}
+
+.ButtonIcon-outlinedNeutral--isSelected {
+  border: 1px solid var(--color-foreground-primary-medium, #3751ff);
+  background: rgba(55, 81, 255, 0.1);
+}
+.ButtonIcon-outlinedNeutral--isSelected svg path {
+  fill: var(--color-foreground-primary-medium, #3751ff);
+}
+
+.ButtonIcon-ghost--isSelected {
+  border: 1px solid var(--color-foreground-secondary-bold, #00245b);
+  background: rgba(37, 75, 134, 0.1);
+}
+.ButtonIcon-ghost--isSelected svg path {
+  fill: var(--color-foreground-secondary-bold, #00245b);
+}
+.ButtonIcon-ghost--isSelected:hover {
+  border: 1px solid var(--color-foreground-secondary-bold, #00245b);
+}
+
+.ButtonIcon-ghost--isSelected.ButtonIcon--dark {
+  border: 1px solid var(--color-border-secondary-medium, #89a3c7);
+  background: rgba(137, 163, 199, 0.1);
+}

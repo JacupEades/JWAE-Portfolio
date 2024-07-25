@@ -1,0 +1,543 @@
+.Chip {
+  all: unset;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  transition: all var(--transition-fast-in-out);
+  border-radius: var(--border-radius-circle, 99rem);
+  cursor: pointer;
+  isolation: isolate;
+}
+.Chip-content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Chip-content-container--xxSmall {
+  padding: 0 0.125rem;
+  height: 1rem;
+}
+.Chip-content-container--xSmall {
+  padding: 0.1875rem 0.25rem;
+  height: 1.25rem;
+}
+.Chip-content-container--small {
+  padding: 0.1875rem 0.375rem;
+  height: 1.5rem;
+}
+.Chip-content-container--medium {
+  padding: 0.25rem 0.5rem;
+  height: 2rem;
+}
+.Chip-content-container--large {
+  padding: 0.5rem 0.75rem;
+  height: 2.25rem;
+}
+.Chip:not(.Chip--isDisabled)[tabindex]:focus-visible {
+  outline: 2px solid var(--color-border-focus, #6e7fff);
+  outline-offset: 0.125rem;
+}
+
+/* Label */
+.Chip-label {
+  padding: 0 0.25rem;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.Chip-label--xxSmall,
+.Chip-label--xSmall,
+.Chip-label--small {
+  font: var(--typography-body-3);
+}
+.Chip-label--medium {
+  font: var(--typography-body-2);
+}
+.Chip-label--large {
+  font: var(--typography-body-1);
+}
+
+/* Icons */
+.Chip-icons--xSmall,
+.Chip-icons--xxSmall {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0.75rem;
+  width: 0.75rem;
+}
+.Chip-icons--xxSmall .Icon,
+.Chip-icons--xxSmall .Icon svg,
+.Chip-icons--xSmall .Icon,
+.Chip-icons--xSmall .Icon svg {
+  display: block;
+  height: 0.75rem;
+  width: 0.75rem;
+}
+
+.Chip-icons--small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
+  width: 1rem;
+}
+.Chip-icons--small .Icon,
+.Chip-icons--small .Icon svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+.Chip-icons--small {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
+  width: 1rem;
+}
+.Chip-icons--small .Icon,
+.Chip-icons--small .Icon svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+.Chip-icons--medium,
+.Chip-icons--large {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+.Chip-icons--medium .Icon,
+.Chip-icons--medium .Icon svg,
+.Chip-icons--large .Icon,
+.Chip-icons--large .Icon svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+/* Kinds */
+.Chip-outlined {
+  background: var(--color-background-neutral-subtlest, #fff);
+  border: 1px solid var(--color-border-neutral-subtlest, #cecfd9);
+}
+.Chip-outlined .Chip-label,
+.Chip-outlined .Icon svg path {
+  color: var(--color-foreground-neutral-bold, #212328);
+  fill: var(--color-foreground-neutral-bold, #212328);
+}
+
+.Chip-boldFilled {
+  background: var(--color-background-neutral-bold, #5c5e6e);
+  border: none;
+}
+.Chip-boldFilled .Chip-label,
+.Chip-boldFilled .Icon svg path {
+  fill: var(--color-background-neutral-subtlest, #fff);
+  color: var(--color-background-neutral-subtlest, #fff);
+}
+
+.Chip-subtleFilled {
+  background: var(--color-background-neutral-subtle, #ebecf2);
+  border: none;
+}
+.Chip-subtleFilled .Chip-label,
+.Chip-subtleFilled .Icon svg path {
+  color: var(--color-foreground-neutral-bold, #212328);
+  fill: var(--color-foreground-neutral-bold, #212328);
+}
+
+/* Overlay */
+/* Overlay Base */
+.Chip-overlay {
+  position: absolute;
+  z-index: var(--z-index-container-overlay);
+  left: -1px;
+  top: -1px;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background: transparent;
+  border-radius: var(--border-radius-circle, 99rem);
+  opacity: 0;
+  transition: all var(--transition-fast-in-out);
+}
+/* Bordered overlay remove offset */
+.Chip-overlay.Chip-overlay-outlined {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+/* Overlay Hover Kinds */
+/* Outlined Overlay */
+.Chip-outlined:hover {
+  border: 1px solid var(--color-border-neutral-subtle, #888b9d);
+}
+.Chip-outlined:active {
+  border: 1px solid var(--color-border-neutral-medium, #5c5e6e);
+}
+.Chip-overlay-outlined:hover,
+.Chip:hover .Chip-overlay-outlined,
+.Chip-content-container:hover + .Chip-overlay-outlined {
+  opacity: 1;
+  background: rgba(92, 94, 110, 0.08);
+}
+.Chip-overlay-outlined:active,
+.Chip:active .Chip-overlay,
+.Chip-content-container:active + .Chip-overlay-outlined {
+  opacity: 1;
+  background: rgba(92, 94, 110, 0.1);
+}
+
+/* Bold Filled Overlay */
+.Chip-boldFilled:hover,
+.Chip-boldFilled:active {
+  border: none;
+}
+.Chip-overlay-boldFilled:hover,
+.Chip:hover .Chip-overlay-boldFilled,
+.Chip-content-container:hover + .Chip-overlay-boldFilled {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.24);
+}
+.Chip-overlay-boldFilled:active,
+.Chip:active .Chip-overlay,
+.Chip-content-container:active + .Chip-overlay-boldFilled {
+  opacity: 1;
+  /* TODO: Wiating on Design */
+  background: rgba(92, 94, 110, 0.1);
+}
+
+/* Subtle Filled Overlay */
+.Chip-subtleFilled:hover,
+.Chip-subtleFilled:active {
+  border: none;
+}
+.Chip-overlay-subtleFilled:hover,
+.Chip:hover .Chip-overlay-subtleFilled,
+.Chip-content-container:hover + .Chip-overlay-subtleFilled {
+  opacity: 1;
+  background: rgba(92, 94, 110, 0.08);
+}
+.Chip-overlay-subtleFilled:active,
+.Chip:active .Chip-overlay,
+.Chip-content-container:active + .Chip-overlay-subtleFilled {
+  opacity: 1;
+  /* TODO: Wiating on Design */
+  background: rgba(92, 94, 110, 0.1);
+}
+
+/* Outlined Colors */
+.Chip-outlined.Chip--brandPrimary {
+  border: 1px solid var(--color-border-primary-subtle, #6e7fff);
+}
+.Chip-outlined.Chip--brandPrimary .Chip-label,
+.Chip-outlined.Chip--brandPrimary .Icon svg path {
+  fill: var(--color-foreground-primary-medium, #3751ff);
+  color: var(--color-foreground-primary-medium, #3751ff);
+}
+.Chip-outlined.Chip--brandPrimary:hover {
+  border: 1px solid var(--color-border-primary-medium, #3751ff);
+}
+.Chip--isDisabled.Chip-outlined.Chip--brandPrimary:hover {
+  border-color: var(--color-border-primary-subtle, #6e7fff);
+}
+.Chip-outlined .Chip-overlay--brandPrimary:hover,
+.Chip-outlined.Chip:hover .Chip-overlay--brandPrimary,
+.Chip-outlined .Chip-content-container:hover + .Chip-overlay--brandPrimary {
+  opacity: 1;
+  background: rgba(55, 81, 255, 0.08);
+}
+
+.Chip-outlined.Chip--brandSecondary {
+  border: 1px solid var(--color-border-secondary-subtle, #6888b5);
+}
+.Chip-outlined.Chip--brandSecondary .Chip-label,
+.Chip-outlined.Chip--brandSecondary .Icon svg path {
+  fill: var(--color-foreground-secondary-medium, #254b86);
+  color: var(--color-foreground-secondary-medium, #254b86);
+}
+.Chip-outlined.Chip--brandSecondary:hover {
+  border: 1px solid var(--color-border-secondary-medium, #254b86);
+}
+.Chip-outlined .Chip-overlay--brandSecondary:hover,
+.Chip-outlined.Chip:hover .Chip-overlay--brandSecondary,
+.Chip-outlined .Chip-content-container:hover + .Chip-overlay--brandSecondary {
+  opacity: 1;
+  background: rgba(37, 75, 134, 0.08);
+}
+
+.Chip-outlined.Chip--critical {
+  border: 1px solid var(--color-border-critical-subtle, #ef5955);
+}
+.Chip-outlined.Chip--critical .Chip-label,
+.Chip-outlined.Chip--critical .Icon svg path {
+  fill: var(--color-foreground-critical-medium, #cc1c10);
+  color: var(--color-foreground-critical-medium, #cc1c10);
+}
+.Chip-outlined.Chip--critical:hover {
+  border: 1px solid var(--color-foreground-critical-medium, #cc1c10);
+}
+.Chip--isDisabled.Chip-outlined.Chip--critical:hover {
+  border-color: var(--color-border-critical-subtle, #ef5955);
+}
+.Chip-outlined .Chip-overlay--critical:hover,
+.Chip-outlined.Chip:hover .Chip-overlay--critical,
+.Chip-outlined .Chip-content-container:hover + .Chip-overlay--critical {
+  opacity: 1;
+  background: rgba(204, 28, 16, 0.08);
+}
+
+.Chip-outlined.Chip--success {
+  border: 1px solid var(--color-border-success-subtle, #43a34d);
+}
+.Chip-outlined.Chip--success .Chip-label,
+.Chip-outlined.Chip--success .Icon svg path {
+  fill: var(--color-foreground-success-medium, #028329);
+  color: var(--color-foreground-success-medium, #028329);
+}
+.Chip-outlined.Chip--success:hover {
+  border: 1px solid var(--color-border-success-medium, #028329);
+}
+.Chip--isDisabled.Chip-outlined.Chip--success:hover {
+  border-color: var(--color-border-success-subtle, #43a34d);
+}
+.Chip-outlined .Chip-overlay--success:hover,
+.Chip-outlined.Chip:hover .Chip-overlay--success,
+.Chip-outlined .Chip-content-container:hover + .Chip-overlay--success {
+  opacity: 1;
+  background: rgba(2, 131, 41, 0.08);
+}
+
+.Chip-outlined.Chip--warning {
+  border: 1px solid var(--color-border-warning-subtle, #f6a91c);
+}
+.Chip-outlined.Chip--warning .Chip-label,
+.Chip-outlined.Chip--warning .Icon svg path {
+  fill: var(--color-foreground-warning-medium, #a36a00);
+  color: var(--color-foreground-warning-medium, #a36a00);
+}
+.Chip-outlined.Chip--warning:hover {
+  border: 1px solid var(--color-border-warning-medium, #a36a00);
+}
+.Chip--isDisabled.Chip-outlined.Chip--warning:hover {
+  border-color: var(--color-border-warning-subtle, #f6a91c);
+}
+.Chip-outlined .Chip-overlay--warning:hover,
+.Chip-outlined.Chip:hover .Chip-overlay--warning,
+.Chip-outlined .Chip-content-container:hover + .Chip-overlay--warning {
+  opacity: 1;
+  background: rgba(225, 151, 1, 0.08);
+}
+
+.Chip-outlined.Chip--info {
+  border: 1px solid var(--color-border-info-subtle, #9574f1);
+}
+.Chip-outlined.Chip--info .Chip-label,
+.Chip-outlined.Chip--info .Icon svg path {
+  fill: var(--color-foreground-info-medium, #573bdc);
+  color: var(--color-foreground-info-medium, #573bdc);
+}
+.Chip-outlined.Chip--info:hover {
+  border: 1px solid var(--color-border-info-medium, #573bdc);
+}
+.Chip--isDisabled.Chip-outlined.Chip--info:hover {
+  border-color: var(--color-border-info-subtle, #9574f1);
+}
+.Chip-outlined .Chip-overlay--info:hover,
+.Chip-outlined.Chip:hover .Chip-overlay--info,
+.Chip-outlined .Chip-content-container:hover + .Chip-overlay--info {
+  opacity: 1;
+  background: rgba(87, 59, 220, 0.08);
+}
+
+/* Bold Filled Colors */
+.Chip-boldFilled.Chip--brandPrimary {
+  background: var(--color-background-primary-bold, #3751ff);
+}
+.Chip-boldFilled.Chip--brandSecondary {
+  background: var(--color-background-secondary-bold, #254b86);
+}
+.Chip-boldFilled.Chip--critical {
+  background: var(--color-background-critical-bold, #cc1c10);
+}
+.Chip-boldFilled.Chip--success {
+  background: var(--color-background-success-bold, #028329);
+}
+.Chip-boldFilled.Chip--warning {
+  background: var(--color-background-warning-bold, #f6a91c);
+}
+.Chip-boldFilled.Chip-boldFilled.Chip--warning .Chip-label,
+.Chip-boldFilled.Chip-boldFilled.Chip--warning .Icon svg path {
+  fill: var(--color-foreground-neutral-bold, #212328);
+  color: var(--color-foreground-neutral-bold, #212328);
+}
+.Chip-boldFilled.Chip--info {
+  background: var(--color-background-info-bold, #573bdc);
+}
+
+/* Bold Filled Shared Colors */
+.Chip-boldFilled.Chip-boldFilled,
+.Chip-boldFilled.Chip-boldFilled:hover {
+  border: 1px solid transparent;
+}
+.Chip-boldFilled.Chip-boldFilled .Chip-label,
+.Chip-boldFilled.Chip-boldFilled .Icon svg path {
+  fill: var(--color-background-neutral-subtlest, #fff);
+  color: var(--color-background-neutral-subtlest, #fff);
+}
+.Chip-boldFilled.Chip-boldFilled .Chip-overlay:hover,
+.Chip-boldFilled.Chip:hover .Chip-overlay,
+.Chip-boldFilled.Chip-boldFilled .Chip-content-container:hover + .Chip-overlay {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+/* subtleFilled Colors */
+.Chip-subtleFilled.Chip--brandPrimary {
+  background: var(--color-background-primary-subtle, #ebedff);
+}
+.Chip-subtleFilled.Chip--brandPrimary .Chip-label,
+.Chip-subtleFilled.Chip--brandPrimary .Icon svg path {
+  fill: var(--color-foreground-primary-bold, #032185);
+  color: var(--color-foreground-primary-bold, #032185);
+}
+.Chip-subtleFilled .Chip-overlay--brandPrimary:hover,
+.Chip-subtleFilled.Chip:hover .Chip-overlay--brandPrimary,
+.Chip-subtleFilled .Chip-content-container:hover + .Chip-overlay--brandPrimary {
+  opacity: 1;
+  background: rgba(55, 81, 255, 0.08);
+}
+
+.Chip-subtleFilled.Chip--brandSecondary {
+  background: var(--color-background-secondary-subtle, #f2f4f8);
+}
+.Chip-subtleFilled.Chip--brandSecondary .Chip-label,
+.Chip-subtleFilled.Chip--brandSecondary .Icon svg path {
+  fill: var(--color-foreground-secondary-bold, #00245b);
+  color: var(--color-foreground-secondary-bold, #00245b);
+}
+.Chip-subtleFilled .Chip-overlay--brandSecondary:hover,
+.Chip-subtleFilled.Chip:hover .Chip-overlay--brandSecondary,
+.Chip-subtleFilled
+  .Chip-content-container:hover
+  + .Chip-overlay--brandSecondary {
+  opacity: 1;
+  background: rgba(37, 75, 134, 0.08);
+}
+
+.Chip-subtleFilled.Chip--critical {
+  background: var(--color-background-critical-subtle, #fdeeed);
+}
+.Chip-subtleFilled.Chip--critical .Chip-label,
+.Chip-subtleFilled.Chip--critical .Icon svg path {
+  fill: var(--color-foreground-critical-bold, #700600);
+  color: var(--color-foreground-critical-bold, #700600);
+}
+.Chip-subtleFilled .Chip-overlay--critical:hover,
+.Chip-subtleFilled.Chip:hover .Chip-overlay--critical,
+.Chip-subtleFilled .Chip-content-container:hover + .Chip-overlay--critical {
+  opacity: 1;
+  background: rgba(204, 28, 16, 0.08);
+}
+
+.Chip-subtleFilled.Chip--success {
+  background: var(--color-background-success-subtle, #e5f7e0);
+}
+.Chip-subtleFilled.Chip--success .Chip-label,
+.Chip-subtleFilled.Chip--success .Icon svg path {
+  fill: var(--color-foreground-success-bold, #033a0f);
+  color: var(--color-foreground-success-bold, #033a0f);
+}
+.Chip-subtleFilled .Chip-overlay--success:hover,
+.Chip-subtleFilled.Chip:hover .Chip-overlay--success,
+.Chip-subtleFilled .Chip-content-container:hover + .Chip-overlay--success {
+  opacity: 1;
+  background: rgba(2, 131, 41, 0.08);
+}
+
+.Chip-subtleFilled.Chip--warning {
+  background: var(--color-background-warning-subtle, #fff1d9);
+}
+.Chip-subtleFilled.Chip--warning .Chip-label,
+.Chip-subtleFilled.Chip--warning .Icon svg path {
+  fill: var(--color-foreground-warning-bold, #5c3c00);
+  color: var(--color-foreground-warning-bold, #5c3c00);
+}
+.Chip-subtleFilled .Chip-overlay--warning:hover,
+.Chip-subtleFilled.Chip:hover .Chip-overlay--warning,
+.Chip-subtleFilled .Chip-content-container:hover + .Chip-overlay--warning {
+  opacity: 1;
+  background: rgba(225, 151, 1, 0.08);
+}
+
+.Chip-subtleFilled.Chip--info {
+  background: var(--color-background-info-subtle, #f1ecfd);
+}
+.Chip-subtleFilled.Chip--info .Chip-label,
+.Chip-subtleFilled.Chip--info .Icon svg path {
+  fill: var(--color-foreground-info-bold, #332196);
+  color: var(--color-foreground-info-bold, #332196);
+}
+.Chip-subtleFilled .Chip-overlay--info:hover,
+.Chip-subtleFilled.Chip:hover .Chip-overlay--info,
+.Chip-subtleFilled .Chip-content-container:hover + .Chip-overlay--info {
+  opacity: 1;
+  background: rgba(87, 59, 220, 0.08);
+}
+/* Subtle Filled Shared Colors */
+.Chip-subtleFilled.Chip-subtleFilled,
+.Chip-subtleFilled.Chip-subtleFilled:hover {
+  border: 1px solid transparent;
+}
+
+/* Disabled */
+.Chip--isDisabled,
+.Chip--isDisabled .Chip-label,
+.Chip--isDisabled:hover {
+  cursor: not-allowed;
+}
+.Chip--isDisabled .Chip-overlay,
+.Chip--isDisabled .Chip-content-container {
+  pointer-events: none;
+}
+.Chip--isDisabled:hover .Chip-content-container + .Chip-overlay {
+  background: transparent;
+}
+
+/* Outlined Disabled */
+.Chip--isDisabled.Chip-outlined--isDisabled .Chip-label,
+.Chip--isDisabled.Chip-outlined--isDisabled .Icon svg path {
+  fill: var(--color-foreground-neutral-subtle, #717385);
+  color: var(--color-foreground-neutral-subtle, #717385);
+}
+.Chip--isDisabled.Chip-outlined--isDisabled,
+.Chip--isDisabled.Chip-outlined--isDisabled:hover {
+  background: var(--color-background-neutral-disabled-subtle, #ebecf2);
+  border: 1px solid var(--color-border-neutral-subtlest, #cecfd9);
+}
+
+/* Bold Filled Disabled */
+.Chip--isDisabled.Chip-boldFilled--isDisabled .Chip-label,
+.Chip--isDisabled.Chip-boldFilled--isDisabled .Icon svg path {
+  fill: var(--color-foreground-neutral-subtle, #717385);
+  color: var(--color-foreground-neutral-subtle, #717385);
+}
+.Chip--isDisabled.Chip-boldFilled--isDisabled,
+.Chip--isDisabled.Chip-boldFilled--isDisabled:hover {
+  background: var(--color-background-neutral-disabled-medium, #cecfd9);
+  border: none;
+}
+
+/* Subtle Filled Disabled */
+.Chip--isDisabled.Chip-subtleFilled--isDisabled .Chip-label,
+.Chip--isDisabled.Chip-subtleFilled--isDisabled .Icon svg path {
+  fill: var(--color-foreground-neutral-subtle, #717385);
+  color: var(--color-foreground-neutral-subtle, #717385);
+}
+.Chip--isDisabled.Chip-subtleFilled--isDisabled,
+.Chip--isDisabled.Chip-subtleFilled--isDisabled:hover {
+  background: var(--color-background-neutral-disabled-subtle, #ebecf2);
+  border: none;
+}
