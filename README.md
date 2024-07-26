@@ -5,6 +5,7 @@
 - [x] Initialize the project repository
 - [x] Install necessary dependencies
 - [x] Set up TypeScript configuration
+- [ ] Make
 
 ## Components
 

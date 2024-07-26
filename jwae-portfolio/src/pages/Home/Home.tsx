@@ -1,12 +1,14 @@
 import React from "react";
 
+import "./Home.scss";
+
 interface HomeProps {}
 
 const Home: React.FC<HomeProps> = () => {
   return (
-    <div>
+    <section className="Home">
       <h3>Home</h3>
-    </div>
+    </section>
   );
 };
 

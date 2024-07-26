@@ -1,12 +1,14 @@
 import React from "react";
 
+import "./Games.scss";
+
 interface GamesProps {}
 
 const Games: React.FC<GamesProps> = () => {
   return (
-    <div>
+    <section className="Games">
       <h3>Games</h3>
-    </div>
+    </section>
   );
 };
 

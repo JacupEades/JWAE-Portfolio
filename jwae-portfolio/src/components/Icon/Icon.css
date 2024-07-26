@@ -1,79 +1,11 @@
-:root {
-  --icon-size-xx-xxxsmall: 0.5rem; /* 8px */
-  --icon-size-x-xxxsmall: 0.625rem; /* 10px */
-  --icon-size-xxxsmall: 0.75rem; /* 12px */
-  --icon-size-xxsmall: 0.875rem; /* 14px */
-  --icon-size-xsmall: 1rem; /* 16px */
-  --icon-size-small: 1.125rem; /* 18px */
-  --icon-size-small-medium: 1.25rem; /* 20px */
-  --icon-size-medium: 1.5rem; /* 24px */
-  --icon-size-large: 2rem; /* 32px */
-  --icon-size-xlarge: 2.75rem; /* 44px */
-  --icon-size-xxlarge: 3rem; /* 48px */
-}
-
 .Icon {
   display: inline-block;
-  transition: transform var(--transition-quick-in-out);
+  transition: all 200ms ease-in-out;
 }
 
 .Icon svg {
   height: 100%;
   width: 100%;
-}
-
-.Icon--xx-xxxSmall {
-  height: var(--icon-size-xx-xxxsmall);
-  width: var(--icon-size-xx-xxxsmall);
-}
-
-.Icon--x-xxxSmall {
-  height: var(--icon-size-x-xxxsmall);
-  width: var(--icon-size-x-xxxsmall);
-}
-
-.Icon--xxxSmall {
-  height: var(--icon-size-xxxsmall);
-  width: var(--icon-size-xxxsmall);
-}
-
-.Icon--xxSmall {
-  height: var(--icon-size-xxsmall);
-  width: var(--icon-size-xxsmall);
-}
-
-.Icon--xSmall {
-  height: var(--icon-size-xsmall);
-  width: var(--icon-size-xsmall);
-}
-
-.Icon--small {
-  height: var(--icon-size-small);
-  width: var(--icon-size-small);
-}
-
-.Icon--smallMedium {
-  height: var(--icon-size-small-medium);
-  width: var(--icon-size-small-medium);
-}
-
-.Icon--medium {
-  height: var(--icon-size-medium);
-  width: var(--icon-size-medium);
-}
-
-.Icon--large {
-  height: var(--icon-size-large);
-  width: var(--icon-size-large);
-}
-
-.Icon--xLarge {
-  height: var(--icon-size-xlarge);
-  width: var(--icon-size-xlarge);
-}
-.Icon--xxLarge {
-  height: var(--icon-size-xxlarge);
-  width: var(--icon-size-xxlarge);
 }
 
 .Icon--rotate-90 {

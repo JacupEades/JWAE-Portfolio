@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap");
+/* 
+font-family: 'Lato', sans-serif;
+font-family: 'Libre Baskerville', serif; */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  /* if this is hiddon Postion: sticky; won't work on recipe page. May need to find another way if you need it to be hidden. */
+  overflow-x: clip;
+  font-family: "Lato", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

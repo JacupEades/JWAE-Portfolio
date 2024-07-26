@@ -1,17 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import "./PageNav.scss";
+
 interface PageNavProps {}
 
 const PageNav: React.FC<PageNavProps> = () => {
   return (
-    <nav>
+    <nav className="PageNav">
       <ul>
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/comp-lib">CompLib</Link>
+          <Link to="/comp-lib">Jacob's Comps</Link>
         </li>
         <li>
           <Link to="/games">Games</Link>

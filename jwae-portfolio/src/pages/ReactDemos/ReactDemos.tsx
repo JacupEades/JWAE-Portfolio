@@ -1,12 +1,14 @@
 import React from "react";
 
+import "./ReactDemos.scss";
+
 interface ReactDemosProps {}
 
 const ReactDemos: React.FC<ReactDemosProps> = () => {
   return (
-    <div>
+    <section className="ReactDemos">
       <h3>ReactDemos</h3>
-    </div>
+    </section>
   );
 };
 
