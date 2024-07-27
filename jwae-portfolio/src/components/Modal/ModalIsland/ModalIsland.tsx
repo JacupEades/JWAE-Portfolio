@@ -6,9 +6,9 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 
 import useScrollbarWidth from "../../../hooks/useScrollbarWidth";
-import Box from "../../componentsNew/Box/Box";
 import Button from "../../Button/Button";
 import ButtonIcon from "../../ButtonIcon/ButtonIcon";
+import Box from "../../componentsNew/Box/Box";
 import Icon from "../../Icon/Icon";
 import Loader from "../../Loader/Loader";
 import Typography from "../../Typography/Typography";

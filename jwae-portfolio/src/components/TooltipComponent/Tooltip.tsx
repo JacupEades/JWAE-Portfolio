@@ -15,37 +15,56 @@ import {
   useInteractions,
   useRole,
   useTransitionStyles,
+  Placement,
 } from "@floating-ui/react";
 import classnames from "classnames";
-import PropTypes from "prop-types";
 
-import { FLOATING_PLACEMENTS, SYSTEM_DATA_THEMES } from "../../misc/constants";
-import Box from "../Box/Box";
-import Typography from "../../Typography/Typography";
+import { SYSTEM_DATA_THEMES } from "../../misc/constants";
+import { Typography } from "../index";
 
-import "./TooltipComponent.css";
+import "./Tooltip.scss";
 
-function TooltipComponent({
+interface Offset {
+  x?: number;
+  y?: number;
+}
+
+interface TooltipProps {
+  dataTheme?: keyof typeof SYSTEM_DATA_THEMES;
+  trigger: React.ReactElement;
+  text?: string;
+  placement?: Placement;
+  openDelay?: number;
+  closeDelay?: number;
+  maxWidth?: string;
+  offset?: number | Offset;
+  arrowStaticOffset?: string;
+  isWordBreak?: boolean;
+  className?: string;
+  dataTestId?: string;
+}
+
+const Tooltip: React.FC<TooltipProps> = ({
   dataTheme,
   trigger,
   text,
-  placement,
-  openDelay,
-  closeDelay,
-  maxWidth,
-  offset,
+  placement = "bottom",
+  openDelay = 100,
+  closeDelay = 10,
+  maxWidth = "11rem",
+  offset = 8,
   arrowStaticOffset,
-  isWordBreak,
+  isWordBreak = true,
   className,
   dataTestId,
-}) {
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const arrowRef = useRef(null);
+  const arrowRef = useRef<SVGSVGElement>(null);
 
   const tooltipClasses = classnames(
-    "TooltipComponent",
-    isWordBreak && "TooltipComponent--isWordBreak",
-    text?.length < 1 || (!text && "TooltipComponent--isTextEmpty"),
+    "Tooltip",
+    isWordBreak && "Tooltip--isWordBreak",
+    (!text || text.length < 1) && "Tooltip--isTextEmpty",
     className
   );
 
@@ -55,8 +74,8 @@ function TooltipComponent({
     placement,
     middleware: [
       floatingOffset({
-        mainAxis: offset.y || offset,
-        crossAxis: offset.x || 0,
+        mainAxis: typeof offset === "number" ? offset : offset.y || 0,
+        crossAxis: typeof offset === "number" ? 0 : offset.x || 0,
       }),
       flip(),
       shift(),
@@ -69,9 +88,7 @@ function TooltipComponent({
     move: false,
     delay: { open: openDelay, close: closeDelay },
   });
-  const focusInteraction = useFocus(context, {
-    delay: { open: openDelay, close: closeDelay },
-  });
+  const focusInteraction = useFocus(context);
   const dismissInteraction = useDismiss(context);
   const roleInteraction = useRole(context, { role: "tooltip" });
 
@@ -109,7 +126,7 @@ function TooltipComponent({
   };
 
   return (
-    <Box tag="div" dataTheme={dataTheme}>
+    <div data-theme={dataTheme}>
       <div
         ref={refs.setReference}
         {...getReferenceProps()}
@@ -128,7 +145,7 @@ function TooltipComponent({
           role="tooltip"
           {...getFloatingProps()}
         >
-          <Typography kind="body3" className="TooltipComponent-text">
+          <Typography kind="body3" className="Tooltip-text">
             {text || ""}
           </Typography>
           <FloatingArrow
@@ -137,50 +154,15 @@ function TooltipComponent({
             width={14}
             height={9}
             tipRadius={2}
-            fill="var(--color-background-neutral-subtlest, #0C0D10)"
+            fill="#0C0D10"
             staticOffset={arrowStaticOffset}
           />
         </div>
       )}
-    </Box>
+    </div>
   );
-}
-
-TooltipComponent.propTypes = {
-  dataTheme: PropTypes.oneOf(Object.values(SYSTEM_DATA_THEMES)),
-  trigger: PropTypes.element.isRequired,
-  text: PropTypes.string,
-  placement: PropTypes.oneOf(Object.values(FLOATING_PLACEMENTS)),
-  maxWidth: PropTypes.string,
-  offset: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.shape({
-      y: PropTypes.number,
-      x: PropTypes.number,
-    }),
-  ]),
-  arrowStaticOffset: PropTypes.string,
-  openDelay: PropTypes.number,
-  closeDelay: PropTypes.number,
-  isWordBreak: PropTypes.bool,
-  className: PropTypes.string,
-  dataTestId: PropTypes.string,
 };
 
-TooltipComponent.defaultProps = {
-  dataTheme: null,
-  text: null,
-  placement: FLOATING_PLACEMENTS.BOTTOM,
-  maxWidth: "11rem",
-  offset: 8,
-  arrowStaticOffset: null,
-  openDelay: 100,
-  closeDelay: 10,
-  isWordBreak: true,
-  className: null,
-  dataTestId: null,
-};
+export default Tooltip;
 
-export default TooltipComponent;
-
-TooltipComponent.displayName = "Tooltip";
+Tooltip.displayName = "Tooltip";

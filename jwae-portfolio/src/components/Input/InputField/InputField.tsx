@@ -8,8 +8,8 @@ import PropTypes from "prop-types";
 
 import ButtonCore from "../../Button/ButtonCore/ButtonCore";
 import ButtonIcon from "../../ButtonIcon/ButtonIcon";
-import Icon from "../../Icon/Icon";
 import InlineMessage from "../../componentsNew/InlineMessage/InlineMessage";
+import Icon from "../../Icon/Icon";
 import InputCore from "../InputCore/InputCore";
 import TextareaCore from "../TextareaCore/TextareaCore";
 

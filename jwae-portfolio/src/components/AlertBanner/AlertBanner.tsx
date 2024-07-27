@@ -9,7 +9,7 @@ import { SYSTEM_DATA_THEMES } from "../../misc/constants";
 import ButtonIcon from "../ButtonIcon/ButtonIcon";
 import Icon from "../Icon/Icon";
 
-import "./AlertBanner.css";
+import "./AlertBanner.scss";
 
 // KINDS are low and high emphasis
 const KIND = {

@@ -1,4 +1,4 @@
-.TooltipComponent {
+.Tooltip {
   background: var(--color-background-neutral-subtlest, #0c0d10);
   min-height: 2rem;
   width: max-content;
@@ -7,18 +7,18 @@
   box-shadow: var(--box-shadow-pretoken-overlay-interaction);
   z-index: var(--z-index-tooltip);
 }
-.TooltipComponent-text {
+.Tooltip-text {
   color: var(--color-foreground-neutral-bold, #fff);
   margin: 0;
 }
 
 /* Empty text */
-.TooltipComponent.TooltipComponent--isTextEmpty {
+.Tooltip.Tooltip--isTextEmpty {
   visibility: hidden;
   opacity: 0;
 }
 
 /* Empty text */
-.TooltipComponent--isWordBreak {
+.Tooltip--isWordBreak {
   word-break: break-word;
 }

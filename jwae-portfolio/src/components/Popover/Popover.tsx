@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable object-curly-newline */
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 import {
   arrow,
   autoUpdate,
@@ -14,26 +14,34 @@ import {
   useFloating,
   useInteractions,
   useRole,
-} from '@floating-ui/react';
-import PropTypes from 'prop-types';
+  Placement,
+} from "@floating-ui/react";
 
-import { FLOATING_PLACEMENTS, SYSTEM_DATA_THEMES } from '../../misc/constants';
-import Box from '../Box/Box';
+import { FLOATING_PLACEMENTS, SYSTEM_DATA_THEMES } from "../../misc/constants";
 
-import './Popover.css';
-
+import "./Popover.scss";
 // Important Documentation: https://floating-ui.com/
 
-function Popover({
+interface PopoverProps {
+  dataTheme?: keyof typeof SYSTEM_DATA_THEMES;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  trigger: SVGRectElement;
+  popoverContent: SVGRectElement;
+  placement?: Placement;
+  offset?: number;
+}
+
+const Popover: React.FC<PopoverProps> = ({
   dataTheme,
   isOpen,
   setIsOpen,
   trigger,
   popoverContent,
-  placement,
-  offset,
-}) {
-  const arrowRef = useRef(null);
+  placement = "bottom",
+  offset = 16,
+}) => {
+  const arrowRef = useRef<SVGSVGElement>(null);
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -41,7 +49,7 @@ function Popover({
     placement,
     middleware: [
       floatingOffset(offset),
-      flip({ fallbackAxisSideDirection: 'end' }),
+      flip({ fallbackAxisSideDirection: "end" }),
       shift(),
       arrow({ element: arrowRef.current }),
     ],
@@ -59,20 +67,21 @@ function Popover({
   ]);
 
   return (
-    <Box
-      tag='div'
-      className={isOpen ? 'Popover-wrapper--isOpen' : undefined}
-      dataTheme={dataTheme}>
+    <div
+      className={isOpen ? "Popover-wrapper--isOpen" : undefined}
+      data-theme={dataTheme}
+    >
       <div ref={refs.setReference} {...getReferenceProps()}>
         {trigger}
       </div>
       {isOpen && (
         <FloatingFocusManager context={context} modal={false}>
           <div
-            className='Popover'
+            className="Popover"
             ref={refs.setFloating}
             style={floatingStyles}
-            {...getFloatingProps()}>
+            {...getFloatingProps()}
+          >
             {popoverContent}
             {/* Arrow */}
             <FloatingArrow
@@ -80,31 +89,16 @@ function Popover({
               context={context}
               width={26}
               height={14}
-              stroke='var(--color-border-neutral-subtlest, #cecfd9)'
+              stroke="#cecfd9"
               strokeWidth={1}
-              fill='var(--color-background-neutral-subtlest, #fff)'
+              fill="#fff"
             />
           </div>
         </FloatingFocusManager>
       )}
-    </Box>
+    </div>
   );
-}
-
-Popover.propTypes = {
-  dataTheme: PropTypes.oneOf(Object.values(SYSTEM_DATA_THEMES)),
-  isOpen: PropTypes.bool.isRequired,
-  setIsOpen: PropTypes.func.isRequired,
-  trigger: PropTypes.element.isRequired,
-  popoverContent: PropTypes.element.isRequired,
-  placement: PropTypes.oneOf(Object.values(FLOATING_PLACEMENTS)),
-  offset: PropTypes.number,
-};
-
-Popover.defaultProps = {
-  dataTheme: null,
-  placement: FLOATING_PLACEMENTS.BOTTOM,
-  offset: 16,
 };
 
 export default Popover;
+Popover.displayName = "Popover";

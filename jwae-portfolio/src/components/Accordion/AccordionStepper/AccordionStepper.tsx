@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
+import Typography from "../../../Typography/Typography";
 import Box from "../../Box/Box";
 import ButtonCore from "../../Button/ButtonCore/ButtonCore";
 import Icon from "../../Icon/Icon";
-import Typography from "../../../Typography/Typography";
 
 import "./AccordionStepper.css";
 
