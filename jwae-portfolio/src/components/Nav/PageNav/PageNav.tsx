@@ -13,7 +13,7 @@ const PageNav: React.FC<PageNavProps> = () => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/comp-lib">Jacob's Comps</Link>
+          <Link to="/comp-lib">Jacob&apos;s Comps</Link>
         </li>
         <li>
           <Link to="/games">Games</Link>

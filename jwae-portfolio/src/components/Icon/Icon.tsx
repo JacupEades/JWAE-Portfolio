@@ -1,7 +1,9 @@
 import React from "react";
 import classnames from "classnames";
-import * as Icons from "./Icons"; // Ensure the path is correct
-import "./Icon.css";
+
+import * as Icons from "./Icons";
+
+import "./Icon.scss";
 
 const SIZES = {
   "xx-xxxSmall": "xx-xxxSmall",
@@ -46,7 +48,7 @@ const Icon: React.FC<IconProps> = ({
     "Icon",
     size && `Icon--${size}`,
     rotate && `Icon--rotate-${rotate}`,
-    className
+    className,
   );
 
   return (

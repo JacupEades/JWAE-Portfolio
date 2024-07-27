@@ -16,7 +16,7 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["src", "custom.d.ts"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "custom.d.ts"]
 }
 
 // Options:

@@ -14,10 +14,12 @@ import {
   useFloating,
   useInteractions,
   useRole,
-  Placement,
 } from "@floating-ui/react";
 
-import { FLOATING_PLACEMENTS, SYSTEM_DATA_THEMES } from "../../misc/constants";
+import {
+  FLOATING_PLACEMENTS,
+  SYSTEM_DATA_THEMES,
+} from "../../misc/constants.ts";
 
 import "./Popover.scss";
 // Important Documentation: https://floating-ui.com/
@@ -26,9 +28,9 @@ interface PopoverProps {
   dataTheme?: keyof typeof SYSTEM_DATA_THEMES;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-  trigger: SVGRectElement;
-  popoverContent: SVGRectElement;
-  placement?: Placement;
+  trigger: React.ReactNode;
+  popoverContent: React.ReactNode;
+  placement?: keyof typeof FLOATING_PLACEMENTS;
   offset?: number;
 }
 
@@ -101,4 +103,3 @@ const Popover: React.FC<PopoverProps> = ({
 };
 
 export default Popover;
-Popover.displayName = "Popover";

@@ -1,39 +1,54 @@
 import React, { useEffect, useRef } from "react";
 import classnames from "classnames";
-import PropTypes from "prop-types";
 
-import Typography from "../../../Typography/Typography";
-import ButtonCore from "../../Button/ButtonCore/ButtonCore";
-import Icon from "../../Icon/Icon";
+import { ButtonCore, Icon, Typography } from "../../index.ts";
 
-import "./AccordionStepper.css";
+import "./AccordionStepper.scss";
+
+interface AccordionStepperProps {
+  isExpanded: boolean;
+  isCritical?: boolean;
+  setIsExpanded: (isExpanded: boolean) => void;
+  prefixIconKind: string;
+  headerText: string;
+  primarySupportingText: string;
+  secondarySupportingText?: string;
+  isShowingSupportingTextOnExpanded?: boolean;
+  accordionValue?: React.ReactNode;
+  suffixLink?: React.ReactNode;
+  children?: React.ReactNode;
+  buttonClassName?: string;
+  contentPanelClassName?: string;
+  CriticalMessage?: React.ReactNode;
+  dataTestId?: string;
+}
 
 const ACCORDION_SHIFT_OFFSET = 8;
 const PIXELS_PER_REM = 16;
 const OVERFLOW_VISIBLE_STYLE_DELAY = 250;
 
-function AccordionStepper({
+const AccordionStepper: React.FC<AccordionStepperProps> = ({
   isExpanded,
-  isCritical,
+  isCritical = false,
   setIsExpanded,
   prefixIconKind,
   headerText,
   primarySupportingText,
-  secondarySupportingText,
-  isShowingSupportingTextOnExpanded,
-  accordionValue,
-  suffixLink,
-  children,
-  buttonClassName,
-  contentPanelClassName,
-  CriticalMessage,
-  dataTestId,
-}) {
-  const contentPanelRef = useRef(null);
+  secondarySupportingText = null,
+  isShowingSupportingTextOnExpanded = false,
+  accordionValue = null,
+  suffixLink = null,
+  children = null,
+  buttonClassName = null,
+  contentPanelClassName = null,
+  CriticalMessage = null,
+  dataTestId = null,
+}) => {
+  const contentPanelRef = useRef<HTMLDivElement>(null);
 
-  const setExpandedClass = (content) =>
+  const setExpandedClass = (content: string) =>
     `AccordionStepper-${content} ${
-      isExpanded && `AccordionStepper-${content}--isExpanded`
+      isExpanded ? `AccordionStepper-${content}--isExpanded` : ""
     }`;
 
   const showingTextClass = !isShowingSupportingTextOnExpanded
@@ -49,7 +64,7 @@ function AccordionStepper({
     isCritical && "AccordionStepper-article--isCritical",
     secondarySupportingText &&
       accordionValue &&
-      "AccordionStepper-article--hasSecondaryText"
+      "AccordionStepper-article--hasSecondaryText",
   );
 
   const buttonClasses = classnames(
@@ -58,34 +73,33 @@ function AccordionStepper({
     secondarySupportingText &&
       accordionValue &&
       "AccordionStepper-button--hasSecondaryText",
-    buttonClassName
+    buttonClassName,
   );
 
   const supportingContentClasses = classnames(
     setExpandedClass("supportingContent"),
     showingTextClass,
-    secondaryTextClass
+    secondaryTextClass,
   );
 
   const contentPanelClasses = classnames(
     setExpandedClass("contentPanel"),
-    contentPanelClassName
+    contentPanelClassName,
   );
 
   const contentPanelWrapperClasses = classnames(
     "AccordionStepper-contentPanelWrapper",
     isExpanded
       ? `AccordionStepper-contentPanelWrapper--isExpanded`
-      : `AccordionStepper-contentPanelWrapper--isNotExpanded`
+      : `AccordionStepper-contentPanelWrapper--isNotExpanded`,
   );
 
   const prefixIconClasses = setExpandedClass("prefixIcon");
   const bodyContentClasses = setExpandedClass("bodyContent");
   const headerTextClasses = setExpandedClass("header");
 
-  // TODO: Conider refactoring to reduce the preformence impact of recalculateHeight recall for screen width changes.
   useEffect(() => {
-    let timeoutId;
+    let timeoutId: ReturnType<typeof setTimeout>;
     let lastWidth = window.innerWidth;
 
     const recalculateHeight = () => {
@@ -101,7 +115,7 @@ function AccordionStepper({
           if (timeoutId) clearTimeout(timeoutId);
 
           timeoutId = setTimeout(() => {
-            contentPanelRef.current.style.overflow = "visible";
+            contentPanelRef.current!.style.overflow = "visible";
           }, OVERFLOW_VISIBLE_STYLE_DELAY);
         } else {
           contentPanelRef.current.style.maxHeight = "0";
@@ -115,7 +129,6 @@ function AccordionStepper({
     const handleResize = () => {
       const currentWidth = window.innerWidth;
 
-      // TODO: update these values with breakpoint variables when we actually cement them
       if (
         (lastWidth > 1440 && currentWidth <= 1440) ||
         (lastWidth > 1024 && currentWidth <= 1024) ||
@@ -134,7 +147,7 @@ function AccordionStepper({
 
     const observer = new MutationObserver(recalculateHeight);
 
-    observer.observe(contentPanelRef.current, {
+    observer.observe(contentPanelRef.current!, {
       childList: true,
       subtree: true,
     });
@@ -148,7 +161,6 @@ function AccordionStepper({
 
   const renderedSupportingText = () => (
     <div className={supportingContentClasses}>
-      {/* Primary Text or Accodrion Value */}
       {accordionValue && !isExpanded ? (
         <div className="AccordionStepper-accordionValue">{accordionValue}</div>
       ) : (
@@ -156,7 +168,6 @@ function AccordionStepper({
           {primarySupportingText}
         </Typography>
       )}
-      {/* Secondary Text */}
       {!isExpanded && secondarySupportingText && accordionValue ? (
         <Typography kind="body1" className="AccordionStepper-supportingText">
           {secondarySupportingText}
@@ -167,13 +178,13 @@ function AccordionStepper({
 
   return (
     <article className="AccordionStepper-inlineBox">
-      <div className={articleClasses} dataTestId={dataTestId}>
+      <div className={articleClasses} data-testid={dataTestId}>
         <ButtonCore
           type="button"
-          ariaExpanded={isExpanded ? "true" : "false"}
+          aria-expanded={isExpanded ? "true" : "false"}
           className={buttonClasses}
           onClick={() => setIsExpanded(!isExpanded)}
-          dataTestId={`${dataTestId}-button`}
+          data-testid={`${dataTestId}-button`}
         >
           <div className={prefixIconClasses}>
             <Icon kind={prefixIconKind} />
@@ -189,7 +200,6 @@ function AccordionStepper({
             </Typography>
             {renderedSupportingText()}
           </div>
-          {/* Optional Link is only visible when expanded */}
           {isExpanded && suffixLink}
           {!isExpanded && (
             <div className="AccordionStepper-suffixIcon">
@@ -197,7 +207,6 @@ function AccordionStepper({
             </div>
           )}
         </ButtonCore>
-        {/* Accordion Content Panel */}
         <section ref={contentPanelRef} className={contentPanelWrapperClasses}>
           <div
             className={contentPanelClasses}
@@ -210,37 +219,6 @@ function AccordionStepper({
       {CriticalMessage}
     </article>
   );
-}
-
-AccordionStepper.propTypes = {
-  isExpanded: PropTypes.bool.isRequired,
-  isCritical: PropTypes.bool,
-  setIsExpanded: PropTypes.func.isRequired,
-  prefixIconKind: PropTypes.string.isRequired,
-  headerText: PropTypes.string.isRequired,
-  primarySupportingText: PropTypes.string.isRequired,
-  secondarySupportingText: PropTypes.string,
-  isShowingSupportingTextOnExpanded: PropTypes.bool,
-  accordionValue: PropTypes.node,
-  suffixLink: PropTypes.node,
-  children: PropTypes.node,
-  buttonClassName: PropTypes.string,
-  contentPanelClassName: PropTypes.string,
-  CriticalMessage: PropTypes.node,
-  dataTestId: PropTypes.string,
-};
-
-AccordionStepper.defaultProps = {
-  isCritical: false,
-  secondarySupportingText: null,
-  isShowingSupportingTextOnExpanded: false,
-  accordionValue: null,
-  suffixLink: null,
-  children: null,
-  buttonClassName: null,
-  contentPanelClassName: null,
-  CriticalMessage: null,
-  dataTestId: null,
 };
 
 export default AccordionStepper;

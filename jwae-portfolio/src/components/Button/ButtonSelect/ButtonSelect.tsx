@@ -1,75 +1,92 @@
-import React from 'react';
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
+import React from "react";
+import classnames from "classnames";
 
-import Icon from '../../Icon/Icon';
-import Typography from '../../Typography/Typography';
-import ButtonCore from '../ButtonCore/ButtonCore';
+import { ButtonCore, Icon, Typography } from "../../index";
 
-import './ButtonSelectRectangle.css';
-import './ButtonSelectPill.css';
-import './ButtonSelectIcon.css';
+import "./ButtonSelectRectangle.scss";
+import "./ButtonSelectPill.scss";
+import "./ButtonSelectIcon.scss";
 
 const KINDS = {
-  RECTANGLE: 'rectangle',
-  PILL: 'pill',
-  ICON: 'icon',
-};
+  rectangle: "rectangle",
+  pill: "pill",
+  icon: "icon",
+} as const;
 
 const SIZES = {
-  LARGE: 'large',
-  MEDIUM: 'medium',
-  SMALL: 'small',
-};
+  large: "large",
+  medium: "medium",
+  small: "small",
+} as const;
 
-function ButtonSelect({
-  kind,
-  size,
-  label,
-  isOpen,
-  isDisabled,
-  onClick,
-  prefixIcon,
-  BadgeComp,
-  widthConfigs,
-  isIconSvgFilled,
-  dataTestId,
-  className,
-}) {
+interface WidthConfigs {
+  minWidth?: string;
+  width?: string;
+  maxWidth?: string;
+}
+
+interface ButtonSelectProps {
+  kind?: keyof typeof KINDS;
+  size?: keyof typeof SIZES;
+  label?: string | React.ReactNode;
+  isOpen?: boolean;
+  isDisabled?: boolean;
+  onClick?: () => void;
+  prefixIcon?: React.ReactNode;
+  BadgeComp?: React.ReactNode;
+  widthConfigs?: WidthConfigs;
+  isIconSvgFilled?: boolean;
+  dataTestId?: string | null;
+  className?: string;
+}
+
+const ButtonSelect: React.FC<ButtonSelectProps> = ({
+  kind = KINDS.rectangle,
+  size = SIZES.medium,
+  label = null,
+  isOpen = false,
+  isDisabled = false,
+  onClick = () => {},
+  prefixIcon = null,
+  BadgeComp = null,
+  widthConfigs = null,
+  isIconSvgFilled = true,
+  dataTestId = null,
+  className = null,
+}) => {
   const buttonSelectClasses = classnames(
-    'ButtonSelect',
+    "ButtonSelect",
     `ButtonSelect--${kind}`,
     `ButtonSelect--${size}`,
-    isDisabled && 'ButtonSelect--isDisabled',
+    isDisabled && "ButtonSelect--isDisabled",
     isOpen && `ButtonSelect--${kind}--isOpen`,
-    BadgeComp && 'ButtonSelect--hasBadge',
-    className
+    BadgeComp && "ButtonSelect--hasBadge",
+    className,
   );
-  const buttonSelectLabelClasses = classnames('ButtonSelect-label');
+  const buttonSelectLabelClasses = classnames("ButtonSelect-label");
   const buttonSelectOverlayClasses = classnames(
-    'ButtonSelect-overlay',
-    `ButtonSelect-overlay--${kind}`
+    "ButtonSelect-overlay",
+    `ButtonSelect-overlay--${kind}`,
   );
 
-  // Size info:
-  // RECTANGLE: LARGE and MEDIUM sizes are the same.
-  // PILL: only has one size (MEDIUM)
   const getChevronIconSize = () => {
     switch (kind) {
-      case KINDS.PILL:
-        return 'xSmall';
-      case KINDS.RECTANGLE:
-        return size === SIZES.SMALL ? 'xSmall' : 'smallMedium';
+      case KINDS.pill:
+        return "xSmall";
+      case KINDS.rectangle:
+        return size === SIZES.small ? "xSmall" : "smallMedium";
       default:
-        return SIZES.MEDIUM;
+        return SIZES.medium;
     }
   };
 
-  const inlineStyle = widthConfigs && {
-    minWidth: widthConfigs.minWidth,
-    width: widthConfigs.width,
-    maxWidth: widthConfigs.maxWidth,
-  };
+  const inlineStyle: React.CSSProperties | undefined = widthConfigs
+    ? {
+        minWidth: widthConfigs.minWidth,
+        width: widthConfigs.width,
+        maxWidth: widthConfigs.maxWidth,
+      }
+    : undefined;
 
   return (
     <ButtonCore
@@ -77,31 +94,34 @@ function ButtonSelect({
       isDisabled={isDisabled}
       onClick={onClick}
       dataTestId={dataTestId}
-      style={inlineStyle}>
-      <div className='ButtonSelect-content-container'>
+      style={inlineStyle}
+    >
+      <div className="ButtonSelect-content-container">
         {prefixIcon && (
           <div
             className={classnames(
               `ButtonSelect--${kind}-prefixIcon`,
-              isIconSvgFilled && 'ButtonSelect--isIconSvgFilled'
-            )}>
+              isIconSvgFilled && "ButtonSelect--isIconSvgFilled",
+            )}
+          >
             {prefixIcon}
           </div>
         )}
-        {kind === KINDS.ICON ? null : (
+        {kind === KINDS.icon ? null : (
           <>
-            <Typography kind='label' className={buttonSelectLabelClasses}>
+            <Typography kind="label" className={buttonSelectLabelClasses}>
               {label}
             </Typography>
             <span
               className={classnames(
                 `ButtonSelect--${kind}-chevron`,
-                isIconSvgFilled && 'ButtonSelect--isIconSvgFilled'
-              )}>
+                isIconSvgFilled && "ButtonSelect--isIconSvgFilled",
+              )}
+            >
               <Icon
-                kind='ButtonSelectChevronUp'
+                kind="ButtonSelectChevronUp"
                 size={getChevronIconSize()}
-                rotate={!isOpen ? '180' : null}
+                rotate={!isOpen ? 180 : undefined}
               />
             </span>
           </>
@@ -111,40 +131,6 @@ function ButtonSelect({
       <span className={buttonSelectOverlayClasses} />
     </ButtonCore>
   );
-}
-
-ButtonSelect.propTypes = {
-  kind: PropTypes.oneOf(Object.values(KINDS)),
-  size: PropTypes.oneOf(Object.values(SIZES)),
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  isOpen: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  onClick: PropTypes.func,
-  prefixIcon: PropTypes.element,
-  BadgeComp: PropTypes.element,
-  widthConfigs: PropTypes.shape({
-    minWidth: PropTypes.string || null,
-    width: PropTypes.string || null,
-    maxWidth: PropTypes.string || null,
-  }),
-  isIconSvgFilled: PropTypes.bool,
-  dataTestId: PropTypes.string,
-  className: PropTypes.string,
-};
-
-ButtonSelect.defaultProps = {
-  kind: KINDS.RECTANGLE,
-  size: SIZES.MEDIUM,
-  label: null,
-  isOpen: false,
-  isDisabled: false,
-  onClick: () => {},
-  prefixIcon: null,
-  BadgeComp: null,
-  widthConfigs: null,
-  isIconSvgFilled: true,
-  dataTestId: null,
-  className: null,
 };
 
 export default ButtonSelect;

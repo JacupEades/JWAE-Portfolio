@@ -1,94 +1,79 @@
-import React from 'react';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
+import React, { ChangeEvent, KeyboardEvent, MouseEvent } from "react";
+import classNames from "classnames";
 
-function TextareaCore({
-  name,
-  id,
-  placeholder,
-  className,
-  autoComplete,
-  onChange,
-  onClick,
-  value,
-  isReadOnly,
-  isDisabled,
-  isRequired,
-  ariaDescribedby,
-  onMouseDown,
+interface TextareaCoreProps {
+  name?: string;
+  id?: string | null;
+  placeholder?: string;
+  className?: string;
+  autoComplete?: string;
+  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  onClick?:
+    | ((e: MouseEvent<HTMLInputElement | HTMLTextAreaElement>) => void)
+    | null;
+  value?: string;
+  isReadOnly?: boolean;
+  isDisabled?: boolean;
+  isRequired?: boolean;
+  ariaDescribedBy?: string | null;
+  onMouseDown?: (e: MouseEvent<HTMLTextAreaElement>) => void;
+  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
+  rows?: number;
+  cols?: number;
+  maxLength?: number | null;
+  textAreaMaxHeight?: string;
+  tabIndex?: number;
+}
+
+const TextareaCore: React.FC<TextareaCoreProps> = ({
+  name = null,
+  id = null,
+  placeholder = null,
+  className = null,
+  autoComplete = "off",
+  onChange = null,
+  onClick = null,
+  value = "",
+  isReadOnly = false,
+  isDisabled = false,
+  isRequired = false,
+  ariaDescribedBy = "",
+  onMouseDown = null,
   onKeyDown,
-  rows,
-  cols,
-  maxLength,
-  textAreaMaxHeight,
-}) {
-  const textareaCoreClass = classNames('TextareaCore', className);
+  rows = 4,
+  cols = undefined,
+  maxLength = undefined,
+  textAreaMaxHeight = "31.5rem",
+  tabIndex = 0,
+}) => {
+  const textareaCoreClass = classNames("TextareaCore", className);
 
   return (
     <textarea
-      name={name}
-      id={id}
-      placeholder={placeholder}
+      name={name || undefined}
+      id={id || undefined}
+      placeholder={placeholder || undefined}
       className={textareaCoreClass}
       autoComplete={autoComplete}
-      onChange={onChange}
-      onClick={onClick}
+      onChange={onChange || undefined}
+      onClick={onClick || undefined}
       value={value}
       readOnly={isReadOnly}
       disabled={isDisabled}
       required={isRequired}
-      aria-describedby={ariaDescribedby}
+      aria-describedby={ariaDescribedBy || undefined}
       aria-required={isRequired}
-      onMouseDown={onMouseDown}
-      onKeyDown={onKeyDown}
+      onMouseDown={onMouseDown || undefined}
+      onKeyDown={(e: KeyboardEvent<HTMLTextAreaElement>) =>
+        onKeyDown && onKeyDown(e as unknown as KeyboardEvent<HTMLInputElement>)
+      }
       rows={rows}
       cols={cols}
-      maxLength={maxLength}
+      maxLength={maxLength || undefined}
       style={{ maxHeight: textAreaMaxHeight }}
+      tabIndex={isDisabled ? -1 : tabIndex}
     />
   );
-}
-
-TextareaCore.propTypes = {
-  name: PropTypes.string,
-  id: PropTypes.string,
-  placeholder: PropTypes.string,
-  className: PropTypes.string,
-  autoComplete: PropTypes.string,
-  onChange: PropTypes.func,
-  onClick: PropTypes.func,
-  value: PropTypes.string,
-  isReadOnly: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  isRequired: PropTypes.bool,
-  ariaDescribedby: PropTypes.string,
-  onMouseDown: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  rows: PropTypes.number,
-  cols: PropTypes.number,
-  maxLength: PropTypes.number,
-  textAreaMaxHeight: PropTypes.string,
-};
-
-TextareaCore.defaultProps = {
-  name: null,
-  id: null,
-  placeholder: null,
-  className: null,
-  autoComplete: 'off',
-  onChange: null,
-  onClick: null,
-  value: '',
-  isReadOnly: false,
-  isDisabled: false,
-  isRequired: false,
-  ariaDescribedby: '',
-  onMouseDown: null,
-  onKeyDown: null,
-  rows: 4,
-  cols: null,
-  maxLength: null,
-  textAreaMaxHeight: '31.5rem',
 };
 
 export default TextareaCore;

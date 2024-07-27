@@ -1,13 +1,8 @@
-/* eslint-disable indent */
-/* eslint-disable react/jsx-curly-spacing */
-/* eslint-disable react/jsx-wrap-multilines */
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import classnames from "classnames";
-import PropTypes from "prop-types";
 
-import { SYSTEM_DATA_THEMES } from "../../misc/constants";
-import ButtonIcon from "../ButtonIcon/ButtonIcon";
-import Icon from "../Icon/Icon";
+import { SYSTEM_DATA_THEMES } from "../../misc/constants.ts";
+import { ButtonIcon, Icon } from "../index.ts";
 
 import "./AlertBanner.scss";
 
@@ -18,33 +13,65 @@ const KIND = {
 };
 
 const COLOR_THEMES = {
-  information: "Information", // 'blue'
-  critical: "Critical", // 'red'
-  warning: "Warning", // 'yellow'
-  success: "Success", // 'green'
+  INFORMATION: "Information", // 'blue'
+  CRITICAL: "Critical", // 'red'
+  WARNING: "Warning", // 'yellow'
+  SUCCESS: "Success", // 'green'
 };
 
-function AlertBanner({
+interface Position {
+  type?: "absolute" | "fixed";
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
+}
+
+interface AlertBannerProps {
+  colorTheme: keyof typeof COLOR_THEMES;
+  kind?: keyof typeof KIND;
+  isFloating?: boolean;
+  position?: Position;
+  title: string;
+  description: string;
+  isVisible?: boolean;
+  onCancel: () => void;
+  hasContent?: boolean;
+  content?: React.ReactNode;
+  isColonVisible?: boolean;
+  shouldAutoDismiss?: boolean;
+  autoDismissDelay?: number;
+  shouldAnimate?: boolean;
+  LinkComponent?: React.ReactNode;
+}
+
+const AlertBanner: React.FC<AlertBannerProps> = ({
   colorTheme,
-  kind,
-  isFloating,
-  position,
+  kind = "high",
+  isFloating = false,
+  position = {
+    type: undefined, // absolute or fixed
+    top: undefined,
+    right: undefined,
+    bottom: undefined,
+    left: undefined,
+  },
   title,
   description,
-  isVisible,
+  isVisible = true,
   onCancel,
-  hasContent,
-  content,
-  isColonVisible,
-  shouldAutoDismiss,
-  autoDismissDelay,
-  shouldAnimate,
-  LinkComponent,
-}) {
-  const bodyEl = useRef();
-  const [isBody, setIsBody] = useState(null);
+  hasContent = false,
+  content = null,
+  isColonVisible = true,
+  shouldAutoDismiss = false,
+  autoDismissDelay = 5000,
+  shouldAnimate = true,
+  LinkComponent = null,
+}) => {
+  const bodyEl = useRef<HTMLDivElement>(null);
+  const [isBody, setIsBody] = useState(false);
   const [shouldRender, setShouldRender] = useState(isVisible);
-  const bannerRef = useRef(null);
+  const bannerRef = useRef<HTMLDivElement>(null);
 
   const handleAnimationEnd = useCallback(() => {
     if (!isVisible) {
@@ -71,7 +98,7 @@ function AlertBanner({
       if (bannerRefCurrent) {
         bannerRefCurrent.removeEventListener(
           "animationend",
-          handleAnimationEnd
+          handleAnimationEnd,
         );
       }
     };
@@ -79,7 +106,7 @@ function AlertBanner({
 
   useEffect(() => {
     // manages the auto-dismiss functionality of the banner.
-    let dismissTimer;
+    let dismissTimer: ReturnType<typeof setTimeout>;
 
     if (shouldAutoDismiss && isVisible) {
       dismissTimer = setTimeout(onCancel, autoDismissDelay);
@@ -104,28 +131,29 @@ function AlertBanner({
   const alertClass = classnames(
     "AlertBanner-container",
     isFloating && "AlertBanner--isFloating", // position: absolute/fixed;
-    colorTheme === "Success" && `AlertBanner-success--${kind}`,
-    colorTheme === "Critical" && "AlertBanner-critical",
-    colorTheme === "Warning" && `AlertBanner-warning--${kind}`,
-    colorTheme === "Information" && `AlertBanner-information--${kind}`,
-    isVisible && "AlertBanner-container--isVisible"
+    colorTheme === COLOR_THEMES.SUCCESS && `AlertBanner-success--${kind}`,
+    colorTheme === COLOR_THEMES.CRITICAL && "AlertBanner-critical",
+    colorTheme === COLOR_THEMES.WARNING && `AlertBanner-warning--${kind}`,
+    colorTheme === COLOR_THEMES.INFORMATION &&
+      `AlertBanner-information--${kind}`,
+    isVisible && "AlertBanner-container--isVisible",
   );
 
   const renderAlertIcon = () => {
     switch (true) {
-      case colorTheme === "Critical":
+      case colorTheme === COLOR_THEMES.CRITICAL:
         return <Icon kind="Critical" color="neutral-000" size="large" />;
-      case colorTheme === "Success" && kind === "high":
+      case colorTheme === COLOR_THEMES.SUCCESS && kind === "high":
         return <Icon kind="Success" color="neutral-000" size="large" />;
-      case colorTheme === "Success" && kind === "low":
+      case colorTheme === COLOR_THEMES.SUCCESS && kind === "low":
         return <Icon kind="Success" color="success-700" size="large" />;
-      case colorTheme === "Warning" && kind === "high":
+      case colorTheme === COLOR_THEMES.WARNING && kind === "high":
         return <Icon kind="Warning" color="neutral-1000" size="large" />;
-      case colorTheme === "Warning" && kind === "low":
+      case colorTheme === COLOR_THEMES.WARNING && kind === "low":
         return <Icon kind="Warning" color="warning-500" size="large" />;
-      case colorTheme === "Information" && kind === "high":
+      case colorTheme === COLOR_THEMES.INFORMATION && kind === "high":
         return <Icon kind="Info" color="neutral-000" size="large" />;
-      case colorTheme === "Information" && kind === "low":
+      case colorTheme === COLOR_THEMES.INFORMATION && kind === "low":
         return <Icon kind="Info" color="info-700" size="large" />;
       default:
         return null;
@@ -134,14 +162,14 @@ function AlertBanner({
 
   const renderCloseIconColor = () => {
     switch (true) {
-      case (colorTheme === "Critical" && kind === "high") ||
-        (colorTheme === "Success" && kind === "high") ||
-        (colorTheme === "Information" && kind === "high"):
+      case (colorTheme === COLOR_THEMES.CRITICAL && kind === "high") ||
+        (colorTheme === COLOR_THEMES.SUCCESS && kind === "high") ||
+        (colorTheme === COLOR_THEMES.INFORMATION && kind === "high"):
         return "neutral-000";
-      case (colorTheme === "Warning" && kind === "high") ||
-        (colorTheme === "Success" && kind === "low") ||
-        (colorTheme === "Warning" && kind === "low") ||
-        (colorTheme === "Information" && kind === "low"):
+      case (colorTheme === COLOR_THEMES.WARNING && kind === "high") ||
+        (colorTheme === COLOR_THEMES.SUCCESS && kind === "low") ||
+        (colorTheme === COLOR_THEMES.WARNING && kind === "low") ||
+        (colorTheme === COLOR_THEMES.INFORMATION && kind === "low"):
         return "neutral-1000";
       default:
         return "";
@@ -150,14 +178,14 @@ function AlertBanner({
 
   const closeButtonBackgroundType = () => {
     switch (true) {
-      case (colorTheme === "Critical" && kind === "high") ||
-        (colorTheme === "Information" && kind === "high"):
+      case (colorTheme === COLOR_THEMES.CRITICAL && kind === "high") ||
+        (colorTheme === COLOR_THEMES.INFORMATION && kind === "high"):
         return SYSTEM_DATA_THEMES.DARK;
-      case (colorTheme === "Success" && kind === "high") ||
-        (colorTheme === "Warning" && kind === "high") ||
-        (colorTheme === "Success" && kind === "low") ||
-        (colorTheme === "Warning" && kind === "low") ||
-        (colorTheme === "Information" && kind === "low"):
+      case (colorTheme === COLOR_THEMES.SUCCESS && kind === "high") ||
+        (colorTheme === COLOR_THEMES.WARNING && kind === "high") ||
+        (colorTheme === COLOR_THEMES.SUCCESS && kind === "low") ||
+        (colorTheme === COLOR_THEMES.WARNING && kind === "low") ||
+        (colorTheme === COLOR_THEMES.INFORMATION && kind === "low"):
         return null;
       default:
         return null;
@@ -246,7 +274,9 @@ function AlertBanner({
             ref={bodyEl}
             className="AlertBanner-body"
             style={
-              isBody ? { height: bodyEl.current.scrollHeight } : { height: "0" }
+              isBody
+                ? { height: bodyEl.current!.scrollHeight }
+                : { height: "0" }
             }
           >
             <div className="AlertBanner-content">{content}</div>
@@ -255,50 +285,6 @@ function AlertBanner({
       </div>
     </div>
   );
-}
-
-AlertBanner.defaultProps = {
-  kind: "high",
-  isFloating: false,
-  position: {
-    type: undefined, // absolute or fixed
-    top: undefined,
-    right: undefined,
-    bottom: undefined,
-    left: undefined,
-  },
-  isVisible: true,
-  hasContent: false,
-  content: null,
-  isColonVisible: true,
-  shouldAutoDismiss: false,
-  autoDismissDelay: 5000,
-  shouldAnimate: true,
-  LinkComponent: null,
-};
-
-AlertBanner.propTypes = {
-  colorTheme: PropTypes.oneOf(Object.values(COLOR_THEMES)).isRequired,
-  kind: PropTypes.oneOf(Object.values(KIND)),
-  isFloating: PropTypes.bool,
-  position: PropTypes.shape({
-    type: PropTypes.oneOf(["absolute", "fixed"]),
-    top: PropTypes.string,
-    right: PropTypes.string,
-    bottom: PropTypes.string,
-    left: PropTypes.string,
-  }),
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  isVisible: PropTypes.bool,
-  onCancel: PropTypes.func.isRequired,
-  hasContent: PropTypes.bool,
-  content: PropTypes.node,
-  isColonVisible: PropTypes.bool,
-  shouldAutoDismiss: PropTypes.bool,
-  autoDismissDelay: PropTypes.number,
-  shouldAnimate: PropTypes.bool,
-  LinkComponent: PropTypes.node,
 };
 
 export default AlertBanner;

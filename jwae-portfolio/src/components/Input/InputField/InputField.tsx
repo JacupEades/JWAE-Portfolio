@@ -1,108 +1,144 @@
-/* eslint-disable react/jsx-curly-spacing */
-/* eslint-disable indent */
-import React, { useEffect, useState } from "react";
-import { useIntl } from "react-intl";
-import { localize } from "@saviynt/common";
+import React, {
+  ChangeEvent,
+  KeyboardEvent,
+  MouseEvent,
+  useEffect,
+  useState,
+} from "react";
 import classnames from "classnames";
-import PropTypes from "prop-types";
 
-import ButtonCore from "../../Button/ButtonCore/ButtonCore";
-import ButtonIcon from "../../ButtonIcon/ButtonIcon";
-import InlineMessage from "../../componentsNew/InlineMessage/InlineMessage";
-import Icon from "../../Icon/Icon";
-import InputCore from "../InputCore/InputCore";
-import TextareaCore from "../TextareaCore/TextareaCore";
+import {
+  ButtonCore,
+  ButtonIcon,
+  Icon,
+  InputCore,
+  TextareaCore,
+} from "../../index";
+import { INPUTMODE, SIZES, TYPES } from "../constants.ts";
 
-import "./InputField.css";
+import "./InputField.scss";
 
-const msgs = {
-  neo: {
-    inputField: {
-      bracketsErrorMsg: {
-        id: "neo.inputField.bracketsErrorMsg",
-        defaultMessage:
-          "Please make sure there are no angle brackets (< >) in your text.",
-      },
-    },
-  },
-};
+interface InputFieldProps {
+  id?: string;
+  name: string;
+  placeholder: string;
+  kind?: "search" | "singleline" | "multiline";
+  size?: keyof typeof SIZES;
+  type?: keyof typeof TYPES;
+  inputmode?: string;
+  label?: React.ReactNode;
+  className?: string;
+  regexPattern?: string;
+  isRequired?: boolean;
+  isCritical?: boolean;
+  isReadOnly?: boolean;
+  CriticalHelperText?: React.ReactNode;
+  HelperText?: React.ReactNode;
+  isDisabled?: boolean;
+  prefixIcon?: React.ReactNode;
+  suffixButtonType?: "date" | "password" | "dropdown" | "timePicker";
+  suffixIsToggle?: boolean;
+  suffixOnClick?: () => void;
+  onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onClick?: (e: MouseEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onKeyDown?: (
+    e: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
+  backgroundColor?: "neutral" | "secondary";
+  value?: string | number;
+  setValue?: (value: string) => void;
+  setIsCritical?: (isCritical: boolean) => void;
+  minRequiredChars?: number;
+  maxLength?: number;
+  shouldDisallowBrackets?: boolean;
+  tabIndex?: number;
+  textAreaMaxHeight?: string;
+  resetValue?: () => void;
+}
 
-const SIZES = {
-  SMALL: "small",
-  MEDIUM: "medium",
-  LARGE: "large",
-};
-
-function InputField({
-  id,
+const InputField: React.FC<InputFieldProps> = ({
+  id = null,
   name,
   placeholder,
-  kind,
-  size,
-  type,
-  inputmode,
-  label,
-  className,
-  regexPattern,
-  isRequired,
-  isCritical,
-  isReadOnly,
-  CriticalHelperText,
-  HelperText,
-  isDisabled,
-  prefixIcon,
-  suffixButtonType,
-  suffixIsToggle,
-  suffixOnClick,
-  onChange,
-  onClick,
-  onKeyDown,
-  backgroundColor,
-  value,
-  setValue,
-  setIsCritical,
-  minRequiredChars,
-  maxLength,
-  shouldDisallowBrackets,
-  tabIndex,
-  textAreaMaxHeight,
-  resetValue,
-}) {
+  kind = "singleline",
+  size = "large",
+  type = "text",
+  inputmode = "text",
+  label = null,
+  className = null,
+  regexPattern = ".*",
+  isRequired = false,
+  isCritical = false,
+  isReadOnly = false,
+  CriticalHelperText = null,
+  HelperText = null,
+  isDisabled = false,
+  prefixIcon = null,
+  suffixButtonType = null,
+  suffixIsToggle = false,
+  suffixOnClick = null,
+  onChange = null,
+  onClick = null,
+  onKeyDown = null,
+  backgroundColor = "neutral",
+  value = null,
+  setValue = null,
+  setIsCritical = null,
+  minRequiredChars = 1,
+  maxLength = null,
+  shouldDisallowBrackets = true,
+  tabIndex = 0,
+  textAreaMaxHeight = "31.5rem",
+  resetValue = null,
+}) => {
   const [isUsingMouse, setIsUsingMouse] = useState(false);
   const [doesValueHaveBrackets, setDoesValueHaveBrackets] = useState(false);
 
-  const intl = useIntl();
-
-  const bracketsErrorMsg = (
-    <InlineMessage
-      text={localize(intl, msgs.neo.inputField.bracketsErrorMsg)}
-      colorTheme="critical"
-      size="small"
-      leftIcon={<Icon kind="AlertCritical" color="critical-700" />}
-    />
-  );
+  const bracketsErrorMsg = <p>TODO update and or make a Typography comp</p>;
 
   const handleMouseDown = () => {
     setIsUsingMouse(true);
   };
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = (event: KeyboardEvent) => {
     if (event.key === "Tab") {
       setIsUsingMouse(false);
     }
   };
 
-  const addEventListeners = () => {
-    document.addEventListener("mousedown", handleMouseDown);
-    document.addEventListener("keydown", handleKeyDown);
-  };
-
-  const removeEventListeners = () => {
-    document.removeEventListener("mousedown", handleMouseDown);
-    document.removeEventListener("keydown", handleKeyDown);
-  };
-
   useEffect(() => {
+    const handleMouseDown = (event: MouseEvent) => {
+      setIsUsingMouse(true);
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Tab") {
+        setIsUsingMouse(false);
+      }
+    };
+
+    const addEventListeners = () => {
+      document.addEventListener(
+        "mousedown",
+        handleMouseDown as unknown as EventListener,
+      );
+      document.addEventListener(
+        "keydown",
+        handleKeyDown as unknown as EventListener,
+      );
+    };
+
+    const removeEventListeners = () => {
+      document.removeEventListener(
+        "mousedown",
+        handleMouseDown as unknown as EventListener,
+      );
+      document.removeEventListener(
+        "keydown",
+        handleKeyDown as unknown as EventListener,
+      );
+    };
+
     addEventListeners();
 
     return removeEventListeners;
@@ -119,8 +155,9 @@ function InputField({
     (isCritical || doesValueHaveBrackets) && `InputField-input--isCritical`,
     isReadOnly && `InputField-input--isReadOnly`,
     isUsingMouse && "InputField-noOutline",
-    className
+    className,
   );
+
   const multilineClass = classnames(
     "InputField-input",
     `InputField--${kind}`,
@@ -129,16 +166,18 @@ function InputField({
     (isCritical || doesValueHaveBrackets) && `InputField-input--isCritical`,
     isReadOnly && `InputField-input--isReadOnly`,
     isUsingMouse && "InputField-noOutline",
-    className
+    className,
   );
+
   const closeClass = classnames(
     `InputField-closeButtonContainer`,
     kind === "multiline"
       ? "InputField-closeButtonContainer--multiline"
       : `InputField-closeButtonContainer--${size}`,
     suffixButtonType && `InputField-closeButtonContainer--suffixButton`,
-    isReadOnly && `InputField-closeButtonContainer--isReadOnly`
+    isReadOnly && `InputField-closeButtonContainer--isReadOnly`,
   );
+
   const suffixButtonClass = classnames(
     "InputField-suffixButton",
     isRequired &&
@@ -147,7 +186,7 @@ function InputField({
     (isCritical || doesValueHaveBrackets) &&
       "InputField-suffixButton--isCritical",
     isDisabled && "InputField-suffixButton--isDisabled",
-    isReadOnly && `InputField-suffixButton--isReadOnly`
+    isReadOnly && `InputField-suffixButton--isReadOnly`,
   );
 
   const clearValue = () => {
@@ -159,21 +198,10 @@ function InputField({
   const getSuffixButtonIcon = () => {
     switch (suffixButtonType) {
       case "password":
-        if (!suffixIsToggle) {
-          return (
-            <Icon
-              className="InputField-suffixButton-icon"
-              kind="visibilityOn"
-              visibilityOn
-              size="smallMedium"
-            />
-          );
-        }
-
         return (
           <Icon
             className="InputField-suffixButton-icon"
-            kind="visibilityOff"
+            kind={suffixIsToggle ? "visibilityOff" : "visibilityOn"}
             size="smallMedium"
           />
         );
@@ -192,7 +220,7 @@ function InputField({
               className="InputField-suffixButton-icon"
               kind="chevronDown"
               size="smallMedium"
-              rotate={suffixIsToggle ? "180" : null}
+              rotate={suffixIsToggle ? 180 : undefined}
             />
           </div>
         );
@@ -209,17 +237,17 @@ function InputField({
     }
   };
 
-  const checkTypeNumber = (typeValue) => {
+  const checkTypeNumber = (typeValue: string) => {
     if (type === "number" || inputmode === "numeric") {
-      const numericValue = typeValue.replace(/\D/g, "");
-
-      return numericValue;
+      return typeValue.replace(/\D/g, "");
     }
 
     return typeValue;
   };
 
-  const onInputChange = (event) => {
+  const onInputChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     onChange?.(event);
 
     if (!setValue) return;
@@ -260,8 +288,11 @@ function InputField({
   const shouldRequiredAsteriskRender = Boolean(
     shouldDisallowBrackets
       ? isCritical ||
-          value?.replace(/[<>]/g, "")?.trim()?.length < minRequiredChars
-      : isCritical || value?.trim()?.length < minRequiredChars
+          (value &&
+            value.toString().replace(/[<>]/g, "")?.trim()?.length <
+              minRequiredChars)
+      : isCritical ||
+          (value && value.toString().trim()?.length < minRequiredChars),
   );
 
   return (
@@ -296,14 +327,14 @@ function InputField({
               autoComplete="off"
               onChange={onInputChange}
               onClick={onClick}
-              value={value}
+              value={value?.toString()}
               isReadOnly={isReadOnly}
               isDisabled={isDisabled}
               isRequired={isRequired}
               ariaDescribedBy={placeholder}
               maxLength={maxLength}
               rows={4}
-              onKeyDown={onKeyDown}
+              onKeyDown={onKeyDown || handleKeyDown}
               tabIndex={isDisabled ? -1 : tabIndex}
               textAreaMaxHeight={textAreaMaxHeight}
             />
@@ -312,13 +343,13 @@ function InputField({
               name={name}
               id={id}
               type={type}
-              inputmode={inputmode}
+              inputmode={inputmode as keyof typeof INPUTMODE}
               placeholder={placeholder}
               className={inputClass}
               autoComplete="off"
               onChange={onInputChange}
               onClick={onClick}
-              value={value}
+              value={value?.toString()}
               isReadOnly={isReadOnly}
               isDisabled={isDisabled}
               isRequired={isRequired}
@@ -337,23 +368,28 @@ function InputField({
               {prefixIcon}
             </i>
           )}
-          {value?.length > 0 && !isDisabled && kind !== "multiline" && (
-            <div className={closeClass}>
-              <ButtonIcon
-                size="small"
-                kind="ghost"
-                tabIndex={tabIndex}
-                className="InputField-closeButtonIcon"
-                icon={<Icon kind="close" color="neutral-1000" size="xSmall" />}
-                onClick={() => clearValue()}
-              />
-            </div>
-          )}
+          {value &&
+            value.toString().length > 0 &&
+            !isDisabled &&
+            kind !== "multiline" && (
+              <div className={closeClass}>
+                <ButtonIcon
+                  size="small"
+                  kind="ghost"
+                  tabIndex={tabIndex}
+                  className="InputField-closeButtonIcon"
+                  icon={
+                    <Icon kind="close" color="neutral-1000" size="xSmall" />
+                  }
+                  onClick={() => clearValue()}
+                />
+              </div>
+            )}
           {suffixButtonType && (
             <ButtonCore
               type="button"
               tabIndex={isDisabled ? -1 : tabIndex}
-              onClick={() => suffixOnClick()}
+              onClick={() => suffixOnClick?.()}
               isDisabled={isDisabled}
               className={suffixButtonClass}
             >
@@ -362,7 +398,7 @@ function InputField({
                 aria-hidden="true"
                 className={classnames(
                   "InputField-suffixButton-overlay",
-                  isDisabled && "InputField-suffixButton-overlay--isDisabled"
+                  isDisabled && "InputField-suffixButton-overlay--isDisabled",
                 )}
               />
             </ButtonCore>
@@ -372,81 +408,6 @@ function InputField({
       </div>
     </div>
   );
-}
-
-InputField.propTypes = {
-  name: PropTypes.string.isRequired,
-  id: PropTypes.string,
-  placeholder: PropTypes.string.isRequired,
-  kind: PropTypes.oneOf(["search", "singleline", "multiline"]),
-  size: PropTypes.oneOf(Object.values(SIZES)),
-  type: PropTypes.string,
-  inputmode: PropTypes.string,
-  label: PropTypes.element,
-  isDisabled: PropTypes.bool,
-  className: PropTypes.string,
-  regexPattern: PropTypes.string,
-  isRequired: PropTypes.bool,
-  isCritical: PropTypes.bool,
-  isReadOnly: PropTypes.bool,
-  prefixIcon: PropTypes.node,
-  CriticalHelperText: PropTypes.node,
-  HelperText: PropTypes.node,
-  suffixButtonType: PropTypes.oneOf([
-    "date",
-    "password",
-    "dropdown",
-    "timePicker",
-  ]),
-  suffixIsToggle: PropTypes.bool,
-  suffixOnClick: PropTypes.func,
-  onChange: PropTypes.func,
-  onClick: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  backgroundColor: PropTypes.oneOf(["neutral", "secondary"]),
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  setValue: PropTypes.func,
-  setIsCritical: PropTypes.func,
-  minRequiredChars: PropTypes.number,
-  maxLength: PropTypes.number,
-  shouldDisallowBrackets: PropTypes.bool,
-  tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  textAreaMaxHeight: PropTypes.string,
-  resetValue: PropTypes.func,
-};
-
-InputField.defaultProps = {
-  id: null,
-  type: "text",
-  inputmode: "text",
-  kind: "singleline",
-  size: "large",
-  className: null,
-  regexPattern: ".*",
-  label: null,
-  isDisabled: false,
-  isRequired: false,
-  isCritical: false,
-  isReadOnly: false,
-  CriticalHelperText: null,
-  HelperText: null,
-  prefixIcon: null,
-  suffixButtonType: null,
-  suffixIsToggle: false,
-  suffixOnClick: null,
-  onChange: null,
-  onClick: null,
-  onKeyDown: null,
-  backgroundColor: "neutral",
-  value: null,
-  setValue: null,
-  setIsCritical: null,
-  minRequiredChars: 1,
-  maxLength: null,
-  shouldDisallowBrackets: true,
-  tabIndex: 0,
-  textAreaMaxHeight: "31.5rem",
-  resetValue: null,
 };
 
 export default InputField;

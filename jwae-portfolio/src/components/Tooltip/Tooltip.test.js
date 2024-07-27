@@ -20,7 +20,7 @@ describe("Tooltip", () => {
         isWordBreak
         className="Tooltip-text"
         dataTestId="tooltip-component"
-      />
+      />,
     );
 
     const triggerElement = screen.getByText("Hover me");
@@ -30,7 +30,7 @@ describe("Tooltip", () => {
     const tooltipElement = await screen.findByTestId(
       "tooltip-component",
       {},
-      { timeout: 3000 }
+      { timeout: 3000 },
     );
 
     expect(tooltipElement).toBeInTheDocument();
@@ -49,7 +49,7 @@ describe("Tooltip", () => {
         closeDelay={10}
         isWordBreak
         dataTestId="tooltip-component"
-      />
+      />,
     );
 
     const triggerElement = screen.getByText("Hover me");

@@ -1,25 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import classnames from "classnames";
 
-// import Menu, { MenuOption } from "../../componentsNew/Menu/Menu";
-import { Icon, ButtonIcon } from "../../index.ts";
+import { ButtonIcon, Icon } from "../../index.ts";
 
 import "./PaginationCondensed.scss";
 
-const DEFAULT_RANGE: MenuOption[] = [
-  { label: "5", value: "5" },
-  { label: "15", value: "15" },
-  { label: "20", value: "20" },
-  { label: "25", value: "25", isChecked: true },
-  { label: "50", value: "50" },
-  { label: "100", value: "100" },
-];
+// const DEFAULT_RANGE: MenuOption[] = [
+//   { label: "5", value: "5" },
+//   { label: "15", value: "15" },
+//   { label: "20", value: "20" },
+//   { label: "25", value: "25", isChecked: true },
+//   { label: "50", value: "50" },
+//   { label: "100", value: "100" },
+// ];
 
 interface PaginationCondensedProps {
   count: number | null;
   range: number;
-  setRange: (range: number) => void;
-  rangeOptions: MenuOption[];
+  // setRange: (range: number) => void;
+  // rangeOptions: MenuOption[];
   pageCount: number | null;
   pageIndex: number | null;
   setPageIndex: (pageIndex: number) => void;
@@ -29,14 +28,14 @@ interface PaginationCondensedProps {
 const PaginationCondensed: React.FC<PaginationCondensedProps> = ({
   count = 0,
   range = 25,
-  setRange,
-  rangeOptions = DEFAULT_RANGE,
+  // setRange,
+  // rangeOptions = DEFAULT_RANGE,
   pageCount = 0,
   pageIndex = 0,
   setPageIndex,
   className,
 }) => {
-  const [options, setOptions] = useState<MenuOption[]>(rangeOptions);
+  // const [options, setOptions] = useState<MenuOption[]>(rangeOptions);
 
   const paginationCondensedClass = classnames("PaginationCondensed", className);
 
@@ -63,24 +62,24 @@ const PaginationCondensed: React.FC<PaginationCondensedProps> = ({
         size="small"
         kind="ghost"
         isDisabled={dir === "left" ? pageIndex! <= 1 : pageIndex! >= pageCount!}
-        icon={
-          <Icon kind="ChevronDown" rotate={dir === "left" ? "90" : "270"} />
-        }
+        icon={<Icon kind="ChevronDown" rotate={dir === "left" ? 90 : 270} />}
         onClick={handlePageDirection}
         dataTestId={dir === "left" ? "prev-button" : "next-button"}
       />
     );
   };
 
-  const handleChange = (selectedOption: MenuOption) => {
-    setOptions((currentOptions) =>
-      currentOptions.map((option) => ({
-        ...option,
-        isChecked: option.value === selectedOption.value,
-      }))
-    );
-    setRange(parseInt(selectedOption.value, 10));
-  };
+  // const handleChange = () =>
+  //   {
+  //     selectedOption: MenuOption
+  //     setOptions((currentOptions) =>
+  //       currentOptions.map((option) => ({
+  //         ...option,
+  //         isChecked: option.value === selectedOption.value,
+  //       }))
+  //     );
+  //     setRange(parseInt(selectedOption.value, 10));
+  //   };
 
   return (
     <section
@@ -89,7 +88,7 @@ const PaginationCondensed: React.FC<PaginationCondensedProps> = ({
     >
       <div className="PaginationCondensed-rangePicker">
         <p className="PaginationCondensed-body">Records per page:</p>
-        <Menu kind="simple" options={options} onChange={handleChange} />
+        {/* <Menu kind="simple" options={options} onChange={handleChange} /> */}
       </div>
       <div className="PaginationCondensed-divider" />
       <div className="PaginationCondensed-rangeOutline">

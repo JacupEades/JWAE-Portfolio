@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import * as Components from "../../index";
+
+import * as Components from "../../index.ts";
+
 import "./CompLibNav.scss";
 
 interface CompLibNavProps {}

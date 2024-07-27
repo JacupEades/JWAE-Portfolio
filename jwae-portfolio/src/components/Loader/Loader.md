@@ -1,4 +1,6 @@
-**Loop Main**
+<!-- // TODO: Needs lottie files -->
+
+<!-- **Loop Main**
 
 ```js
 <div className="flexBox">
@@ -56,9 +58,9 @@
 
   .background {
     display: flex;
-    align-items: center;   
+    align-items: center;
     gap: 1rem;
     padding: 1rem;
     background: var(--color-page-subtle, #F2F4F8);
   }
-</style>
+</style> -->

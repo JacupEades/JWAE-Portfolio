@@ -1,15 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import { CompLibNavProps, PageNav } from "./components/index.ts";
-import CompLib from "./pages/CompLib/CompLib.tsx";
-import Games from "./pages/Games/Games.tsx";
-import Home from "./pages/Home/Home.tsx";
-import ReactDemos from "./pages/ReactDemos/ReactDemos.tsx";
+import { CompLib, Games, Home, ReactDemos } from "./pages/index.ts";
+import { PageNav } from "./components";
 
 import "./styles/globals.css";
+import "./App.scss";
 
-function App() {
+const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
@@ -23,6 +21,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

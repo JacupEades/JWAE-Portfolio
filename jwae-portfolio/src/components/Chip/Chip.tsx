@@ -1,11 +1,9 @@
 import React from "react";
 import classnames from "classnames";
-import PropTypes from "prop-types";
 
-import ButtonCore from "../Button/ButtonCore/ButtonCore";
-import Typography from "../Typography/Typography";
+import { ButtonCore, Typography } from "../index.ts";
 
-import "./Chip.css";
+import "./Chip.scss";
 
 const SIZES = {
   xxSmall: "xxSmall",
@@ -13,13 +11,13 @@ const SIZES = {
   small: "small",
   medium: "medium",
   large: "large",
-};
+} as const;
 
 const KINDS = {
   outlined: "outlined",
   boldFilled: "boldFilled",
   subtleFilled: "subtleFilled",
-};
+} as const;
 
 const COLORS = {
   neutral: "neutral",
@@ -29,35 +27,48 @@ const COLORS = {
   success: "success",
   warning: "warning",
   info: "info",
-};
+} as const;
 
-function Chip({
-  isDarkMode,
-  size,
-  kind,
-  color,
-  isDisabled,
-  isSelected,
-  onClick,
-  label,
-  leftIcon,
-  rightIcon,
-  className,
-  dataTestId,
-}) {
+interface ChipProps {
+  size?: keyof typeof SIZES;
+  kind?: keyof typeof KINDS;
+  color?: keyof typeof COLORS;
+  isDisabled?: boolean;
+  isSelected?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  label?: string | React.ReactNode;
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  className?: string;
+  dataTestId?: string;
+}
+
+const Chip: React.FC<ChipProps> = ({
+  size = SIZES.medium,
+  kind = KINDS.outlined,
+  color = COLORS.neutral,
+  isDisabled = false,
+  isSelected = false,
+  onClick = () => {},
+  label = null,
+  leftIcon = null,
+  rightIcon = null,
+  className = null,
+  dataTestId = null,
+}) => {
   const chipClass = classnames(
     "Chip",
     `Chip-${kind}`,
     `Chip--${size}`,
     `Chip--${color}`,
     isSelected && `Chip-${kind}--isSelected Chip--isSelected`,
-    isDisabled && `Chip--isDisabled Chip-${kind}--isDisabled `,
-    className
+    isDisabled && `Chip--isDisabled Chip-${kind}--isDisabled`,
+    className,
   );
 
   const chipContentClass = classnames(
     "Chip-content-container",
-    `Chip-content-container--${size}`
+    `Chip-content-container--${size}`,
   );
 
   const leftIconClass = classnames("Chip-left-icon", `Chip-icons--${size}`);
@@ -70,7 +81,7 @@ function Chip({
     "Chip-overlay",
     `Chip-overlay-${kind}`,
     isSelected && `Chip-overlay-${kind}--isSelected`,
-    `Chip-overlay--${color}`
+    `Chip-overlay--${color}`,
   );
 
   return (
@@ -93,36 +104,6 @@ function Chip({
       <span className={buttonIconOverlayClass} />
     </ButtonCore>
   );
-}
-
-Chip.propTypes = {
-  isDarkMode: PropTypes.bool,
-  size: PropTypes.oneOf(Object.values(SIZES)),
-  kind: PropTypes.oneOf(Object.values(KINDS)),
-  color: PropTypes.oneOf(Object.values(COLORS)),
-  isSelected: PropTypes.bool,
-  isDisabled: PropTypes.bool,
-  onClick: PropTypes.func,
-  leftIcon: PropTypes.element,
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  rightIcon: PropTypes.element,
-  className: PropTypes.string,
-  dataTestId: PropTypes.string,
-};
-
-Chip.defaultProps = {
-  isDarkMode: false,
-  size: SIZES.medium,
-  kind: KINDS.outlined,
-  color: COLORS.neutral,
-  isSelected: false,
-  isDisabled: false,
-  onClick: () => {},
-  leftIcon: null,
-  label: null,
-  rightIcon: null,
-  className: null,
-  dataTestId: null,
 };
 
 export default Chip;

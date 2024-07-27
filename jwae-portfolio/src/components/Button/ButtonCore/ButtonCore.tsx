@@ -1,11 +1,11 @@
 import React from "react";
 import classNames from "classnames";
 
-// import { SYSTEM_DATA_THEMES } from '../../../misc/constants';
+import { SYSTEM_DATA_THEMES } from "../../../misc/constants.ts";
 
 interface ButtonCoreProps {
-  id?: string;
-  // dataTheme?: keyof typeof SYSTEM_DATA_THEMES;
+  id?: string | null;
+  dataTheme?: keyof typeof SYSTEM_DATA_THEMES | null;
   type?: "button" | "submit" | "reset";
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   isDisabled?: boolean;
@@ -21,12 +21,12 @@ interface ButtonCoreProps {
   ref?: React.Ref<HTMLButtonElement>;
   className?: string;
   style?: React.CSSProperties;
-  dataTestId?: string;
+  dataTestId?: string | null;
 }
 
 const ButtonCore: React.FC<ButtonCoreProps> = ({
   id,
-  // dataTheme,
+  dataTheme,
   type = "button",
   onClick = () => {},
   isDisabled = false,
@@ -48,9 +48,8 @@ const ButtonCore: React.FC<ButtonCoreProps> = ({
 
   return (
     <button
-      id={id}
-      // data-theme={dataTheme === SYSTEM_DATA_THEMES.LIGHT ? null : dataTheme}
-      // eslint-disable-next-line react/button-has-type
+      id={id || undefined}
+      data-theme={dataTheme === SYSTEM_DATA_THEMES.LIGHT ? null : dataTheme}
       type={type}
       onClick={onClick}
       disabled={isDisabled}

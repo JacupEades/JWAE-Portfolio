@@ -34,3 +34,9 @@
 - [ ] Write unit tests for components
 - [ ] Ensure coverage for all critical paths
 - [ ] Set up integration tests
+
+## Terminal Commands
+
+### Check eslint errors
+
+npx eslint --fix src

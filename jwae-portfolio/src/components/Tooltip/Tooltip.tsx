@@ -15,12 +15,11 @@ import {
   useInteractions,
   useRole,
   useTransitionStyles,
-  Placement,
 } from "@floating-ui/react";
 import classnames from "classnames";
 
-import { SYSTEM_DATA_THEMES } from "../../misc/constants";
-import { Typography } from "../index";
+import { FLOATING_PLACEMENTS, SYSTEM_DATA_THEMES } from "../../misc/constants";
+import { Typography } from "../index.ts";
 
 import "./Tooltip.scss";
 
@@ -33,7 +32,7 @@ interface TooltipProps {
   dataTheme?: keyof typeof SYSTEM_DATA_THEMES;
   trigger: React.ReactElement;
   text?: string;
-  placement?: Placement;
+  placement?: keyof typeof FLOATING_PLACEMENTS;
   openDelay?: number;
   closeDelay?: number;
   maxWidth?: string;
@@ -65,7 +64,7 @@ const Tooltip: React.FC<TooltipProps> = ({
     "Tooltip",
     isWordBreak && "Tooltip--isWordBreak",
     (!text || text.length < 1) && "Tooltip--isTextEmpty",
-    className
+    className,
   );
 
   const { refs, floatingStyles, context } = useFloating({

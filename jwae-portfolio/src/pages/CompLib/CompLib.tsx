@@ -1,5 +1,7 @@
 import React from "react";
-import { Button, Icon, CompLibNavProps } from "../../components";
+
+import { Button, CompLibNavProps, Icon } from "../../components";
+
 import "./CompLib.scss";
 
 interface CompLibProps {}

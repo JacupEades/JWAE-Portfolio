@@ -13,7 +13,7 @@ describe("Typography Component", () => {
     render(
       <Typography kind="h1" desktop="h1-d" mobile="h1-m">
         Header
-      </Typography>
+      </Typography>,
     );
 
     const element = screen.getByText("Header");
@@ -35,7 +35,7 @@ describe("Typography Component", () => {
     render(
       <Typography kind="label" isDisabled htmlFor="test-id">
         Label
-      </Typography>
+      </Typography>,
     );
     const label = screen.getByText("Label");
 

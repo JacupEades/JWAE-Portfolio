@@ -1,30 +1,43 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable react/jsx-curly-spacing */
 import React, { useCallback, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import classnames from "classnames";
-import PropTypes from "prop-types";
 
-import useScrollbarWidth from "../../../hooks/useScrollbarWidth";
-import Button from "../../Button/Button";
-import ButtonIcon from "../../ButtonIcon/ButtonIcon";
-import Icon from "../../Icon/Icon";
-import Loader from "../../Loader/Loader";
-import Typography from "../../Typography/Typography";
+import { ButtonIcon, Icon, Typography } from "../../index.ts";
 
-import "./ModalIsland.css";
+import "./ModalIsland.scss";
 
 const KINDS = {
-  DEFAULT: "default",
-  QUESTION: "question",
-  SUCCESS: "success",
-  WARNING: "warning",
-  CRITICAL: "critical",
-  CUSTOM_ALERT: "customAlert",
-  SAVIYNT: "saviynt",
-};
+  default: "default",
+  question: "question",
+  success: "success",
+  warning: "warning",
+  critical: "critical",
+  customAlert: "customAlert",
+} as const;
 
-function ModalIsland({
+interface ModalIslandProps {
+  kind: keyof typeof KINDS;
+  customAlertIcon?: React.ReactNode;
+  isLoading?: boolean;
+  isOpen: boolean;
+  onClose: () => void;
+  headerIcon?: React.ReactNode;
+  title?: string | React.RefObject<Element>;
+  subtitle?: string | React.ReactNode;
+  alertTitle?: string;
+  alertSubtitle?: string;
+  contentBody?: React.ReactNode;
+  sectionRef?: React.RefObject<HTMLElement>;
+  primaryButton?: React.ReactNode;
+  secondaryButton?: React.ReactNode;
+  HeaderComp?: React.ReactNode;
+  FooterActionBarComp?: React.ReactNode;
+  isOverflowVisible?: boolean;
+  className?: string;
+  alertBackgroundClassName?: string;
+}
+
+const ModalIsland: React.FC<ModalIslandProps> = ({
   kind,
   customAlertIcon,
   isLoading,
@@ -44,30 +57,30 @@ function ModalIsland({
   isOverflowVisible,
   className,
   alertBackgroundClassName,
-}) {
-  const modalRef = useRef(null);
+}) => {
+  const modalRef = useRef<HTMLElement>(null);
 
   const closeOnEscapeKeyDown = useCallback(
-    (e) => {
-      if ((e.charCode || e.keyCode) === 27) {
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
         onClose();
       }
     },
-    [onClose]
+    [onClose],
   );
 
-  /** focusOnlyModalIslandElements makes the tab order locked to only the focusable components inside the modalIsland */
-
-  const focusOnlyModalIslandElements = (e) => {
+  const focusOnlyModalIslandElements = (e: KeyboardEvent) => {
     if (!modalRef.current) return;
 
     const focusableElements = modalRef.current.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
     );
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
+    const firstElement = focusableElements[0] as HTMLElement;
+    const lastElement = focusableElements[
+      focusableElements.length - 1
+    ] as HTMLElement;
 
-    if (e.keyCode === 9) {
+    if (e.key === "Tab") {
       if (e.shiftKey) {
         if (document.activeElement === firstElement) {
           lastElement.focus();
@@ -79,9 +92,6 @@ function ModalIsland({
       }
     }
   };
-
-  // Get the browser scrollBar width
-  useScrollbarWidth();
 
   useEffect(() => {
     document.body.addEventListener("keydown", closeOnEscapeKeyDown);
@@ -110,7 +120,7 @@ function ModalIsland({
 
   const overlayBgClasses = classnames(
     "ModalIsland-background",
-    isOpen && `ModalIsland-background--isOpen`
+    isOpen && `ModalIsland-background--isOpen`,
   );
 
   const modalIslandClasses = classnames(
@@ -118,67 +128,60 @@ function ModalIsland({
     `ModalIsland-${kind}`,
     isOpen && "ModalIsland--isOpen",
     isOverflowVisible && "ModalIsland--isOverflowVisible",
-    className
+    className,
   );
 
   const modalIslandSectionClasses = classnames(
     "ModalIsland-section",
-    isLoading && "ModalIsland-section--isLoading"
+    isLoading && "ModalIsland-section--isLoading",
   );
 
   const headerClasses = classnames(
     "ModalIsland-header",
-    subtitle && `ModalIsland-header--hasSubtitle`
+    subtitle && `ModalIsland-header--hasSubtitle`,
   );
 
   const alertModalIslandClasses = classnames(
     "ModalIsland-alert",
-    `ModalIsland-alert-${kind}`
+    `ModalIsland-alert-${kind}`,
   );
   const alertBgClasses = classnames(
     "ModalIsland-alertBg",
     `ModalIsland-alertBg-${kind}`,
-    alertBackgroundClassName
+    alertBackgroundClassName,
   );
 
   const getAlertIslandIcon = () => {
     switch (kind) {
-      case KINDS.QUESTION:
+      case "question":
         return (
           <Icon
             kind="HelpFilledSeparateColors"
             className="ModalIsland-alertContent-icon"
           />
         );
-      case KINDS.SUCCESS:
+      case "success":
         return (
           <Icon
             kind="CheckCircleFilledSeparateColors"
             className="ModalIsland-alertContent-icon"
           />
         );
-      case KINDS.WARNING:
+      case "warning":
         return (
           <Icon
             kind="AlertWarningFilledSeparateColors"
             className="ModalIsland-alertContent-icon"
           />
         );
-      case KINDS.CRITICAL:
+      case "critical":
         return (
           <Icon
             kind="AlertCriticalFilledSeparateColors"
             className="ModalIsland-alertContent-icon"
           />
         );
-      case KINDS.SAVIYNT:
-        return (
-          <Icon
-            kind="SaviyntFilledSeparateColors"
-            className="ModalIsland-alertContent-icon"
-          />
-        );
-      case KINDS.CUSTOM_ALERT:
+      case "customAlert":
         return customAlertIcon;
       default:
         return null;
@@ -207,7 +210,7 @@ function ModalIsland({
             size="medium"
             kind="ghost"
             icon={<Icon kind="close" color="neutral-100" size="smallMedium" />}
-            onClick={() => onClose()}
+            onClick={onClose}
           />
         </header>
       );
@@ -219,7 +222,7 @@ function ModalIsland({
     if (isLoading)
       return (
         <section className={modalIslandSectionClasses}>
-          <Loader kind="loop" format="main" color="brand" size="large" />
+          <Typography kind="h2">No Loader</Typography>
         </section>
       );
 
@@ -243,11 +246,8 @@ function ModalIsland({
               icon={
                 <Icon kind="close" color="neutral-100" size="smallMedium" />
               }
-              onClick={() => {
-                onClose();
-              }}
+              onClick={onClose}
             />
-            {/* SVG background using Icon comp */}
             <Icon
               kind="AlertModalBackground"
               color="neutral-100"
@@ -293,64 +293,8 @@ function ModalIsland({
         {getModalContent()}
       </article>
     </>,
-    document.body
+    document.body,
   );
-}
-
-ModalIsland.propTypes = {
-  kind: PropTypes.oneOf(Object.values(KINDS)),
-  customAlertIcon: PropTypes.element,
-  isLoading: PropTypes.bool,
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  headerIcon: PropTypes.element,
-  title: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-  ]),
-  subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-  alertTitle: PropTypes.string,
-  alertSubtitle: PropTypes.string,
-  contentBody: PropTypes.element,
-  sectionRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
-  ]),
-  primaryButton: PropTypes.element,
-  secondaryButton: PropTypes.element,
-  HeaderComp: PropTypes.element,
-  FooterActionBarComp: PropTypes.element,
-  isOverflowVisible: PropTypes.bool,
-  className: PropTypes.string,
-  alertBackgroundClassName: PropTypes.string,
-};
-
-ModalIsland.defaultProps = {
-  kind: KINDS.DEFAULT,
-  customAlertIcon: null,
-  isLoading: false,
-  headerIcon: null,
-  title: "",
-  subtitle: null,
-  alertTitle: "",
-  alertSubtitle: "",
-  contentBody: null,
-  sectionRef: null,
-  primaryButton: (
-    <Button type="button" kind="outlined" size="medium">
-      Primary Button
-    </Button>
-  ),
-  secondaryButton: (
-    <Button type="button" kind="ghost" size="medium">
-      Cancel
-    </Button>
-  ),
-  HeaderComp: null,
-  FooterActionBarComp: null,
-  isOverflowVisible: false,
-  className: null,
-  alertBackgroundClassName: null,
 };
 
 export default ModalIsland;

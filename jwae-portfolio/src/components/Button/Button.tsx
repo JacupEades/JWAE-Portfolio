@@ -1,13 +1,11 @@
 import React from "react";
 import classnames from "classnames";
 
-// import { SYSTEM_DATA_THEMES } from "../../misc/constants";
-import Icon from "../Icon/Icon";
+import { SYSTEM_DATA_THEMES } from "../../misc/constants";
+import { ButtonCore, Icon } from "../index.ts";
+
 // import Loader from '../Loader/Loader';
-
-import ButtonCore from "./ButtonCore/ButtonCore";
-
-import "./Button.css";
+import "./Button.scss";
 
 const SIZES = {
   small: "small",
@@ -23,7 +21,7 @@ const KINDS = {
 } as const;
 
 interface ButtonProps {
-  // dataTheme?: keyof typeof SYSTEM_DATA_THEMES;
+  dataTheme?: keyof typeof SYSTEM_DATA_THEMES;
   size?: keyof typeof SIZES;
   kind?: keyof typeof KINDS;
   isDisabled?: boolean;
@@ -40,7 +38,7 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({
-  // dataTheme,
+  dataTheme,
   size = "medium",
   kind = "filled",
   isDisabled = false,
@@ -65,30 +63,30 @@ const Button: React.FC<ButtonProps> = ({
     isSuccess && `Button-${kind}--isSuccess`,
     !leftIcon && !children && `Button-square--${size}`,
     !rightIcon && !children && `Button-square--${size}`,
-    className
+    className,
   );
 
   const leftIconClass = classnames("Button-left-icon", `Button-icons--${size}`);
 
   const childrenClass = classnames(
     `Button-children`,
-    !children && `Button-children-null`
+    !children && `Button-children-null`,
   );
 
   const rightIconClass = classnames(
     "Button-right-icon",
-    `Button-icons--${size}`
+    `Button-icons--${size}`,
   );
 
   const buttonIconOverlayClass = classnames(
     "Button-overlay",
     `Button-overlay-${kind}`,
-    isEnabled && `Button-overlay-${kind}--isEnabled`
+    isEnabled && `Button-overlay-${kind}--isEnabled`,
   );
 
   return (
     <ButtonCore
-      // dataTheme={dataTheme}
+      dataTheme={dataTheme}
       type={type}
       tabIndex={isLoading || isSuccess ? -1 : 0}
       onClick={onClick}

@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import classnames from "classnames";
 
-import "./Typography.css";
+import "./Typography.scss";
 
 const KINDS_MAP = [
   "header",
@@ -19,7 +19,7 @@ const KINDS_MAP = [
   "label",
 ].reduce(
   (acc, kind) => ({ ...acc, [kind]: kind }),
-  {} as Record<string, string>
+  {} as Record<string, string>,
 );
 
 const FONTS_MAP = [
@@ -49,7 +49,7 @@ const FONTS_MAP = [
   "body3-bold-m",
 ].reduce(
   (acc, font) => ({ ...acc, [font]: font }),
-  {} as Record<string, string>
+  {} as Record<string, string>,
 );
 
 interface TypographyProps {
@@ -87,7 +87,7 @@ const Typography: React.FC<TypographyProps> = ({
     mobileClass,
     kind === "label" && "Typography--isNoWrap",
     isDisabled && "Typography--isDisabled",
-    className
+    className,
   );
 
   if (Tag === "label") {
