@@ -1,346 +1,346 @@
 Sizes:
 
 ```js
-import { Box, Icon } from '@saviynt/design-system';
+import { Icon } from "@saviynt/design-system";
 
-<Box className='rowFlexContainer'>
+<div className="rowFlexContainer">
   <Chip
-    size='xxSmall'
-    label='xxSmall'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    size="xxSmall"
+    label="xxSmall"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    size='xSmall'
-    label='xSmall'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    size="xSmall"
+    label="xSmall"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    size='small'
-    label='Small'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    size="small"
+    label="Small"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    label='Medium'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    label="Medium"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    size='large'
-    label='Large'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    size="large"
+    label="Large"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
-</Box>;
+</div>;
 ```
 
 Kinds:
 
 ```js
-import { Box, Icon, Label } from '@saviynt/design-system';
+import { Icon, Label } from "@saviynt/design-system";
 
-<Box className='rowFlexContainer'>
+<div className="rowFlexContainer">
   <Chip
-    kind='outlined'
-    label='Outlined'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    kind="outlined"
+    label="Outlined"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    kind='boldFilled'
-    label='Bold Filled'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    kind="boldFilled"
+    label="Bold Filled"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    kind='subtleFilled'
-    label='Subtle Filled'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    kind="subtleFilled"
+    label="Subtle Filled"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
-</Box>;
+</div>;
 ```
 
 Disabled:
 
 ```js
-import { Box, Icon, Label } from '@saviynt/design-system';
+import { Icon, Label } from "@saviynt/design-system";
 
-<Box className='rowFlexContainer'>
+<div className="rowFlexContainer">
   <Chip
-    kind='outlined'
-    label='Outlined'
+    kind="outlined"
+    label="Outlined"
     isDisabled
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    kind='boldFilled'
-    label='Bold Filled'
+    kind="boldFilled"
+    label="Bold Filled"
     isDisabled
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    kind='subtleFilled'
-    label='Subtle Filled'
+    kind="subtleFilled"
+    label="Subtle Filled"
     isDisabled
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
-</Box>;
+</div>;
 ```
 
 Selected:
 
 ```js
-import { Box, Icon, Label } from '@saviynt/design-system';
-import { useState } from 'react';
+import { Icon, Label } from "@saviynt/design-system";
+import { useState } from "react";
 
 const [isSelected, setIsSelected] = useState(true);
 
-<Box className='rowFlexContainer'>
+<div className="rowFlexContainer">
   <Chip
-    kind={isSelected ? 'boldFilled' : 'outlined'}
-    label='Select'
+    kind={isSelected ? "boldFilled" : "outlined"}
+    label="Select"
     isSelected={isSelected}
     onClick={() => setIsSelected(!isSelected)}
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    kind={isSelected ? 'boldFilled' : 'outlined'}
-    label='Select'
+    kind={isSelected ? "boldFilled" : "outlined"}
+    label="Select"
     isSelected={isSelected}
     onClick={() => setIsSelected(!isSelected)}
-    color='brandPrimary'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    color="brandPrimary"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    kind={isSelected ? 'boldFilled' : 'outlined'}
-    label='Select'
+    kind={isSelected ? "boldFilled" : "outlined"}
+    label="Select"
     isSelected={isSelected}
     onClick={() => setIsSelected(!isSelected)}
-    color='brandSecondary'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    color="brandSecondary"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    kind={isSelected ? 'boldFilled' : 'outlined'}
-    label='Select'
+    kind={isSelected ? "boldFilled" : "outlined"}
+    label="Select"
     isSelected={isSelected}
     onClick={() => setIsSelected(!isSelected)}
-    color='critical'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    color="critical"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    kind={isSelected ? 'boldFilled' : 'outlined'}
-    label='Select'
+    kind={isSelected ? "boldFilled" : "outlined"}
+    label="Select"
     isSelected={isSelected}
     onClick={() => setIsSelected(!isSelected)}
-    color='success'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    color="success"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    kind={isSelected ? 'boldFilled' : 'outlined'}
-    label='Select'
+    kind={isSelected ? "boldFilled" : "outlined"}
+    label="Select"
     isSelected={isSelected}
     onClick={() => setIsSelected(!isSelected)}
-    color='warning'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    color="warning"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
   <Chip
-    kind={isSelected ? 'boldFilled' : 'outlined'}
-    label='Select'
+    kind={isSelected ? "boldFilled" : "outlined"}
+    label="Select"
     isSelected={isSelected}
     onClick={() => setIsSelected(!isSelected)}
-    color='info'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    color="info"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
-</Box>;
+</div>;
 ```
 
 Colors:
 
 ```js
-import { Box, Icon, Label } from '@saviynt/design-system';
+import { Icon, Label } from "@saviynt/design-system";
 
-<Box className='flexContainer'>
-  <Box className='rowFlexContainer'>
+<div className="flexContainer">
+  <div className="rowFlexContainer">
     <Chip
-      kind='outlined'
-      label='Outline'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="outlined"
+      label="Outline"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='outlined'
-      label='Outline'
-      color='brandPrimary'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="outlined"
+      label="Outline"
+      color="brandPrimary"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='outlined'
-      label='Outline'
-      color='brandSecondary'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="outlined"
+      label="Outline"
+      color="brandSecondary"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='outlined'
-      label='Outline'
-      color='critical'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="outlined"
+      label="Outline"
+      color="critical"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='outlined'
-      label='Outline'
-      color='success'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="outlined"
+      label="Outline"
+      color="success"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='outlined'
-      label='Outline'
-      color='warning'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="outlined"
+      label="Outline"
+      color="warning"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='outlined'
-      label='Outline'
-      color='info'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="outlined"
+      label="Outline"
+      color="info"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
-  </Box>
-  <Box className='rowFlexContainer'>
+  </div>
+  <div className="rowFlexContainer">
     <Chip
-      kind='boldFilled'
-      label='Bold'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
-    />
-    <Chip
-      kind='boldFilled'
-      label='Bold'
-      color='brandPrimary'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="boldFilled"
+      label="Bold"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='boldFilled'
-      label='Bold'
-      color='brandSecondary'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="boldFilled"
+      label="Bold"
+      color="brandPrimary"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='boldFilled'
-      label='Bold'
-      color='critical'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="boldFilled"
+      label="Bold"
+      color="brandSecondary"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='boldFilled'
-      label='Bold'
-      color='success'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="boldFilled"
+      label="Bold"
+      color="critical"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='boldFilled'
-      label='Bold'
-      color='warning'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="boldFilled"
+      label="Bold"
+      color="success"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='boldFilled'
-      label='Bold'
-      color='info'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
-    />
-  </Box>
-  <Box className='rowFlexContainer'>
-    <Chip
-      kind='subtleFilled'
-      label='Filled'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="boldFilled"
+      label="Bold"
+      color="warning"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='subtleFilled'
-      label='Filled'
-      color='brandPrimary'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="boldFilled"
+      label="Bold"
+      color="info"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
+    />
+  </div>
+  <div className="rowFlexContainer">
+    <Chip
+      kind="subtleFilled"
+      label="Filled"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='subtleFilled'
-      label='Filled'
-      color='brandSecondary'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="subtleFilled"
+      label="Filled"
+      color="brandPrimary"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='subtleFilled'
-      label='Filled'
-      color='critical'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="subtleFilled"
+      label="Filled"
+      color="brandSecondary"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='subtleFilled'
-      label='Filled'
-      color='success'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="subtleFilled"
+      label="Filled"
+      color="critical"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='subtleFilled'
-      label='Filled'
-      color='warning'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="subtleFilled"
+      label="Filled"
+      color="success"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
     <Chip
-      kind='subtleFilled'
-      label='Filled'
-      color='info'
-      leftIcon={<Icon kind='Add' />}
-      rightIcon={<Icon kind='Edit' />}
+      kind="subtleFilled"
+      label="Filled"
+      color="warning"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
     />
-  </Box>
-</Box>;
+    <Chip
+      kind="subtleFilled"
+      label="Filled"
+      color="info"
+      leftIcon={<Icon kind="Add" />}
+      rightIcon={<Icon kind="Edit" />}
+    />
+  </div>
+</div>;
 ```
 
 Icons:
 
 ```js
-import { Box, Icon, Label } from '@saviynt/design-system';
+import { Icon, Label } from "@saviynt/design-system";
 
-<Box className='rowFlexContainer'>
+<div className="rowFlexContainer">
   <Chip
-    label='Both'
-    leftIcon={<Icon kind='Add' />}
-    rightIcon={<Icon kind='Edit' />}
+    label="Both"
+    leftIcon={<Icon kind="Add" />}
+    rightIcon={<Icon kind="Edit" />}
   />
-  <Chip label='Right' rightIcon={<Icon kind='Edit' />} />
-  <Chip label='Left' leftIcon={<Icon kind='Add' />} />
-  <Chip label='None' />
-</Box>;
+  <Chip label="Right" rightIcon={<Icon kind="Edit" />} />
+  <Chip label="Left" leftIcon={<Icon kind="Add" />} />
+  <Chip label="None" />
+</div>;
 ```
 
 <style>

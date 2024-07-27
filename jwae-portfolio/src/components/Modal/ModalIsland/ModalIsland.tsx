@@ -8,7 +8,6 @@ import PropTypes from "prop-types";
 import useScrollbarWidth from "../../../hooks/useScrollbarWidth";
 import Button from "../../Button/Button";
 import ButtonIcon from "../../ButtonIcon/ButtonIcon";
-import Box from "../../componentsNew/Box/Box";
 import Icon from "../../Icon/Icon";
 import Loader from "../../Loader/Loader";
 import Typography from "../../Typography/Typography";
@@ -189,7 +188,7 @@ function ModalIsland({
   const getHeaderContent = () => {
     if (!HeaderComp)
       return (
-        <Box tag="header" className={headerClasses}>
+        <header className={headerClasses}>
           <div className="ModalIsland-titleAndHeaderIcon">
             {headerIcon}
             <div className="ModalIsland-titleContainer">
@@ -210,7 +209,7 @@ function ModalIsland({
             icon={<Icon kind="close" color="neutral-100" size="smallMedium" />}
             onClick={() => onClose()}
           />
-        </Box>
+        </header>
       );
 
     return HeaderComp;
@@ -219,9 +218,9 @@ function ModalIsland({
   const getModalContent = () => {
     if (isLoading)
       return (
-        <Box tag="section" className={modalIslandSectionClasses}>
+        <section className={modalIslandSectionClasses}>
           <Loader kind="loop" format="main" color="brand" size="large" />
-        </Box>
+        </section>
       );
 
     return (
@@ -235,7 +234,7 @@ function ModalIsland({
             {FooterActionBarComp}
           </section>
         ) : (
-          <Box tag="section" className={alertModalIslandClasses}>
+          <section className={alertModalIslandClasses}>
             <ButtonIcon
               id={`modalCloseButton-${isOpen}`}
               size="medium"
@@ -281,7 +280,7 @@ function ModalIsland({
                 </div>
               </div>
             </div>
-          </Box>
+          </section>
         )}
       </>
     );

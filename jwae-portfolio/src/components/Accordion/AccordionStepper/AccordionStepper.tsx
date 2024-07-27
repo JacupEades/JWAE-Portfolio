@@ -3,7 +3,6 @@ import classnames from "classnames";
 import PropTypes from "prop-types";
 
 import Typography from "../../../Typography/Typography";
-import Box from "../../Box/Box";
 import ButtonCore from "../../Button/ButtonCore/ButtonCore";
 import Icon from "../../Icon/Icon";
 
@@ -148,10 +147,10 @@ function AccordionStepper({
   }, [isExpanded]);
 
   const renderedSupportingText = () => (
-    <Box className={supportingContentClasses}>
+    <div className={supportingContentClasses}>
       {/* Primary Text or Accodrion Value */}
       {accordionValue && !isExpanded ? (
-        <Box className="AccordionStepper-accordionValue">{accordionValue}</Box>
+        <div className="AccordionStepper-accordionValue">{accordionValue}</div>
       ) : (
         <Typography kind="body1" className="AccordionStepper-supportingText">
           {primarySupportingText}
@@ -163,12 +162,12 @@ function AccordionStepper({
           {secondarySupportingText}
         </Typography>
       ) : null}
-    </Box>
+    </div>
   );
 
   return (
     <article className="AccordionStepper-inlineBox">
-      <Box className={articleClasses} dataTestId={dataTestId}>
+      <div className={articleClasses} dataTestId={dataTestId}>
         <ButtonCore
           type="button"
           ariaExpanded={isExpanded ? "true" : "false"}
@@ -176,10 +175,10 @@ function AccordionStepper({
           onClick={() => setIsExpanded(!isExpanded)}
           dataTestId={`${dataTestId}-button`}
         >
-          <Box className={prefixIconClasses}>
+          <div className={prefixIconClasses}>
             <Icon kind={prefixIconKind} />
-          </Box>
-          <Box className={bodyContentClasses}>
+          </div>
+          <div className={bodyContentClasses}>
             <Typography
               kind="h4"
               desktop="body2-d"
@@ -189,25 +188,25 @@ function AccordionStepper({
               {headerText}
             </Typography>
             {renderedSupportingText()}
-          </Box>
+          </div>
           {/* Optional Link is only visible when expanded */}
           {isExpanded && suffixLink}
           {!isExpanded && (
-            <Box className="AccordionStepper-suffixIcon">
+            <div className="AccordionStepper-suffixIcon">
               <Icon kind="edit" />
-            </Box>
+            </div>
           )}
         </ButtonCore>
         {/* Accordion Content Panel */}
         <section ref={contentPanelRef} className={contentPanelWrapperClasses}>
-          <Box
+          <div
             className={contentPanelClasses}
             data-testid={`${dataTestId}-content-panel`}
           >
             {children}
-          </Box>
+          </div>
         </section>
-      </Box>
+      </div>
       {CriticalMessage}
     </article>
   );

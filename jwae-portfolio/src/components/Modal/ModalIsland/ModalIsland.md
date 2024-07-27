@@ -1,53 +1,52 @@
 Default Modal Island:
 
 ```jsx
-import React, { useState, useEffect, useRef } from 'react';
-import { useDetectScroll } from '@saviynt/common';
+import React, { useState, useEffect, useRef } from "react";
+import { useDetectScroll } from "@saviynt/common";
 import {
-  Box,
   Button,
   Icon,
   InlineMessage,
   InputField,
   FooterActionBar,
   Typography,
-} from '@saviynt/design-system';
+} from "@saviynt/design-system";
 
 const [isOpen, setIsOpen] = useState(false);
 const [isOpen2, setIsOpen2] = useState(false);
-const [value1, setValue1] = useState('');
-const [value2, setValue2] = useState('');
+const [value1, setValue1] = useState("");
+const [value2, setValue2] = useState("");
 const sectionRef = useRef(null);
 
 const { isScrolled: sectionRefIsScrolled } = useDetectScroll(null, sectionRef);
 
 const sampleFooterActionBar = () => {
   return (
-    <Box className='FlexBox'>
-      <div className='FooterActionBar-extraContent'>
-        <Button kind='subtle' size='medium' onClick={() => {}}>
+    <div className="FlexBox">
+      <div className="FooterActionBar-extraContent">
+        <Button kind="subtle" size="medium" onClick={() => {}}>
           Tertiary
         </Button>
-        <div className='FooterActionBar-inlineMessage'>
+        <div className="FooterActionBar-inlineMessage">
           <InlineMessage
-            text={'HelperText'}
-            colorTheme='info'
-            size='medium'
-            leftIcon={<Icon kind='Info' />}
+            text={"HelperText"}
+            colorTheme="info"
+            size="medium"
+            leftIcon={<Icon kind="Info" />}
           />
         </div>
       </div>
-      <div className='FooterActionBar-actionButtons'>
-        <Button kind='outlined' size='medium' onClick={() => {}}>
+      <div className="FooterActionBar-actionButtons">
+        <Button kind="outlined" size="medium" onClick={() => {}}>
           Secondary
         </Button>
-        <div className='FooterActionBar-actionButtons--primary'>
-          <Button kind='filled' size='medium' onClick={() => {}}>
+        <div className="FooterActionBar-actionButtons--primary">
+          <Button kind="filled" size="medium" onClick={() => {}}>
             Primary
           </Button>
         </div>
       </div>
-    </Box>
+    </div>
   );
 };
 
@@ -63,48 +62,50 @@ const sampleBodyP = () => {
 };
 
 <>
-  <Box className='ModalIslandBox'>
+  <div className="ModalIslandBox">
     <Button
-      type='button'
-      kind='filled'
-      size='large'
-      onClick={() => setIsOpen(!isOpen)}>
+      type="button"
+      kind="filled"
+      size="large"
+      onClick={() => setIsOpen(!isOpen)}
+    >
       ModalIsland
     </Button>
     <ModalIsland
       onClose={() => setIsOpen(false)}
       isOpen={isOpen}
-      title='Title'
+      title="Title"
       contentBody={<>{sampleBodyP()}</>}
       sectionRef={sectionRef}
       FooterActionBarComp={
-        <FooterActionBar size='large' isScrolled={sectionRefIsScrolled}>
+        <FooterActionBar size="large" isScrolled={sectionRefIsScrolled}>
           {sampleFooterActionBar()}
         </FooterActionBar>
       }
     />
-  </Box>
+  </div>
   <Button
-    type='button'
-    kind='filled'
-    size='large'
-    onClick={() => setIsOpen2(!isOpen2)}>
+    type="button"
+    kind="filled"
+    size="large"
+    onClick={() => setIsOpen2(!isOpen2)}
+  >
     Overflow and Subtitle
   </Button>
   <ModalIsland
     onClose={() => setIsOpen2(false)}
     isOpen={isOpen2}
-    title='Title'
-    subtitle='subtitle'
+    title="Title"
+    subtitle="subtitle"
     contentBody={
       <>
         {sampleBodyP()}
-        <div className='ModalIsland-exampleContentBody'>
+        <div className="ModalIsland-exampleContentBody">
           <InputField
-            name='InputField1'
-            placeholder='Placeholder'
+            name="InputField1"
+            placeholder="Placeholder"
             label={
-              <Typography kind='label' htmlFor='Label'>
+              <Typography kind="label" htmlFor="Label">
                 Label
               </Typography>
             }
@@ -112,10 +113,10 @@ const sampleBodyP = () => {
             setValue={setValue1}
           />
           <InputField
-            name='InputField1'
-            placeholder='Placeholder'
+            name="InputField1"
+            placeholder="Placeholder"
             label={
-              <Typography kind='label' htmlFor='Label'>
+              <Typography kind="label" htmlFor="Label">
                 Label
               </Typography>
             }
@@ -127,12 +128,12 @@ const sampleBodyP = () => {
         {sampleBodyP()}
         {sampleBodyP()}
         {sampleBodyP()}
-        <div className='ModalIsland-exampleContentBody'>
+        <div className="ModalIsland-exampleContentBody">
           <InputField
-            name='InputField1'
-            placeholder='Placeholder'
+            name="InputField1"
+            placeholder="Placeholder"
             label={
-              <Typography kind='label' htmlFor='Label'>
+              <Typography kind="label" htmlFor="Label">
                 Label
               </Typography>
             }
@@ -140,10 +141,10 @@ const sampleBodyP = () => {
             setValue={setValue1}
           />
           <InputField
-            name='InputField1'
-            placeholder='Placeholder'
+            name="InputField1"
+            placeholder="Placeholder"
             label={
-              <Typography kind='label' htmlFor='Label'>
+              <Typography kind="label" htmlFor="Label">
                 Label
               </Typography>
             }
@@ -155,7 +156,7 @@ const sampleBodyP = () => {
     }
     sectionRef={sectionRef}
     FooterActionBarComp={
-      <FooterActionBar size='large' isScrolled={sectionRefIsScrolled}>
+      <FooterActionBar size="large" isScrolled={sectionRefIsScrolled}>
         {sampleFooterActionBar()}
       </FooterActionBar>
     }
@@ -166,8 +167,8 @@ const sampleBodyP = () => {
 Modal Island Varieties:
 
 ```jsx
-import React, { useState } from 'react';
-import { Box, Button } from '@saviynt/design-system';
+import React, { useState } from "react";
+import { Button } from "@saviynt/design-system";
 
 const [isOpen1, setIsOpen1] = useState(false);
 const [isOpen2, setIsOpen2] = useState(false);
@@ -176,182 +177,188 @@ const [isOpen4, setIsOpen4] = useState(false);
 const [isOpen5, setIsOpen5] = useState(false);
 
 <>
-  <Box className='ModalIslandBox'>
+  <div className="ModalIslandBox">
     <Button
-      type='button'
-      kind='filled'
-      size='large'
-      onClick={() => setIsOpen1(true)}>
+      type="button"
+      kind="filled"
+      size="large"
+      onClick={() => setIsOpen1(true)}
+    >
       Open Question
     </Button>
     <ModalIsland
-      kind='question'
-      alertTitle='Island Modal Title'
-      alertSubtitle='Lorem ipsum dolor sit amet consectetur. Arcu curabitur rhoncus elit at lectus congue sit. Facilisis cursus scelerisque lobortis bibendum ultricies. Adipiscing tristique sed posuere rutrum nisl hendrerit dignissim diam.'
+      kind="question"
+      alertTitle="Island Modal Title"
+      alertSubtitle="Lorem ipsum dolor sit amet consectetur. Arcu curabitur rhoncus elit at lectus congue sit. Facilisis cursus scelerisque lobortis bibendum ultricies. Adipiscing tristique sed posuere rutrum nisl hendrerit dignissim diam."
       onClose={() => setIsOpen1(false)}
       isOpen={isOpen1}
       primaryButton={
-        <Button type='button' kind='outlined' size='medium'>
+        <Button type="button" kind="outlined" size="medium">
           Primary Button
         </Button>
       }
       secondaryButton={
-        <Button type='button' kind='ghost' size='medium'>
+        <Button type="button" kind="ghost" size="medium">
           Cancel
         </Button>
       }
     />
-  </Box>
+  </div>
 
-  <Box className='ModalIslandBox'>
+  <div className="ModalIslandBox">
     <Button
-      type='button'
-      kind='filled'
-      size='large'
-      onClick={() => setIsOpen2(true)}>
+      type="button"
+      kind="filled"
+      size="large"
+      onClick={() => setIsOpen2(true)}
+    >
       Open Success
     </Button>
     <ModalIsland
-      kind='success'
-      alertTitle='Island Modal Title'
-      alertSubtitle='Lorem ipsum dolor sit amet consectetur. Arcu curabitur rhoncus elit at lectus congue sit. Facilisis cursus scelerisque lobortis bibendum ultricies. Adipiscing tristique sed posuere rutrum nisl hendrerit dignissim diam.'
+      kind="success"
+      alertTitle="Island Modal Title"
+      alertSubtitle="Lorem ipsum dolor sit amet consectetur. Arcu curabitur rhoncus elit at lectus congue sit. Facilisis cursus scelerisque lobortis bibendum ultricies. Adipiscing tristique sed posuere rutrum nisl hendrerit dignissim diam."
       onClose={() => setIsOpen2(false)}
       isOpen={isOpen2}
       primaryButton={
-        <Button type='button' kind='filled' size='medium'>
+        <Button type="button" kind="filled" size="medium">
           Primary Button
         </Button>
       }
       secondaryButton={
-        <Button type='button' kind='ghost' size='medium'>
+        <Button type="button" kind="ghost" size="medium">
           Cancel
         </Button>
       }
     />
-  </Box>
+  </div>
 
-  <Box className='ModalIslandBox'>
+  <div className="ModalIslandBox">
     <Button
-      type='button'
-      kind='filled'
-      size='large'
-      onClick={() => setIsOpen3(true)}>
+      type="button"
+      kind="filled"
+      size="large"
+      onClick={() => setIsOpen3(true)}
+    >
       Open Warning
     </Button>
     <ModalIsland
-      kind='warning'
-      alertTitle='Island Modal Title'
-      alertSubtitle='Lorem ipsum dolor sit amet consectetur. Arcu curabitur rhoncus elit at lectus congue sit. Facilisis cursus scelerisque lobortis bibendum ultricies. Adipiscing tristique sed posuere rutrum nisl hendrerit dignissim diam.'
+      kind="warning"
+      alertTitle="Island Modal Title"
+      alertSubtitle="Lorem ipsum dolor sit amet consectetur. Arcu curabitur rhoncus elit at lectus congue sit. Facilisis cursus scelerisque lobortis bibendum ultricies. Adipiscing tristique sed posuere rutrum nisl hendrerit dignissim diam."
       onClose={() => setIsOpen3(false)}
       isOpen={isOpen3}
       primaryButton={
-        <Button type='button' kind='outlined' size='medium'>
+        <Button type="button" kind="outlined" size="medium">
           Primary Button
         </Button>
       }
       secondaryButton={
-        <Button type='button' kind='ghost' size='medium'>
+        <Button type="button" kind="ghost" size="medium">
           Cancel
         </Button>
       }
     />
-  </Box>
+  </div>
 
-  <Box className='ModalIslandBox'>
+  <div className="ModalIslandBox">
     <Button
-      type='button'
-      kind='filled'
+      type="button"
+      kind="filled"
       isEnabled
-      size='large'
-      onClick={() => setIsOpen4(true)}>
+      size="large"
+      onClick={() => setIsOpen4(true)}
+    >
       Open Critical
     </Button>
     <ModalIsland
-      kind='critical'
-      alertTitle='Island Modal Title'
-      alertSubtitle='Lorem ipsum dolor sit amet consectetur. Arcu curabitur rhoncus elit at lectus congue sit. Facilisis cursus scelerisque lobortis bibendum ultricies. Adipiscing tristique sed posuere rutrum nisl hendrerit dignissim diam.'
+      kind="critical"
+      alertTitle="Island Modal Title"
+      alertSubtitle="Lorem ipsum dolor sit amet consectetur. Arcu curabitur rhoncus elit at lectus congue sit. Facilisis cursus scelerisque lobortis bibendum ultricies. Adipiscing tristique sed posuere rutrum nisl hendrerit dignissim diam."
       onClose={() => setIsOpen4(false)}
       isOpen={isOpen4}
       primaryButton={
-        <Button type='button' kind='outlined' isEnabled size='medium'>
+        <Button type="button" kind="outlined" isEnabled size="medium">
           Primary Button
         </Button>
       }
       secondaryButton={
-        <Button type='button' kind='ghost' size='medium'>
+        <Button type="button" kind="ghost" size="medium">
           Cancel
         </Button>
       }
     />
-  </Box>
+  </div>
 
-  <Box className='ModalIslandBox'>
+  <div className="ModalIslandBox">
     <Button
-      type='button'
-      kind='filled'
-      size='large'
-      onClick={() => setIsOpen5(true)}>
+      type="button"
+      kind="filled"
+      size="large"
+      onClick={() => setIsOpen5(true)}
+    >
       Open Saviynt
     </Button>
     <ModalIsland
-      kind='saviynt'
-      alertTitle='Island Modal Title'
-      alertSubtitle='Lorem ipsum dolor sit amet consectetur. Arcu curabitur rhoncus elit at lectus congue sit. Facilisis cursus scelerisque lobortis bibendum ultricies. Adipiscing tristique sed posuere rutrum nisl hendrerit dignissim diam.'
+      kind="saviynt"
+      alertTitle="Island Modal Title"
+      alertSubtitle="Lorem ipsum dolor sit amet consectetur. Arcu curabitur rhoncus elit at lectus congue sit. Facilisis cursus scelerisque lobortis bibendum ultricies. Adipiscing tristique sed posuere rutrum nisl hendrerit dignissim diam."
       onClose={() => setIsOpen5(false)}
       isOpen={isOpen5}
       primaryButton={
-        <Button type='button' kind='outlined' size='medium'>
+        <Button type="button" kind="outlined" size="medium">
           Primary Button
         </Button>
       }
       secondaryButton={
-        <Button type='button' kind='ghost' size='medium'>
+        <Button type="button" kind="ghost" size="medium">
           Cancel
         </Button>
       }
     />
-  </Box>
+  </div>
 </>;
 ```
 
 Custom Alert Island:
 
 ```jsx
-import React, { useState } from 'react';
-import { Box, Button, Icon } from '@saviynt/design-system';
+import React, { useState } from "react";
+import { Button, Icon } from "@saviynt/design-system";
 
 const [isOpen, setIsOpen] = useState(false);
 
-<Box className='ModalIslandBox'>
+<div className="ModalIslandBox">
   <Button
-    type='button'
-    kind='filled'
-    size='large'
-    onClick={() => setIsOpen(true)}>
+    type="button"
+    kind="filled"
+    size="large"
+    onClick={() => setIsOpen(true)}
+  >
     Custom Alert Icon & Background
   </Button>
   <ModalIsland
-    kind='customAlert'
+    kind="customAlert"
     customAlertIcon={
-      <Icon kind='Saviynt' className='ModalIsland-alertContent-icon' />
+      <Icon kind="Saviynt" className="ModalIsland-alertContent-icon" />
     }
-    alertBackgroundClassName='CustomAlertBackGround'
-    alertTitle='Island Modal Title'
-    alertSubtitle='Lorem ipsum dolor sit amet consectetur. Arcu curabitur rhoncus elit at lectus congue sit. Facilisis cursus scelerisque lobortis bibendum ultricies. Adipiscing tristique sed posuere rutrum nisl hendrerit dignissim diam.'
+    alertBackgroundClassName="CustomAlertBackGround"
+    alertTitle="Island Modal Title"
+    alertSubtitle="Lorem ipsum dolor sit amet consectetur. Arcu curabitur rhoncus elit at lectus congue sit. Facilisis cursus scelerisque lobortis bibendum ultricies. Adipiscing tristique sed posuere rutrum nisl hendrerit dignissim diam."
     onClose={() => setIsOpen(false)}
     isOpen={isOpen}
     primaryButton={
-      <Button type='button' kind='outlined' size='medium'>
+      <Button type="button" kind="outlined" size="medium">
         Primary Button
       </Button>
     }
     secondaryButton={
-      <Button type='button' kind='ghost' size='medium'>
+      <Button type="button" kind="ghost" size="medium">
         Cancel
       </Button>
     }
   />
-</Box>;
+</div>;
 ```
 
 <style>

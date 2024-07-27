@@ -1,8 +1,8 @@
 Basic:
 
 ```js
-import { useState } from 'react';
-import { Box, Button, Icon, Link } from '@saviynt/design-system';
+import { useState } from "react";
+import { Button, Icon, Link } from "@saviynt/design-system";
 
 const [isExpanded1, setIsExpanded1] = useState(false);
 const [isExpanded2, setIsExpanded2] = useState(false);
@@ -12,129 +12,133 @@ const [isExpanded5, setIsExpanded5] = useState(false);
 
 const accordionPanelContent = () => {
   return (
-    <Box className='contentFlexBox'>
+    <div className="contentFlexBox">
       <p>Container to fill with content.</p>
-    </Box>
+    </div>
   );
 };
 
-<Box className='bg'>
+<div className="bg">
   <AccordionStepper
     isExpanded={isExpanded1}
     setIsExpanded={setIsExpanded1}
-    prefixIconKind='Account'
-    headerText='Has only primary supporting text, and is not showing on expanded.'
-    primarySupportingText='Primary Supporting Text'
+    prefixIconKind="Account"
+    headerText="Has only primary supporting text, and is not showing on expanded."
+    primarySupportingText="Primary Supporting Text"
     suffixLink={
       <Link
-        url='http://localhost:6060/#/Components/AccordionStepper'
-        text='Optional Link'
-        prefixIconKind='LinkChain'
-        target='_self'
+        url="http://localhost:6060/#/Components/AccordionStepper"
+        text="Optional Link"
+        prefixIconKind="LinkChain"
+        target="_self"
         shouldStopPropagation
       />
-    }>
+    }
+  >
     {accordionPanelContent()}
   </AccordionStepper>
   <AccordionStepper
     isExpanded={isExpanded2}
     setIsExpanded={setIsExpanded2}
-    prefixIconKind='Account'
-    headerText='Has only primary supporting text.'
-    primarySupportingText='Primary Supporting Text'
+    prefixIconKind="Account"
+    headerText="Has only primary supporting text."
+    primarySupportingText="Primary Supporting Text"
     isShowingSupportingTextOnExpanded
     suffixLink={
       <Link
-        url='http://localhost:6060/#/Components/AccordionStepper'
-        text='Optional Link'
-        prefixIconKind='LinkChain'
-        target='_self'
+        url="http://localhost:6060/#/Components/AccordionStepper"
+        text="Optional Link"
+        prefixIconKind="LinkChain"
+        target="_self"
         shouldStopPropagation
       />
-    }>
+    }
+  >
     {accordionPanelContent()}
   </AccordionStepper>
   <AccordionStepper
     isExpanded={isExpanded3}
     setIsExpanded={setIsExpanded3}
-    prefixIconKind='Account'
-    headerText='Accordion Value and secondary text, and is not showing on expanded.'
-    primarySupportingText='Primary Supporting Text'
-    secondarySupportingText='Secondary Supporting Text'
+    prefixIconKind="Account"
+    headerText="Accordion Value and secondary text, and is not showing on expanded."
+    primarySupportingText="Primary Supporting Text"
+    secondarySupportingText="Secondary Supporting Text"
     accordionValue={<div>Accordion Value</div>}
     suffixLink={
       <Link
-        url='http://localhost:6060/#/Components/AccordionStepper'
-        text='Optional Link'
-        prefixIconKind='LinkChain'
-        target='_self'
+        url="http://localhost:6060/#/Components/AccordionStepper"
+        text="Optional Link"
+        prefixIconKind="LinkChain"
+        target="_self"
         shouldStopPropagation
       />
-    }>
+    }
+  >
     {accordionPanelContent()}
   </AccordionStepper>
   <AccordionStepper
     isExpanded={isExpanded4}
     setIsExpanded={setIsExpanded4}
-    prefixIconKind='Account'
-    headerText='Accordion Value and no secondary text.'
-    primarySupportingText='Primary Supporting Text'
+    prefixIconKind="Account"
+    headerText="Accordion Value and no secondary text."
+    primarySupportingText="Primary Supporting Text"
     accordionValue={<div>Accordion Value</div>}
     isShowingSupportingTextOnExpanded
     suffixLink={
       <Link
-        url='http://localhost:6060/#/Components/AccordionStepper'
-        text='Optional Link'
-        prefixIconKind='LinkChain'
-        target='_self'
+        url="http://localhost:6060/#/Components/AccordionStepper"
+        text="Optional Link"
+        prefixIconKind="LinkChain"
+        target="_self"
         shouldStopPropagation
       />
-    }>
+    }
+  >
     {accordionPanelContent()}
   </AccordionStepper>
   <AccordionStepper
     isExpanded={isExpanded5}
     setIsExpanded={setIsExpanded5}
-    prefixIconKind='Account'
-    headerText='Accordion Value and secondary text.'
-    primarySupportingText='Primary Supporting Text'
-    secondarySupportingText='Secondary Supporting Text'
+    prefixIconKind="Account"
+    headerText="Accordion Value and secondary text."
+    primarySupportingText="Primary Supporting Text"
+    secondarySupportingText="Secondary Supporting Text"
     accordionValue={<div>Accordion Value</div>}
     isShowingSupportingTextOnExpanded
     suffixLink={
       <Link
-        url='http://localhost:6060/#/Components/AccordionStepper'
-        text='Optional Link'
-        prefixIconKind='LinkChain'
-        target='_self'
+        url="http://localhost:6060/#/Components/AccordionStepper"
+        text="Optional Link"
+        prefixIconKind="LinkChain"
+        target="_self"
         shouldStopPropagation
       />
-    }>
+    }
+  >
     {accordionPanelContent()}
   </AccordionStepper>
-</Box>;
+</div>;
 ```
 
 Example:
 
 ```js
-import { useState } from 'react';
+import { useState } from "react";
 import {
-  Box,
   Button,
   Icon,
   InputField,
   Link,
   Typography,
-} from '@saviynt/design-system';
+} from "@saviynt/design-system";
 
 const [isExpanded, setIsExpanded] = useState(false);
 const [savedValue, setSavedValue] = useState({
-  SERVER: '',
-  PORT: '3389',
+  SERVER: "",
+  PORT: "3389",
 });
-const [value1, setValue1] = useState('');
-const [value2, setValue2] = useState('3389');
+const [value1, setValue1] = useState("");
+const [value2, setValue2] = useState("3389");
 
 const handleSubmit = () => {
   setIsExpanded(false);
@@ -143,17 +147,17 @@ const handleSubmit = () => {
 
 const accordionSupportingValue = () => {
   return savedValue.SERVER && !isExpanded ? (
-    <div className='accordionValueFlexBox'>
-      <div className='accordionValueBody'>
-        <p className='accordionValueHeading'>
+    <div className="accordionValueFlexBox">
+      <div className="accordionValueBody">
+        <p className="accordionValueHeading">
           Server:
-          <span className='accordionValue'>{savedValue.SERVER}</span>
+          <span className="accordionValue">{savedValue.SERVER}</span>
         </p>
       </div>
-      <div className='accordionValueBody'>
-        <p className='accordionValueHeading'>
+      <div className="accordionValueBody">
+        <p className="accordionValueHeading">
           Port:
-          <span className='accordionValue'>{savedValue.PORT}</span>
+          <span className="accordionValue">{savedValue.PORT}</span>
         </p>
       </div>
     </div>
@@ -162,66 +166,67 @@ const accordionSupportingValue = () => {
 
 const accordionPanelContent = () => {
   return (
-    <Box className='contentFlexBox'>
-      <Box className='inputFlexBox'>
+    <div className="contentFlexBox">
+      <div className="inputFlexBox">
         <InputField
-          name='Target IP'
-          placeholder='Enter the name or IP address of the remote system'
+          name="Target IP"
+          placeholder="Enter the name or IP address of the remote system"
           label={
-            <Typography kind='label' htmlFor='Target Windows Server'>
+            <Typography kind="label" htmlFor="Target Windows Server">
               Target Windows Server
             </Typography>
           }
-          backgroundColor='secondary'
+          backgroundColor="secondary"
           isRequired
           value={value1}
           setValue={setValue1}
         />
         <InputField
-          name='Port Number'
-          placeholder='Port Number'
+          name="Port Number"
+          placeholder="Port Number"
           label={
-            <Typography kind='label' htmlFor='Port Number'>
+            <Typography kind="label" htmlFor="Port Number">
               Port Number
             </Typography>
           }
-          backgroundColor='secondary'
+          backgroundColor="secondary"
           value={value2}
           setValue={setValue2}
         />
-      </Box>
+      </div>
       {isExpanded && value1.length > 0 ? (
-        <Box className='buttonFlexBox'>
-          <Button type='button' kind='filled' onClick={() => handleSubmit()}>
+        <div className="buttonFlexBox">
+          <Button type="button" kind="filled" onClick={() => handleSubmit()}>
             Continue
           </Button>
-        </Box>
+        </div>
       ) : null}
-    </Box>
+    </div>
   );
 };
 
-<Box className='bg'>
+<div className="bg">
   <AccordionStepper
     isExpanded={isExpanded}
     setIsExpanded={setIsExpanded}
-    prefixIconKind='Server'
-    headerText='What server would you like to connect to?'
-    primarySupportingText='Enter the Target Server Details'
-    secondarySupportingText='Secondary Supporting Text'
+    prefixIconKind="Server"
+    headerText="What server would you like to connect to?"
+    primarySupportingText="Enter the Target Server Details"
+    secondarySupportingText="Secondary Supporting Text"
     accordionValue={accordionSupportingValue()}
     suffixLink={
       <Link
-        url='http://localhost:6060/#/Components/AccordionStepper'
-        text='Optional Link'
-        prefixIconKind='LinkChain'
-        target='_self'
+        url="http://localhost:6060/#/Components/AccordionStepper"
+        text="Optional Link"
+        prefixIconKind="LinkChain"
+        target="_self"
         shouldStopPropagation
       />
-    }>
+    }
+  >
     {accordionPanelContent()}
   </AccordionStepper>
-</Box>;
+</div>;
 ```
 
 <style>
