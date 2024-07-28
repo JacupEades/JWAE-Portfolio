@@ -1,36 +1,48 @@
-// Real
-// $primary-darker: #e34234;
-$primary-main: #f07747;
-$primary-lightest: #e88660;
-// $secondary-darker: #005b94;
-$secondary-main: #34d5e3;
-// $secondary-lightest: #99d8ff;
+// Primary Colors
+$primary-darkest: #004d00;
+$primary-darker: #006600;
+$primary-dark: #008000;
+$primary-main: #00b300;
+$primary-light: #33cc33;
+$primary-lighter: #66e066;
+$primary-lightest: #99f299;
+
+// Secondary Colors
+$secondary-darkest: #660000;
+$secondary-darker: #800000;
+$secondary-dark: #b30000;
+$secondary-main: #e60000;
+$secondary-light: #ff3333;
+$secondary-lighter: #ff6666;
+$secondary-lightest: #ff9999;
+
+// Neutral Colors
 $neutral-white: #ffffff;
-$neutral-border: #bebfba6c;
+$neutral-border: #dcdcdc;
 $neutral-text: #000000;
-$neutral-text-secondary: #6b6b6b;
-$inactvie-grey: #eeeeee;
-$form-bg: #f7f7f7;
+$neutral-text-secondary: #808080;
+$inactive-grey: #f0f0f0;
+$form-bg: #f5f5f5;
 
 // Page Backgrounds
-$page-background: #fffbf4;
-$aside-background: #fffcf8;
-$card-background: #fff9f1;
+$page-background: #fafafa;
+$aside-background: #f4f4f4;
+$card-background: #eeeeee;
 
 // Selected States
-$tab-selected: #e1e0de;
+$tab-selected: #cccccc;
 
 // Hover States
-// $primary-main-hover: #e34234;
-// $primary-lightest-hover: #f7a07e;
-$secondary-main-hover: #1bafbc;
-// $secondary-lightest-hover: #82cefd;
-// $secondary-darker-hover: #00558a;
-$inactvie-grey-hover: #dddddd;
-// $card-background-hover: #fce7cb;
+$primary-main-hover: #00cc00;
+$primary-lightest-hover: #ccffcc;
+$secondary-main-hover: #ff4d4d;
+$secondary-lightest-hover: #ffc2c2;
+$secondary-darker-hover: #990000;
+$inactive-grey-hover: #e0e0e0;
+$card-background-hover: #e0d4c4;
 
 // Transitons
-$trans-basic: all 0.25s;
+$trans-basic: all 200ms ease-in-out;
 
 // Overlay
 $overlay-main: #00000088;
@@ -38,19 +50,16 @@ $overlay-main: #00000088;
 // Box-Shadows from:
 // https://getcssscan.com/css-box-shadow-examples
 $box-shadow-5: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-$box-shadow-15: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+$box-shadow-15:
+  rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
   rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
   rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-$box-shadow-62: rgba(104, 104, 104, 0.096) 3px 3px 6px 0px inset,
+$box-shadow-62:
+  rgba(104, 104, 104, 0.096) 3px 3px 6px 0px inset,
   rgba(73, 73, 73, 0.096) -3px -3px 6px 1px inset;
 
 // Border-radius
 $border-radius-base: 0.5rem;
 
-// Made up Colors
-$status-green: #6deb54;
-$status-red: #d32c2c;
-$status-grey: #666161;
-$status-gold: #daab3e;
-$error: #e00a0a;
-$crit-form-bg: #f2d2c5;
+// Heights
+$header-height: 2.5rem;

@@ -1,0 +1,33 @@
+@import "../../../styles/partials/typography";
+@import "../../../styles/partials/variables";
+@import "../../../styles/partials/mixins";
+
+.CompLibNav {
+  display: flex;
+  grid-column: 1;
+  background: $aside-background;
+  border-right: 1px solid $primary-darker;
+  box-shadow: $box-shadow-15;
+
+  .CompLibNav-nav {
+    width: 100%;
+    background-color: $primary-main;
+
+    .CompLibNav-list {
+      .CompLibNav-listRow {
+        width: 100%;
+        padding: 0.25rem 1rem;
+        background-color: $primary-main;
+        transition: $trans-basic;
+        // Truncate text
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        &:hover {
+          background-color: $primary-main-hover;
+        }
+      }
+    }
+  }
+}

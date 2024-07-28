@@ -5,7 +5,7 @@ import { SYSTEM_DATA_THEMES } from "../../misc/constants";
 import { ButtonCore, Icon } from "../index.ts";
 
 // import Loader from '../Loader/Loader';
-import "./Button.scss";
+import "./ButtonStyles/Button.scss";
 
 const SIZES = {
   small: "small",
@@ -63,25 +63,25 @@ const Button: React.FC<ButtonProps> = ({
     isSuccess && `Button-${kind}--isSuccess`,
     !leftIcon && !children && `Button-square--${size}`,
     !rightIcon && !children && `Button-square--${size}`,
-    className,
+    className
   );
 
   const leftIconClass = classnames("Button-left-icon", `Button-icons--${size}`);
 
   const childrenClass = classnames(
     `Button-children`,
-    !children && `Button-children-null`,
+    !children && `Button-children-null`
   );
 
   const rightIconClass = classnames(
     "Button-right-icon",
-    `Button-icons--${size}`,
+    `Button-icons--${size}`
   );
 
   const buttonIconOverlayClass = classnames(
     "Button-overlay",
     `Button-overlay-${kind}`,
-    isEnabled && `Button-overlay-${kind}--isEnabled`,
+    isEnabled && `Button-overlay-${kind}--isEnabled`
   );
 
   return (

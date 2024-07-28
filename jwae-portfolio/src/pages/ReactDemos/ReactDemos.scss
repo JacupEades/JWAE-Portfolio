@@ -1,6 +1,7 @@
 @import "../../styles/partials/typography";
 @import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
 
 .ReactDemos {
-  margin-top: 4rem;
+  @include PagNavBase();
 }

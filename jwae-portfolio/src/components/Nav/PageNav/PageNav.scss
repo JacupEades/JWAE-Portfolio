@@ -5,33 +5,34 @@
   position: fixed;
   top: 0;
   display: flex;
-  width: 35.5rem;
-  height: 4rem;
-  background-color: red;
-  border-bottom-right-radius: 200rem;
-  border-bottom: 4px solid $neutral-text;
-  border-right: 30px solid $neutral-text;
+  justify-content: flex-end;
+  width: 100vw;
+  height: $header-height;
+  background-color: $secondary-darker;
 
   ul {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0 0.5rem 0.5rem;
+    padding-inline: 2rem;
+    height: 100%;
     list-style: none;
 
     li {
+      display: flex;
+      align-items: center;
+      height: 100%;
       a {
-        @include H5();
-        color: $neutral-text;
-        width: max-content;
-        padding: 0.5rem;
-        background-color: $secondary-main;
-        border-radius: $border-radius-base;
+        @include H6();
+        display: flex;
+        align-items: center;
+        color: $neutral-white;
+        padding-inline: 1rem;
+        height: 100%;
         white-space: nowrap;
         transition: background 200ms ease-in-out;
 
         &:hover {
-          background-color: $secondary-main-hover;
+          background-color: $secondary-darker-hover;
         }
       }
     }

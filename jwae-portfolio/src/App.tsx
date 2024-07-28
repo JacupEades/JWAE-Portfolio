@@ -15,6 +15,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/comp-lib" element={<CompLib />} />
+          <Route path="/comp-lib/:componentName" element={<CompLib />} />
           <Route path="/games" element={<Games />} />
           <Route path="/react-demos" element={<ReactDemos />} />
         </Routes>

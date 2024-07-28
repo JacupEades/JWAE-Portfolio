@@ -1,0 +1,12 @@
+@import "./variables";
+@import "./typography";
+
+@mixin PagNavBase() {
+  @include P2();
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  background-color: bisque;
+  min-height: calc(100vh - $header-height);
+  width: 100vw;
+  margin-top: $header-height;
+}

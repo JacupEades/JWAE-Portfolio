@@ -1,5 +1,3 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useRef, useState } from "react";
 import {
   arrow,
@@ -18,7 +16,7 @@ import {
 } from "@floating-ui/react";
 import classnames from "classnames";
 
-import { FLOATING_PLACEMENTS, SYSTEM_DATA_THEMES } from "../../misc/constants";
+import { SYSTEM_DATA_THEMES } from "../../misc/constants";
 import { Typography } from "../index.ts";
 
 import "./Tooltip.scss";
@@ -28,11 +26,25 @@ interface Offset {
   y?: number;
 }
 
+type Placement =
+  | "top"
+  | "top-start"
+  | "top-end"
+  | "right"
+  | "right-start"
+  | "right-end"
+  | "bottom"
+  | "bottom-start"
+  | "bottom-end"
+  | "left"
+  | "left-start"
+  | "left-end";
+
 interface TooltipProps {
   dataTheme?: keyof typeof SYSTEM_DATA_THEMES;
   trigger: React.ReactElement;
   text?: string;
-  placement?: keyof typeof FLOATING_PLACEMENTS;
+  placement?: Placement; // Use Placement type here
   openDelay?: number;
   closeDelay?: number;
   maxWidth?: string;
@@ -64,7 +76,7 @@ const Tooltip: React.FC<TooltipProps> = ({
     "Tooltip",
     isWordBreak && "Tooltip--isWordBreak",
     (!text || text.length < 1) && "Tooltip--isTextEmpty",
-    className,
+    className
   );
 
   const { refs, floatingStyles, context } = useFloating({
@@ -162,6 +174,6 @@ const Tooltip: React.FC<TooltipProps> = ({
   );
 };
 
-export default Tooltip;
-
 Tooltip.displayName = "Tooltip";
+
+export default Tooltip;

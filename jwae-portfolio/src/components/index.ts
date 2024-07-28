@@ -1,6 +1,7 @@
 export { default as AccordionStepper } from "./Accordion/AccordionStepper/AccordionStepper.tsx";
 export { default as AlertBanner } from "./AlertBanner/AlertBanner.tsx";
 export { default as Button } from "./Button/Button.tsx";
+export { default as ButtonCL } from "./Button/ButtonCL/ButtonCL.tsx";
 export { default as ButtonCore } from "./Button/ButtonCore/ButtonCore.tsx";
 export { default as ButtonSelect } from "./Button/ButtonSelect/ButtonSelect.tsx";
 export { default as ButtonIcon } from "./ButtonIcon/ButtonIcon.tsx";
@@ -13,3 +14,4 @@ export { default as CompLibNavProps } from "./Nav/CompLibNav/CompLibNav.tsx";
 export { default as PageNav } from "./Nav/PageNav/PageNav.tsx";
 export { default as Tooltip } from "./Tooltip/Tooltip.tsx";
 export { default as Typography } from "./Typography/Typography.tsx";
+export { default as CompLibNav } from "./Nav/CompLibNav/CompLibNav.tsx";

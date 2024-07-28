@@ -1,6 +1,31 @@
 @import "../../styles/partials/typography";
 @import "../../styles/partials/variables";
-
+@import "../../styles/partials/mixins";
 .CompLib {
-  margin-top: 4rem;
+  @include PagNavBase();
+  .ConpLib-libGrid {
+    grid-column: 2 / 13;
+
+    .CompLib-header {
+      @include H2();
+      padding: 0.5rem 1rem;
+      width: 100%;
+      text-align: center;
+      background-color: $page-background;
+      border-bottom: 1px solid $primary-darker;
+      box-shadow: $box-shadow-15;
+    }
+    .CompLib-component {
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      max-height: calc(100% - 6rem);
+      width: 100%;
+      width: 91.666663%;
+      // 10 fr
+      // width: 83.333333%;
+    }
+  }
 }
