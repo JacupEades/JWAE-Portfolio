@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import classnames from "classnames";
 
-import { SYSTEM_DATA_THEMES } from "../../misc/constants.ts";
-import { ButtonIcon, Icon } from "../index.ts";
+import { SYSTEM_DATA_THEMES } from "../../../misc/constants.ts";
+import { ButtonIcon, Icon } from "../../index.ts";
 
 import "./AlertBanner.scss";
 
@@ -98,7 +98,7 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
       if (bannerRefCurrent) {
         bannerRefCurrent.removeEventListener(
           "animationend",
-          handleAnimationEnd,
+          handleAnimationEnd
         );
       }
     };
@@ -136,7 +136,7 @@ const AlertBanner: React.FC<AlertBannerProps> = ({
     colorTheme === COLOR_THEMES.WARNING && `AlertBanner-warning--${kind}`,
     colorTheme === COLOR_THEMES.INFORMATION &&
       `AlertBanner-information--${kind}`,
-    isVisible && "AlertBanner-container--isVisible",
+    isVisible && "AlertBanner-container--isVisible"
   );
 
   const renderAlertIcon = () => {

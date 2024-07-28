@@ -16,8 +16,8 @@ import {
 } from "@floating-ui/react";
 import classnames from "classnames";
 
-import { SYSTEM_DATA_THEMES } from "../../misc/constants";
-import { Typography } from "../index.ts";
+import { SYSTEM_DATA_THEMES } from "../../../misc/constants";
+import { Typography } from "../../index.ts";
 
 import "./Tooltip.scss";
 

@@ -1,8 +1,8 @@
 import React from "react";
 import classnames from "classnames";
 
-import { SYSTEM_DATA_THEMES } from "../../misc/constants";
-import { ButtonCore, Icon } from "../index.ts";
+import { SYSTEM_DATA_THEMES } from "../../../misc/constants.ts";
+import { ButtonCore, Icon } from "../../index.ts";
 
 // import Loader from '../Loader/Loader';
 import "./ButtonStyles/Button.scss";

@@ -18,7 +18,7 @@ const CompLib: React.FC<CompLibProps> = () => {
   const componentKey = `${componentName}CL`;
 
   const ComponentToRender =
-    componentName && isValidComponent(componentName)
+    componentName && isValidComponent(componentKey)
       ? (Components[componentKey] as React.ElementType)
       : null;
 
@@ -44,7 +44,7 @@ const CompLib: React.FC<CompLibProps> = () => {
     <section className="CompLib">
       <CompLibNav exclude={combinedExcludedComponents} />
       {/* Content */}
-      <section className="ConpLib-libGrid">
+      <section className="CompLib-libGrid">
         <Typography className="CompLib-header" kind="h2">
           Component Library
         </Typography>

@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 
-import { ButtonCore, Icon, Typography } from "../../index";
+import { ButtonCore, Icon, Typography } from "../../../index";
 
 import "./ButtonSelectRectangle.scss";
 import "./ButtonSelectPill.scss";
@@ -61,12 +61,12 @@ const ButtonSelect: React.FC<ButtonSelectProps> = ({
     isDisabled && "ButtonSelect--isDisabled",
     isOpen && `ButtonSelect--${kind}--isOpen`,
     BadgeComp && "ButtonSelect--hasBadge",
-    className,
+    className
   );
   const buttonSelectLabelClasses = classnames("ButtonSelect-label");
   const buttonSelectOverlayClasses = classnames(
     "ButtonSelect-overlay",
-    `ButtonSelect-overlay--${kind}`,
+    `ButtonSelect-overlay--${kind}`
   );
 
   const getChevronIconSize = () => {
@@ -101,7 +101,7 @@ const ButtonSelect: React.FC<ButtonSelectProps> = ({
           <div
             className={classnames(
               `ButtonSelect--${kind}-prefixIcon`,
-              isIconSvgFilled && "ButtonSelect--isIconSvgFilled",
+              isIconSvgFilled && "ButtonSelect--isIconSvgFilled"
             )}
           >
             {prefixIcon}
@@ -115,7 +115,7 @@ const ButtonSelect: React.FC<ButtonSelectProps> = ({
             <span
               className={classnames(
                 `ButtonSelect--${kind}-chevron`,
-                isIconSvgFilled && "ButtonSelect--isIconSvgFilled",
+                isIconSvgFilled && "ButtonSelect--isIconSvgFilled"
               )}
             >
               <Icon

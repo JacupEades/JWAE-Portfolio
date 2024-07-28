@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import classnames from "classnames";
 
-import { ButtonCore, Icon, Typography } from "../../index.ts";
+import { ButtonCore, Icon, Typography } from "../../../index.ts";
 
 import "./AccordionStepper.scss";
 
@@ -64,7 +64,7 @@ const AccordionStepper: React.FC<AccordionStepperProps> = ({
     isCritical && "AccordionStepper-article--isCritical",
     secondarySupportingText &&
       accordionValue &&
-      "AccordionStepper-article--hasSecondaryText",
+      "AccordionStepper-article--hasSecondaryText"
   );
 
   const buttonClasses = classnames(
@@ -73,25 +73,25 @@ const AccordionStepper: React.FC<AccordionStepperProps> = ({
     secondarySupportingText &&
       accordionValue &&
       "AccordionStepper-button--hasSecondaryText",
-    buttonClassName,
+    buttonClassName
   );
 
   const supportingContentClasses = classnames(
     setExpandedClass("supportingContent"),
     showingTextClass,
-    secondaryTextClass,
+    secondaryTextClass
   );
 
   const contentPanelClasses = classnames(
     setExpandedClass("contentPanel"),
-    contentPanelClassName,
+    contentPanelClassName
   );
 
   const contentPanelWrapperClasses = classnames(
     "AccordionStepper-contentPanelWrapper",
     isExpanded
       ? `AccordionStepper-contentPanelWrapper--isExpanded`
-      : `AccordionStepper-contentPanelWrapper--isNotExpanded`,
+      : `AccordionStepper-contentPanelWrapper--isNotExpanded`
   );
 
   const prefixIconClasses = setExpandedClass("prefixIcon");

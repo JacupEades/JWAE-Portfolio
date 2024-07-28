@@ -13,7 +13,7 @@ import {
   Icon,
   InputCore,
   TextareaCore,
-} from "../../index";
+} from "../../../index";
 import { INPUTMODE, SIZES, TYPES } from "../constants.ts";
 
 import "./InputField.scss";
@@ -42,7 +42,7 @@ interface InputFieldProps {
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onClick?: (e: MouseEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onKeyDown?: (
-    e: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
   backgroundColor?: "neutral" | "secondary";
   value?: string | number;
@@ -120,22 +120,22 @@ const InputField: React.FC<InputFieldProps> = ({
     const addEventListeners = () => {
       document.addEventListener(
         "mousedown",
-        handleMouseDown as unknown as EventListener,
+        handleMouseDown as unknown as EventListener
       );
       document.addEventListener(
         "keydown",
-        handleKeyDown as unknown as EventListener,
+        handleKeyDown as unknown as EventListener
       );
     };
 
     const removeEventListeners = () => {
       document.removeEventListener(
         "mousedown",
-        handleMouseDown as unknown as EventListener,
+        handleMouseDown as unknown as EventListener
       );
       document.removeEventListener(
         "keydown",
-        handleKeyDown as unknown as EventListener,
+        handleKeyDown as unknown as EventListener
       );
     };
 
@@ -155,7 +155,7 @@ const InputField: React.FC<InputFieldProps> = ({
     (isCritical || doesValueHaveBrackets) && `InputField-input--isCritical`,
     isReadOnly && `InputField-input--isReadOnly`,
     isUsingMouse && "InputField-noOutline",
-    className,
+    className
   );
 
   const multilineClass = classnames(
@@ -166,7 +166,7 @@ const InputField: React.FC<InputFieldProps> = ({
     (isCritical || doesValueHaveBrackets) && `InputField-input--isCritical`,
     isReadOnly && `InputField-input--isReadOnly`,
     isUsingMouse && "InputField-noOutline",
-    className,
+    className
   );
 
   const closeClass = classnames(
@@ -175,7 +175,7 @@ const InputField: React.FC<InputFieldProps> = ({
       ? "InputField-closeButtonContainer--multiline"
       : `InputField-closeButtonContainer--${size}`,
     suffixButtonType && `InputField-closeButtonContainer--suffixButton`,
-    isReadOnly && `InputField-closeButtonContainer--isReadOnly`,
+    isReadOnly && `InputField-closeButtonContainer--isReadOnly`
   );
 
   const suffixButtonClass = classnames(
@@ -186,7 +186,7 @@ const InputField: React.FC<InputFieldProps> = ({
     (isCritical || doesValueHaveBrackets) &&
       "InputField-suffixButton--isCritical",
     isDisabled && "InputField-suffixButton--isDisabled",
-    isReadOnly && `InputField-suffixButton--isReadOnly`,
+    isReadOnly && `InputField-suffixButton--isReadOnly`
   );
 
   const clearValue = () => {
@@ -246,7 +246,7 @@ const InputField: React.FC<InputFieldProps> = ({
   };
 
   const onInputChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     onChange?.(event);
 
@@ -292,7 +292,7 @@ const InputField: React.FC<InputFieldProps> = ({
             value.toString().replace(/[<>]/g, "")?.trim()?.length <
               minRequiredChars)
       : isCritical ||
-          (value && value.toString().trim()?.length < minRequiredChars),
+          (value && value.toString().trim()?.length < minRequiredChars)
   );
 
   return (
@@ -398,7 +398,7 @@ const InputField: React.FC<InputFieldProps> = ({
                 aria-hidden="true"
                 className={classnames(
                   "InputField-suffixButton-overlay",
-                  isDisabled && "InputField-suffixButton-overlay--isDisabled",
+                  isDisabled && "InputField-suffixButton-overlay--isDisabled"
                 )}
               />
             </ButtonCore>

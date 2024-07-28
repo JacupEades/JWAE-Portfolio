@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-import { SYSTEM_DATA_THEMES } from "../../../misc/constants.ts";
+import { SYSTEM_DATA_THEMES } from "../../../../misc/constants.ts";
 
 interface ButtonCoreProps {
   id?: string | null;

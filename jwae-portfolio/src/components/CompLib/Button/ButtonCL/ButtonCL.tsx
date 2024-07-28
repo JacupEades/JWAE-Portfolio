@@ -2,7 +2,7 @@ import React from "react";
 
 import "./ButtonCL.scss";
 
-import { Button, Icon, Typography } from "../../index.ts";
+import { Button, Icon, Typography } from "../../../index.ts";
 
 interface ButtonCLProps {}
 

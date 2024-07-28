@@ -1,8 +1,8 @@
 import React from "react";
 import classnames from "classnames";
 
-import { SYSTEM_DATA_THEMES } from "../../misc/constants.ts";
-import { ButtonCore } from "../index.ts";
+import { SYSTEM_DATA_THEMES } from "../../../misc/constants.ts";
+import { ButtonCore } from "../../index.ts";
 
 import "./ButtonIcon.scss";
 
@@ -54,13 +54,13 @@ const ButtonIcon: React.FC<ButtonIconProps> = ({
     `ButtonIcon-${kind}`,
     isDisabled && `ButtonIcon-${kind}--isDisabled`,
     isSelected && `ButtonIcon-${kind}--isSelected`,
-    className,
+    className
   );
 
   const buttonIconOverlayClass = classnames(
     "ButtonIcon-overlay",
     `ButtonIcon-overlay-${kind}`,
-    isSelected && `ButtonIcon-overlay-${kind}--isSelected`,
+    isSelected && `ButtonIcon-overlay-${kind}--isSelected`
   );
 
   return (

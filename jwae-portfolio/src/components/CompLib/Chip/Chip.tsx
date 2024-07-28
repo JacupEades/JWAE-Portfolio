@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 
-import { ButtonCore, Typography } from "../index.ts";
+import { ButtonCore, Typography } from "../../index.ts";
 
 import "./Chip.scss";
 
@@ -63,12 +63,12 @@ const Chip: React.FC<ChipProps> = ({
     `Chip--${color}`,
     isSelected && `Chip-${kind}--isSelected Chip--isSelected`,
     isDisabled && `Chip--isDisabled Chip-${kind}--isDisabled`,
-    className,
+    className
   );
 
   const chipContentClass = classnames(
     "Chip-content-container",
-    `Chip-content-container--${size}`,
+    `Chip-content-container--${size}`
   );
 
   const leftIconClass = classnames("Chip-left-icon", `Chip-icons--${size}`);
@@ -81,7 +81,7 @@ const Chip: React.FC<ChipProps> = ({
     "Chip-overlay",
     `Chip-overlay-${kind}`,
     isSelected && `Chip-overlay-${kind}--isSelected`,
-    `Chip-overlay--${color}`,
+    `Chip-overlay--${color}`
   );
 
   return (

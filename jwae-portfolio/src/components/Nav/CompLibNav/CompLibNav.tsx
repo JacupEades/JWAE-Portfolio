@@ -14,7 +14,7 @@ const CompLibNav: React.FC<CompLibNavProps> = ({ exclude = [] }) => {
   );
 
   return (
-    <section className="CompLibNav">
+    <aside className="CompLibNav">
       <nav className="CompLibNav-nav">
         <ul className="CompLibNav-list">
           {componentNames.map((name) => (
@@ -24,7 +24,7 @@ const CompLibNav: React.FC<CompLibNavProps> = ({ exclude = [] }) => {
           ))}
         </ul>
       </nav>
-    </section>
+    </aside>
   );
 };
 
