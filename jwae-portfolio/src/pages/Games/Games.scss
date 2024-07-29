@@ -5,4 +5,8 @@
 
 .Games {
   @include PagNavBase();
+
+  .Games-component {
+    grid-column: 2 / 13;
+  }
 }

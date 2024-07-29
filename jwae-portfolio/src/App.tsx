@@ -17,7 +17,7 @@ const App: React.FC = () => {
           <Route path="/comp-lib" element={<CompLib />} />
           <Route path="/comp-lib/:componentName" element={<CompLib />} />
           <Route path="/games" element={<Games />} />
-          <Route path="/games/:gameName" element={<Games />} />
+          <Route path="/games/:gameKey" element={<Games />} />
           <Route path="/react-demos" element={<ReactDemos />} />
         </Routes>
       </div>

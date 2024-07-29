@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { CompLibNav, Typography } from "../../components";
-import * as Components from "../../components";
+import * as Components from "../../components/index";
 
 import "./CompLib.scss";
 
@@ -11,8 +11,8 @@ const CompLib: React.FC<CompLibProps> = () => {
   const { componentName } = useParams<{ componentName: string }>();
 
   // Ensure that the component name is in the Components object
-  const isValidComponent = (name: string): name is keyof typeof Components => {
-    return name + "CL" in Components;
+  const isValidComponent = (key: string): key is keyof typeof Components => {
+    return key in Components;
   };
 
   const componentKey = `${componentName}CL`;

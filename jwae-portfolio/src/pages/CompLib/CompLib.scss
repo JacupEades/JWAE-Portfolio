@@ -3,7 +3,7 @@
 @import "../../styles/partials/mixins";
 .CompLib {
   @include PagNavBase();
-  .ConpLib-libGrid {
+  .CompLib-libGrid {
     grid-column: 2 / 13;
 
     .CompLib-header {

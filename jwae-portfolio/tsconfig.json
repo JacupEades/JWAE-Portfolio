@@ -16,7 +16,12 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "custom.d.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "custom.d.ts",
+    "src/components/Games/SAS2/SAS2.js"
+  ]
 }
 
 // Options:

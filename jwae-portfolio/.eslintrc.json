@@ -35,7 +35,6 @@
       "always",
       { "exceptAfterSingleLine": true }
     ],
-    "newline-after-var": ["error", "always"],
     "padded-blocks": ["error", "never"],
     "import/no-unresolved": [
       0,
@@ -45,7 +44,6 @@
     ],
     "import/first": "error",
     "import/no-extraneous-dependencies": 1,
-    "import/newline-after-import": "error",
     "import/no-duplicates": "error",
     "import/namespace": 0,
     "react/prop-types": 1,
